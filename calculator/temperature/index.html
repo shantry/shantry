@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Misleading Calculator (Celsius to Fahrenheit Edition)</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input {
+      padding: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0069d9;
+    }
+
+    p {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Misleading Calculator (Celsius to Fahrenheit Edition)</h1>
+  <form id="celsiusForm">
+    <label>
+      Enter a Celsius Degree:
+      <input type="text" name="celsius" id="celsiusInput">
+    </label>
+    <br>
+    <button type="submit">Convert to Fahrenheit</button>
+  </form>
+  <p id="output"></p>
+
+  <script>
+    const form = document.getElementById('celsiusForm');
+    const celsiusInput = document.getElementById('celsiusInput');
+    const output = document.getElementById('output');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const celsius = Number(celsiusInput.value);
+      if (isNaN(celsius)) {
+        output.textContent = 'Invalid input, please enter a valid number.';
+      } else {
+        const fahrenheit = celsius * 1.8 + 32;
+        output.textContent = `${celsius} Celcius converted to Fahrenheit is: ${fahrenheit} `;
+      }
+      celsiusInput.value = '';
+    });
+  </script>
+
+</body>
+  
+</html>

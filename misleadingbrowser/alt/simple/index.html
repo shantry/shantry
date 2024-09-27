@@ -1,0 +1,43 @@
+<!-- HTML -->
+<head>
+<link rel="icon" type="image/x-icon" href="Misleading Browser-logos.jpeg"><link href="https://moderncss.goodvessel92551.repl.co/style.css" rel="stylesheet" type="text/css" /><script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script><script type="module" src="https://unpkg.com/x-frame-bypass"></script><script> //this message is broken for whatever reason? The exact same code works on other html so idk.
+  Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: 'Something went wrong!',
+  footer: '<a href="">Why do I have this issue?</a>'
+})
+</script> 
+<title>Misleading Browser</title>
+</head>
+
+<body style="text-align: center; ">
+<!-- Script that does all the magic wizard shit -->
+  <script>
+// JavaScript
+function saveInputValue() {
+  var inputValue = document.getElementById("myInput").value;
+  // Check if the input value starts with "https://"
+  if (!inputValue.startsWith("https://")) {
+    // If not, open a Bing search of the input
+    inputValue = "https://www.bing.com/search?form=&q=" + inputValue;
+  }
+  // This is the stuff that opens the widow with the iframe for whatever is inputted
+  var a = window.open('', 'toolbar=no', 'height=1000, width=1000');
+  a.document.write('<html>');
+  a.document.write('<link rel="icon" type="image/x-icon" href="https://shantry.com/MisleadingBrowser/alt/Misleading%20Browser-logos.jpeg">')
+  a.document.write('<title>Misleading Browser 7.0 Window</title>')
+  a.document.write('<body >  <iframe is="x-frame-bypass" width="100%" height="100%" src="' + inputValue, '"></iframe>');
+  a.document.write('</body></html>');
+  a.document.close();
+}
+</script>
+  <!-- Inputs -->
+  <h1>Misleading Browser Lite</h1>
+<input type="text" style="size: 250px;" id="myInput">
+  <br>
+<button onclick="saveInputValue()">Go</button>
+  <p>This version of Misleading Browser is very dumbed down and many sites dont load (google sites, discord, etc.) However, this version may give you better performance compared to the Carcas Edition, if the site loads.</p>
+</body>
+
+

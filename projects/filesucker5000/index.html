@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shantry Compressor and Extractor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #007BFF;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .file-input-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .file-input-group label {
+            font-weight: bold;
+        }
+
+        .file-input-group input[type="file"] {
+            padding: 10px;
+            border: 2px solid #007BFF;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .file-input-group button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .file-input-group button:hover {
+            background-color: #0056b3;
+        }
+
+        #filesystem {
+            margin-top: 20px;
+            padding: 10px;
+            border: 2px dashed #007BFF;
+            border-radius: 5px;
+            background-color: #e9f7ff;
+        }
+
+        .file {
+            margin: 5px 0;
+            padding: 8px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .file button {
+            padding: 5px 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .file button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Shantry Compressor and Extractor</h1>
+    <div class="container">
+        <div class="file-input-group">
+            <label for="fileInput">Select files to compress:</label>
+            <input type="file" id="fileInput" multiple>
+            <button id="compressBtn">Compress to .shantry</button>
+        </div>
+
+        <div class="file-input-group">
+            <label for="shantryInput">Select a .shantry file to extract:</label>
+            <input type="file" id="shantryInput">
+            <button id="extractBtn">Extract .shantry</button>
+        </div>
+
+        <div id="filesystem"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="shantry.js"></script>
+</body>
+</html>

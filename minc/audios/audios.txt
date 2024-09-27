@@ -1,0 +1,577 @@
+<h3>agushs.mp3</h3>
+<audio controls loop>
+  <source src="/audio/agushs.mp3" type="audio/mpeg">
+</audio>
+
+<h3>bipolar.mp3</h3>
+<audio controls loop>
+  <source src="/audio/bipolar.mp3" type="audio/mpeg">
+</audio>
+
+<h3>clap your gardening of american pussy.mp3</h3>
+<audio controls loop>
+  <source src="/audio/clap your gardening of american pussy.mp3" type="audio/mpeg">
+</audio>
+
+<h3>coke coke.mp3</h3>
+<audio controls loop>
+  <source src="/audio/coke coke.mp3" type="audio/mpeg">
+</audio>
+
+<h3>constipain.mp3</h3>
+<audio controls loop loop>
+  <source src="/audio/constipain.mp3" type="audio/mpeg">
+</audio>
+
+<h3>extremly bipolar.mp3</h3>
+<audio controls loop>
+  <source src="/audio/extremly bipolar.mp3" type="audio/mpeg">
+</audio>
+
+<h3>gardening of what the hell.mp3</h3>
+<audio controls loop>
+  <source src="/audio/gardening of what the hell.mp3" type="audio/mpeg">
+</audio>
+
+<h3>geniousofvagina.mp3</h3>
+<audio controls loop>
+  <source src="/audio/geniousofvagina.mp3" type="audio/mpeg">
+</audio>
+
+<h3>heavenly background music.mp3</h3>
+<audio controls loop>
+  <source src="/audio/heavenly background music.mp3" type="audio/mpeg">
+</audio>
+
+<h3>I'm gonna brown.mp3</h3>
+<audio controls loop>
+  <source src="/audio/I'm gonna brown.mp3" type="audio/mpeg">
+</audio>
+
+<h3>it wont work.mp3</h3>
+<audio controls loop>
+  <source src="/audio/it wont work.mp3" type="audio/mpeg">
+</audio>
+
+<h3>JoustTheTwoOfUs.mp3</h3>
+<audio controls loop>
+  <source src="/audio/JoustTheTwoOfUs.mp3" type="audio/mpeg">
+</audio>
+
+<h3>last.mp3</h3>
+<audio controls loop>
+  <source src="/audio/last.mp3" type="audio/mpeg">
+</audio>
+
+<h3>gimmethemeaaeaeaeaeeat.mp3</h3>
+<audio controls>
+  <source src="loop.mp3" type="audio/mpeg">
+</audio>
+
+<h3>lastchrysler.mp3</h3>
+<audio controls loop>
+  <source src="/audio/lastchrysler.mp3" type="audio/mpeg">
+</audio>
+<h3>miss the aluminumcans.mp3</h3>
+<audio controls loop>
+  <source src="/audio/miss the aluminumcans.mp3" type="audio/mpeg">
+</audio>
+
+<h3>newearbuds.mp3</h3>
+<audio controls loop>
+  <source src="/audio/newearbuds.mp3" type="audio/mpeg">
+</audio>
+
+<h3>oh.mp3</h3>
+<audio controls loop>
+  <source src="/audio/oh.mp3" type="audio/mpeg">
+</audio>
+
+<h3>oldmon.mp3</h3>
+<audio controls loop>
+  <source src="/audio/oldmon.mp3" type="audio/mpeg">
+</audio>
+
+<h3>sugar sugarersrartr.mp3</h3>
+<audio controls loop>
+  <source src="/audio/sugar sugarersrartr.mp3" type="audio/mpeg">
+</audio>
+
+<h3>shitting in the outlet</h3>
+<audio controls loop>
+  <source src="/audio/EnglishNotMyFirstLanguage.mp3" type="audio/mpeg">
+</audio>
+
+<h3>the better saucy two of us.mp3</h3>
+<audio controls loop>
+  <source src="/audio/the better saucy two of us.mp3" type="audio/mpeg">
+</audio>
+
+<h3>Uguuugguguguugugugguhg.mp3</h3>
+<audio controls loop>
+  <source src="/audio/Uguuugguguguugugugguhg.mp3" type="audio/mpeg">
+</audio>
+
+<h3>The Price is Wrong.mp3</h3>
+<audio controls loop>
+  <source src="/audio/ThePriceisWrong.mp3" type="audio/mpeg">
+</audio>
+
+<h3>Gust The Two of Us.mp3</h3>
+<audio controls loop>
+  <source src="/audio/GustTheTwoOfUs.mp3" type="audio/mpeg">
+</audio>
+
+<h3>Winders.mp3</h3>
+<audio controls loop>
+  <source src="/audio/Winders.mp3" type="audio/mpeg">
+</audio>
+
+<h3>Retarded Schizophrenia.mp3</h3>
+<audio controls loop>
+  <source src="/audio/RetardedSchizophrenia.mp3" type="audio/mpeg">
+</audio>
+
+<h3>the price isnt.mp3 (VOLUME WARNING!!!)</h3>
+<audio controls loop>
+  <source src="/audio/the price isnt.mp3" type="audio/mpeg">
+</audio>
+
+<h3>kidnapping.mp3</h3>
+<audio controls loop>
+  <source src="/audio/kidnapping.mp3" type="audio/mpeg">
+</audio>
+
+<h3>revolting door.mp3</h3>
+<audio controls loop>
+  <source src="/audio/revolting door.mp3" type="audio/mpeg">
+</audio>
+
+<h3>lant.mp3</h3>
+<audio controls loop>
+  <source src="/audio/lant.mp3" type="audio/mpeg">
+</audio>
+
+  <h3>NidKapping.mp3</h3>
+<audio controls loop>
+  <source src="/audio/NidKapping.mp3" type="audio/mpeg">
+</audio>
+
+<h3>Shash_Coom.mp3</h3>
+<audio controls loop>
+  <source src="/audio/01 - misleading - Shash-Coom.mp3" type="audio/mpeg">
+</audio>
+
+<h3>ascared.mp3</h3>
+<audio controls loop>
+  <source src="/audio/02 - misleading - ascared.mp3" type="audio/mpeg">
+</audio>
+
+<h3>iReady.mp3</h3>
+<audio controls loop>
+  <source src="/audio/03 - misleading - iReady.mp3" type="audio/mpeg">
+</audio>
+
+<h3>JUUUUUUST THE TWOO OF UUUUUUUSSSSS.mp3</h3>
+<audio controls loop>
+  <source src="/audio/03 - misleading - JUUUUUUST THE TWOO OF UUUUUUUSSSSS.mp3" type="audio/mpeg">
+</audio>
+
+
+<h3>ausio mas.mp3</h3>
+<audio controls loop>
+  <source src="/audio/04 - misleading - ausio mas.mp3" type="audio/mpeg">
+</audio>
+
+<h3>speedrunningclass.mp3</h3>
+<audio controls loop>
+  <source src="/audio/05 - misleading - speedrunningclass.mp3" type="audio/mpeg">
+</audio>
+
+<h3>Uguuguhg.mp3</h3>
+<audio controls loop>
+  <source src="/audio/05 - misleading - Uguuguhg.mp3" type="audio/mpeg">
+</audio>
+
+<h3>TheChristmasOfHarming.mp3</h3>
+<audio controls loop>
+  <source src="/audio/06 - misleading - TheChristmasOfHarming.mp3" type="audio/mpeg">
+</audio>
+
+<h3>ScreamingOfTheDamnedChildren.mp3</h3>
+<audio controls loop>
+  <source src="/audio/07 - misleading - ScreamingOfTheDamnedChildren.mp3" type="audio/mpeg">
+</audio>
+
+<h3>crar.mp3</h3>
+<audio controls loop>
+  <source src="/audio/08 - misleading - crar.mp3" type="audio/mpeg">
+</audio>
+
+  <h3>eating babirs.mp3</h3>
+<audio controls loop>
+  <source src="/audio/08 - misleading - eating babirs.mp3" type="audio/mpeg">
+</audio>
+
+<h3>implodingpain.mp3</h3>
+<audio controls loop>
+  <source src="/audio/09 - misleading - implodingpain.mp3" type="audio/mpeg">
+</audio>
+
+<h3>JustTheTwoSlimeShadys.mp3</h3>
+<audio controls loop>
+  <source src="/audio/09 - misleading - JustTheTwoSlimeShadys.mp3" type="audio/mpeg">
+</audio>
+
+<h3>BusyClsas.mp3</h3>
+<audio controls loop>
+  <source src="/audio/10 - misleading - BusyClsas.mp3" type="audio/mpeg">
+</audio>
+
+<h3>SomethingBetter.mp3</h3>
+<audio controls loop>
+  <source src="/audio/10 - misleading - SomethingBetter.mp3" type="audio/mpeg">
+</audio>
+
+<h3>turtlebeach.mp3</h3>
+<audio controls loop>
+  <source src="/audio/11 - misleading - turtlebeach.mp3" type="audio/mpeg">
+</audio>
+
+<h3>UsOfTwoTheHust</h3>
+<audio controls loop>
+  <source src="/audio/11 - misleading - UsOfTwoTheHust.mp3" type="audio/mpeg">
+</audio>
+
+<h3>AlloyCans.mp3</h3>
+<audio controls loop>
+  <source src="/audio/12 - misleading - alloycans.mp3" type="audio/mpeg">
+</audio>
+
+<h3>PREPAREYOURTOWERS.mp3</h3>
+<audio controls loop>
+  <source src="/audio/12 - misleading - PREPAREYOURTOWERS.mp3" type="audio/mpeg">
+</audio>
+
+<h3>cough.mp3</h3>
+<audio controls loop>
+  <source src="/audio/13 - misleading - cough.mp3" type="audio/mpeg">
+</audio>
+
+<h3>tthe class when the teacher leavesmp3.mp3</h3>
+<audio controls loop>
+  <source src="/audio/14 - misleading - tthe class when the teacher leavesmp3.mp3" type="audio/mpeg">
+</audio>
+
+<h3>vagfsgidfgoisdgopigosdfg.mp3</h3>
+<audio controls loop>
+  <source src="/audio/14 - misleading - vagfsgidfgoisdgopigosdfg.mp3" type="audio/mpeg">
+</audio>
+
+<h1>E</h1>
+<audio controls loop>
+  <source src="/audio/15 - misleading - E.mp3" type="audio/mpeg">
+</audio>
+
+  <h1>GeniousofUndertail</h1>
+<audio controls loop>
+  <source src="/audio/15 - misleading - geniousofundertale.mp3" type="audio/mpeg">
+</audio>
+
+<h1>Christmas Carol</h1>
+<audio controls loop>
+  <source src="/audio/16 - misleading - Christmas Carol.mp3" type="audio/mpeg">
+</audio>
+
+<h3>Mr. Bomb.mp3</h3>
+<audio controls loop>
+  <source src="/audio/16 - misleading - Mr. Bomb.mp3" type="audio/mpeg">
+</audio>
+
+<h3>hey babayyyy.mp3</h3>
+<audio controls loop>
+  <source src="/audio/17 - misleading - hey babayyyy.mp3" type="audio/mpeg">
+</audio>
+
+<h3>blockygameboomboom.mp3</h3>
+<audio controls loop>
+  <source src="/audio/18 - misleading - blockygameboomboom.mp3" type="audio/mpeg">
+</audio>
+
+<h3>slowdescentintomadness.mp3</h3>
+<audio controls loop>
+  <source src="/audio/19 - misleading - slowdescentintomadness.mp3" type="audio/mpeg">
+</audio>
+
+<h3>TheSaucyTwoOfUs.mp3</h3>
+<audio controls loop>
+  <source src="/audio/19 - misleading - TheSaucyTwoOfUs.mp3" type="audio/mpeg">
+</audio>
+
+<h3>FuckerDamnYouFucking.mp3</h3>
+<audio controls loop>
+  <source src="/audio/20 - misleading - FuckerDamnYouFucking.mp3" type="audio/mpeg">
+</audio>
+
+<h3>LikeADumpsterFire.mp3</h3>
+<audio controls loop>
+  <source src="/audio/20 - misleading - LikeADumpsterFire.mp3" type="audio/mpeg">
+</audio>
+
+<h3>UsOfTwoTheJust.mp3</h3>
+<audio controls loop>
+  <source src="/audio/21 - misleading - UsOfTwoTheJust.mp3" type="audio/mpeg">
+</audio>
+
+<h3>the better saucy two of us.mp3</h3>
+<audio controls loop>
+  <source src="/audio/24 - misleading - the better saucy two of us.mp3" type="audio/mpeg">
+</audio>
+
+<h3>MENENGA.mp3</h3>
+<audio controls loop>
+  <source src="/audio/25 - misleading - MENENGA.mp3" type="audio/mpeg">
+</audio>
+
+<h3>MYNINJA.mp3</h3>
+<audio controls loop>
+  <source src="/audio/26 - misleading - MYNINJA.mp3" type="audio/mpeg">
+</audio>
+
+<h3>ClapYoyr-HaHjjjuujjkjikijik.mp3</h3>
+<audio controls loop>
+  <source src="/audio/26 - Misleading INC - ClapYoyr-HaHjjjuujjkjikijik.mp3" type="audio/mpeg">
+</audio>
+
+<h3>aluminumcans.mp3</h3>
+<audio controls loop>
+  <source src="/audio/27 - misleading - aluminumcans.mp3" type="audio/mpeg">
+</audio>
+
+<h3>sad alamwham.mp3</h3>
+<audio controls loop>
+  <source src="/audio/27 - Misleading INC - sad alamwham.mp3" type="audio/mpeg">
+</audio>
+
+<h3>meat.mp3</h3>
+<audio controls loop>
+  <source src="/audio/29 - misleading - meat.mp3" type="audio/mpeg">
+</audio>
+
+<h3>attentionteachers.mp3</h3>
+<audio controls loop>
+  <source src="/audio/29 - Misleading INC - attentionteachers.mp3" type="audio/mpeg">
+</audio>
+
+<h3>gardener of legs.mp3</h3>
+<audio controls loop>
+  <source src="/audio/28 - Misleading INC - gardener of legs.mp3" type="audio/mpeg">
+</audio>
+
+<h3>Like a Wise Man Once Said...</h3>
+<audio controls loop>
+  <source src="/audio/WiseManGivingCPR.mp3" type="audio/mpeg">
+</audio>
+
+<h3>kidnapping but everyone explodes.mp3</h3>
+<audio controls loop>
+  <source src="/audio/kidnapping but everyone explodes.mp3" type="audio/mpeg">
+</audio>  
+
+<h3>Satan's Calling!</h3>
+<audio controls loop>
+  <source src="/audio/TheElderGods.mp3" type="audio/mpeg">
+</audio>
+
+<h3>Lets Get Retarded</h3>
+<audio controls loop>
+  <source src="/audio/LetsGetRetarded.mp3" type="audio/mpeg">
+</audio>  
+
+<h3>K(KK)ongo Music</h3>
+<audio controls loop>
+  <source src="/audio/NiggerDoesTheDougie.mp3" type="audio/mpeg">
+</audio>  
+
+<h3>Grill</h3>
+<audio controls loop>
+  <source src="/audio/Grill.mp3" type="audio/mpeg">
+</audio> 
+
+<h3>Walter Hardwel Shady.mp3</h3>
+<audio controls loop>
+  <source src="/audio/Walter Hardwel Shady.mp3" type="audio/mpeg">
+</audio> 
+
+<h3>burnsauce.mp3</h3>
+<audio controls loop>
+  <source src="/audio/Burnplz.mp3" type="audio/mpeg">
+</audio> 
+
+<h3>Bowling Mic.mp3</h3>
+<audio controls loop>
+  <source src="/audio/BowlingMic.mp3" type="audio/mpeg">
+</audio> 
+
+<h3>Pokey Mango.wav</h3>
+<audio controls loop>
+  <source src="/audio/pokeymango.wav" type="audio/mpeg">
+</audio> 
+
+<h3>pokeymongov3.mp3</h3>
+<audio controls loop>
+  <source src="/audio/pokeymongov3.mp3" type="audio/mpeg">
+</audio> 
+
+<h3>GangnamBile.mp3</h3>
+<audio controls loop>
+  <source src="/audio/GangnamBile.mp3" type="audio/mpeg">
+</audio> 
+
+<h3>GangnamBile Except More Audible.mp3</h3>
+<audio controls loop>
+  <source src="/audio/GangnamBileButMoreAudible.mp3" type="audio/mpeg">
+</audio> 
+<h4>Do not ask why the Gangnam Biles are different lengths.</h4>
+
+<h3>AgonyForSatan.mp3</h3>
+<audio controls loop>
+  <source src="/audio/AgonyForSatan.mp3" type="audio/mpeg">
+</audio> 
+
+<h3>8 Bit Conversation.mp3</h3>
+<audio controls loop>
+  <source src="/audio/8BitConvo.mp3" type="audio/mpeg">
+</audio> 
+
+<h3>Bohemian Crapsody.mp3</h3>
+<audio controls loop>
+  <source src="/audio/BohemianCrapsody.mp3" type="audio/mpeg">
+</audio> 
+
+<h3>Seat Home Alama</h3>
+<audio controls loop>
+  <source src="/audio/SeatHomeAlama.mp3" type="audio/mpeg">
+</audio> 
+
+<h3>Metalloids: Two</h3>
+<h6 class="sub">NOT AN INSTRUMENTAL the intro is vey long even after cut.</h6>
+<audio controls loop>
+  <source src="/audio/metalloids_ two.mp3" type="audio/mpeg">
+</audio>
+
+<h3>Exit Sadman</h3>
+<audio controls loop>
+  <source src="/audio/ExitSadman.mp3" type="audio/mpeg">
+</audio> 
+
+<h3>We Are Blowing Up</h3>
+<audio controls loop>
+  <source src="/audio/WeAreBlowingUp.mp3" type="audio/mpeg">
+</audio> 
+
+<h3>Hotel Carcas</h3>
+<audio controls loop>
+  <source src="/audio/HotelCarcas.mp3" type="audio/mpeg">
+</audio> 
+
+<h3>Carry on my Wayward Sin</h3>
+<audio controls loop>
+  <source src="/audio/CarryOnMyWaywardSin.mp3" type="audio/mpeg">
+</audio> 
+
+<h3>Alkaline Pie</h3>
+<audio controls loop>
+  <source src="/audio/AlkalinePie.mp3" type="audio/mpeg">
+</audio> 
+
+<h3>I didn't know what to name this.</h3>
+<audio controls loop>
+  <source src="/audio/MrHolo.mp3" type="audio/mpeg">
+</audio> 
+
+<h3>Papa Whiskey Died 14:00 4/29/22.</h3>
+<audio controls loop>
+  <source src="/audio/ThisWILLBeTheDayThatIDie.mp3" type="audio/mpeg">
+</audio> 
+  
+<h3>America Died</h3>
+<audio controls loop>
+  <source src="/audio/AmericanDied.mp3" type="audio/mpeg">
+</audio> 
+
+<h3>POV: Papa Whiskey maons in your ear</h3>
+<audio controls loop>
+  <source src="/audio/1.mp3" type="audio/mpeg">
+</audio> 
+  
+<h3>Sh-Boob</h3>
+<audio controls loop>
+  <source src="/audio/Sh-Boob.mp3" type="audio/mpeg">
+</audio>
+
+<h3>busybomb</h3>
+<audio controls loop>
+  <source src="/busybomb.mp3">
+</audio>
+
+<h3>Seat Home Alama</h3>
+<audio controls loop>
+  <source src="/audio/SeatHomeAlama.mp3" type="audio/mpeg">
+</audio> 
+
+<h3>Metalloids: Two</h3>
+<h6 class="sub">NOT AN INSTRUMENTAL the intro is vey long even after cut.</h6>
+<audio controls loop>
+  <source src="/audio/metalloids_ two.mp3" type="audio/mpeg">
+</audio>
+
+<h3>Exit Sadman</h3>
+<audio controls loop>
+  <source src="/audio/ExitSadman.mp3" type="audio/mpeg">
+</audio> 
+
+<h3>We Are Blowing Up</h3>
+<audio controls loop>
+  <source src="/audio/WeAreBlowingUp.mp3" type="audio/mpeg">
+</audio> 
+
+<h3>Hotel Carcas</h3>
+<audio controls loop>
+  <source src="/audio/HotelCarcas.mp3" type="audio/mpeg">
+</audio> 
+
+<h3>Carry on my Wayward Sin</h3>
+<audio controls loop>
+  <source src="/audio/CarryOnMyWaywardSin.mp3" type="audio/mpeg">
+</audio> 
+
+<h3>Alkaline Pie</h3>
+<audio controls loop>
+  <source src="/audio/AlkalinePie.mp3" type="audio/mpeg">
+</audio> 
+
+<h3>I didn't know what to name this.</h3>
+<audio controls loop>
+  <source src="/audio/MrHolo.mp3" type="audio/mpeg">
+</audio> 
+
+<h3>Papa Whiskey Died 14:00 4/29/22.</h3>
+<audio controls loop>
+  <source src="/audio/ThisWILLBeTheDayThatIDie.mp3" type="audio/mpeg">
+</audio> 
+  
+<h3>America Died</h3>
+<audio controls loop>
+  <source src="/audio/AmericanDied.mp3" type="audio/mpeg">
+</audio> 
+
+<h3>POV: Papa Whiskey maons in your ear</h3>
+<audio controls loop>
+  <source src="/audio/1.mp3" type="audio/mpeg">
+</audio> 
+  
+<h3>Sh-Boob</h3>
+<audio controls loop>
+  <source src="/audio/Sh-Boob.mp3" type="audio/mpeg">
+</audio> 

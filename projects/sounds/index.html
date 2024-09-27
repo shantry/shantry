@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shantry Sounds</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        #waveform {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 20px;
+        }
+        #controls {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        #controls button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Advanced Audio Editor</h1>
+    <div id="waveform"></div>
+    <div id="controls">
+        <button id="recordButton">Start Recording</button>
+        <button id="stopButton" disabled>Stop Recording</button>
+        <button id="playButton" disabled>Play</button>
+        <button id="cutButton" disabled>Cut</button>
+        <button id="exportButton" disabled>Export</button>
+    </div>
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+    <script src="audioEditor.js"></script>
+</body>
+</html>
