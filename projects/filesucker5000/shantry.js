@@ -16,14 +16,14 @@ function compressFiles() {
     zip.generateAsync({type: "blob"})
         .then(function (content) {
             const shantryFile = new Blob([content], {type: "application/octet-stream"});
-            saveAs(shantryFile, "compressed.shantry");
+            saveAs(shantryFile, "sucked.suck");
         });
 }
 
 function extractShantry() {
     const shantryFile = document.getElementById('shantryInput').files[0];
     if (!shantryFile) {
-        alert("Please select a .shantry file first!");
+        alert("Please select a .suck file first!");
         return;
     }
 
