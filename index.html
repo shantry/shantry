@@ -153,5 +153,81 @@ Whether you are looking for household essentials, personal care items, or someth
 
         </main>
     </div>
+
+    <!-- Modal popup for privacy statement -->
+    <div id="privacy-modal" class="modal">
+        <div class="modal-content">
+            <h2>Privacy Statement</h2>
+            <p>
+                We value your privacy. By continuing to use this site, you agree to our collection and use of your
+                information as outlined in our privacy statement. Please take a moment to review the full document.
+            </p>
+            <button id="read-privacy">Read Privacy Statement</button>
+            <button id="accept-privacy">I Accept</button>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            // Show the modal when the page loads
+            document.getElementById('privacy-modal').style.display = 'block';
+
+            // Read privacy statement
+            document.getElementById('read-privacy').onclick = function() {
+                alert('Here is the full privacy statement: [Insert Privacy Statement Here]');
+            };
+
+            // Accept privacy policy and close modal
+            document.getElementById('accept-privacy').onclick = function() {
+                document.getElementById('privacy-modal').style.display = 'none';
+            };
+        };
+    </script>
+
+    <style>
+        /* Modal styling */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0, 0, 0, 0.5); 
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 10px;
+        }
+
+        .modal-content p {
+            text-align: left;
+        }
+
+        .modal-content button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #2f3136;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+
+        .modal-content button:hover {
+            background-color: #555;
+        }
+    </style>
 </body>
 </html>
