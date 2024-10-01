@@ -172,9 +172,9 @@ Whether you are looking for household essentials, personal care items, or someth
             // Show the modal when the page loads
             document.getElementById('privacy-modal').style.display = 'block';
 
-            // Read privacy statement
+            // Redirect to privacy statement
             document.getElementById('read-privacy').onclick = function() {
-                alert('Here is the full privacy statement: [Insert Privacy Statement Here]');
+                window.location.href = '/privacy'; // Replace with your privacy policy URL
             };
 
             // Accept privacy policy and close modal
@@ -213,6 +213,7 @@ Whether you are looking for household essentials, personal care items, or someth
 
         .modal-content p {
             text-align: left;
+            color: black; /* Make sure text is visible */
         }
 
         .modal-content button {
