@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Eternal Video Loop</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+            overflow: hidden;
+        }
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none; /* No distractions, no interference, just the loop. */
+        }
+    </style>
+</head>
+<body>
+    <video id="video-player" autoplay muted loop></video> <!-- The 'loop' attribute is the magic! -->
+    <script>
+        const videoFolder = ['/projects/slides/video1.mp4', '/projects/slides/video2.mp4', '/projects/slides/video3.mp4']; // Array of video paths
+        let currentIndex = 0;
+
+        const videoPlayer = document.getElementById('video-player');
+
+        function playVideo(index) {
+            currentIndex = index;
+            videoPlayer.src = videoFolder[currentIndex];
+            videoPlayer.play();
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight') {
+                currentIndex = (currentIndex + 1) % videoFolder.length;
+                playVideo(currentIndex);
+            } else if (event.key === 'ArrowLeft') {
+                currentIndex = (currentIndex - 1 + videoFolder.length) % videoFolder.length;
+                playVideo(currentIndex);
+            }
+        });
+
+        // Initial video load
+        playVideo(currentIndex);
+    </script>
+</body>
+</html>
