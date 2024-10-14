@@ -15,40 +15,82 @@
             background-color: black;
             overflow: hidden;
         }
-        video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            pointer-events: none; /* this makes sure we dont see all the unnessecary fullscreen and seek controls because we want no interruptions */
+        .media {
+            width: 100vw; /* 100% of the viewport width */
+    height: 100vh; /* 100% of the viewport height */
+            object-fit: cover; /* Applies to both videos and images */
         }
+        #video-player {
+            display: none;
+        }
+        #image-element {
+    object-fit: cover; /* Still keeps the aspect ratio but fills the space */
+    width: 100vw; /* 100% of the viewport width */
+    height: 100vh; /* 100% of the viewport height */
+    display: none;
+}
+
     </style>
 </head>
 <body>
-    <video id="video-player" autoplay muted loop></video> <!-- loop, autoplay -->
+    <video id="video-player" class="media" autoplay muted loop></video>
+    <img id="image-element" class="media" />
     <script>
-        const videoFolder = ['https://www.dropbox.com/scl/fi/kax7j1ze1d1ezoll1iojg/This-Is-Halloween-From-Tim-Burton-s-_The-Nightmare-Before-Christmas_.mp4?rlkey=e4glxpgfdwma0u5hkbkl3ypmz&st=1jdimhvq&raw=1', 'https://www.dropbox.com/scl/fi/1fce83s053l4fi2681rua/Screen_Recording_20241008_232315_YouTube.mp4?rlkey=8wwojb9wq9zzzdqzbn76r1ld1&st=zcbq9281&raw=1', 'https://www.dropbox.com/scl/fi/v4k9gaqktv25d9rj447j0/Screen_Recording_20241008_230708_YouTube.mp4?rlkey=sb4e4y1s9z42tcwdzui19gk2h&st=bibojybn&raw=1', 'https://www.dropbox.com/scl/fi/5pt9fgz64auj4op3nz44z/Screen_Recording_20241008_225533_YouTube.mp4?rlkey=be0kmz2fl46pg1dxfyobdpvqf&st=ugg68nqh&raw=1', 'https://www.dropbox.com/scl/fi/9i4n0js8825pbunys74jp/Screen_Recording_20241008_213529_Chrome.mp4?rlkey=wixrwrnfxz740xiepyq2mgnba&st=c4nksx5m&raw=1', 'https://www.dropbox.com/scl/fi/xso5h9eejtrv1p193u9pd/Screen_Recording_20241008_212337_Chrome.mp4?rlkey=dyt69i0l4ivjs3s4urg3jvg22&st=u633xzhv&raw=1', 'https://www.dropbox.com/scl/fi/i00asto6hiu54nukdvyya/gold-particle-with-shiny-star-_-shining-stars-background.mp4?rlkey=onvxo38p7h9g3d7uf7vbx18yx&st=tjm7tj3m&raw=1', 'https://www.dropbox.com/scl/fi/63060bi6xcvsm3jcu65oc/Falling-Hearts-Background-_-Valentine-_-Wedding-_-Love-_-Romantic-_-Animation-_-Video-_-Free.mp4?rlkey=mazsfyd3vqi08a478bmdijzmt&st=u9h3z00h&raw=1',]; // make sure these are in order by when they would be played in the talent show, ask kaleb later
+        const mediaFiles = [
+            { type: 'video', src: 'https://www.dropbox.com/scl/fi/kax7j1ze1d1ezoll1iojg/This-Is-Halloween-From-Tim-Burton-s-_The-Nightmare-Before-Christmas_.mp4?rlkey=e4glxpgfdwma0u5hkbkl3ypmz&st=1jdimhvq&raw=1'},
+            { type: 'video', src: 'https://www.dropbox.com/scl/fi/1fce83s053l4fi2681rua/Screen_Recording_20241008_232315_YouTube.mp4?rlkey=8wwojb9wq9zzzdqzbn76r1ld1&st=zcbq9281&raw=1'},
+            { type: 'video', src: 'https://www.dropbox.com/scl/fi/v4k9gaqktv25d9rj447j0/Screen_Recording_20241008_230708_YouTube.mp4?rlkey=sb4e4y1s9z42tcwdzui19gk2h&st=bibojybn&raw=1'},
+            { type: 'video', src: 'https://www.dropbox.com/scl/fi/5pt9fgz64auj4op3nz44z/Screen_Recording_20241008_225533_YouTube.mp4?rlkey=be0kmz2fl46pg1dxfyobdpvqf&st=ugg68nqh&raw=1'},
+            { type: 'video', src: 'https://www.dropbox.com/scl/fi/9i4n0js8825pbunys74jp/Screen_Recording_20241008_213529_Chrome.mp4?rlkey=wixrwrnfxz740xiepyq2mgnba&st=c4nksx5m&raw=1'},
+            { type: 'video', src: 'https://www.dropbox.com/scl/fi/xso5h9eejtrv1p193u9pd/Screen_Recording_20241008_212337_Chrome.mp4?rlkey=dyt69i0l4ivjs3s4urg3jvg22&st=u633xzhv&raw=1'},
+            { type: 'video', src: 'https://www.dropbox.com/scl/fi/i00asto6hiu54nukdvyya/gold-particle-with-shiny-star-_-shining-stars-background.mp4?rlkey=onvxo38p7h9g3d7uf7vbx18yx&st=tjm7tj3m&raw=1'},
+            { type: 'image', src: '/projects/slides/img1.jpeg'},
+            { type: 'video', src: 'https://www.dropbox.com/scl/fi/63060bi6xcvsm3jcu65oc/Falling-Hearts-Background-_-Valentine-_-Wedding-_-Love-_-Romantic-_-Animation-_-Video-_-Free.mp4?rlkey=mazsfyd3vqi08a478bmdijzmt&st=u9h3z00h&raw=1'},
+            { type: 'image', src: '/projects/slides/img2.jpeg' }
+        ];
+
         let currentIndex = 0;
 
         const videoPlayer = document.getElementById('video-player');
+        const imageElement = document.getElementById('image-element');
 
-        function playVideo(index) {
-            currentIndex = index;
-            videoPlayer.src = videoFolder[currentIndex];
-            videoPlayer.play();
+        function showMedia(index) {
+            const media = mediaFiles[index];
+            
+            if (media.type === 'video') {
+                imageElement.style.display = 'none';
+                videoPlayer.style.display = 'block';
+                videoPlayer.src = media.src;
+                videoPlayer.play();
+            } else if (media.type === 'image') {
+                videoPlayer.style.display = 'none';
+                videoPlayer.pause();
+                imageElement.style.display = 'block';
+                imageElement.src = media.src;
+            }
         }
 
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'ArrowRight') {
-                currentIndex = (currentIndex + 1) % videoFolder.length;
-                playVideo(currentIndex);
-            } else if (event.key === 'ArrowLeft') {
-                currentIndex = (currentIndex - 1 + videoFolder.length) % videoFolder.length;
-                playVideo(currentIndex);
+// Toggle video play/pause on click
+    videoPlayer.addEventListener('click', function() {
+            if (videoPlayer.paused) {
+                videoPlayer.play();
+            } else {
+                videoPlayer.pause();
             }
         });
 
-        // Initial video load
-        playVideo(currentIndex);
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight') {
+                currentIndex = (currentIndex + 1) % mediaFiles.length;
+                showMedia(currentIndex);
+            } else if (event.key === 'ArrowLeft') {
+                currentIndex = (currentIndex - 1 + mediaFiles.length) % mediaFiles.length;
+                showMedia(currentIndex);
+            }
+        });
+
+        // Initial media load
+        showMedia(currentIndex);
     </script>
 </body>
 </html>
