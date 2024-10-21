@@ -13,40 +13,7 @@
 <h1 class="title"></h1>
 <p class="title"></p>
 <head>
-    <script>
-    function applyAnimations() {
-        const animations = ['spin', 'bounce', 'shake', 'flip', 'wiggle', 'pulse'];
-        const style = document.createElement('style');
-        style.innerHTML = `
-            @keyframes spin { 0% { transform: rotate(0); } 100% { transform: rotate(360deg); } }
-            @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
-            @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-10px); } 75% { transform: translateX(10px); } }
-            @keyframes flip { 0%, 100% { transform: rotateY(0); } 50% { transform: rotateY(180deg); } }
-            @keyframes wiggle { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-10deg); } 75% { transform: rotate(10deg); } }
-            @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
-            body * { animation: 1.5s infinite; }
-        `;
-        document.head.appendChild(style);
-        document.querySelectorAll('*').forEach(el => {
-            el.style.animationName = animations[Math.floor(Math.random() * animations.length)];
-            el.style.animationDuration = Math.random() * 2 + 0.5 + 's';
-            el.style.animationIterationCount = 'infinite';
-            el.style.animationTimingFunction = 'ease-in-out';
-        });
-    }
-
-    // Add an event listener for key presses
-    document.addEventListener('keydown', function(event) {
-        // Check if the 'A' key is pressed (key code 65)
-        if (event.key === 'a' || event.key === 'A') {
-            applyAnimations();
-        }
-    });
-    </script>
-    <script>
-  <link rel="stylesheet" href="">
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7889274675421063"
-     crossorigin="anonymous"></script>
+    <script src="/assets/scripts/lapDance.js"></script>
 
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
@@ -65,7 +32,7 @@ Whether you are looking for household essentials, personal care items, or someth
 
             <meta name="theme-color" content="#2f3136">
             <link rel="stylesheet" href="assets/css/main.css">
-          <script src=/assets/script.js></script>
+          <script src=/assets/scripts/script.js></script>
   <link href="https://unpkg.com/movement.css/movement.css" rel="stylesheet">
 
 
@@ -75,18 +42,7 @@ Whether you are looking for household essentials, personal care items, or someth
       <div class="snowflake"></div>
 
         <main>
-            <script>
-                function audioPlay() {
-                    var audio = document.getElementById("audio");
-                    audio.volume = 0.14;
-                    audio.play()
-                }
-                function videoPlay() {
-                    var video = document.getElementById("video");
-                    video.play()
-
-                }
-            </script>
+            <script src="/assets/scripts/mediaPlay.js"></script>
            <input type="checkbox" autocomplete="off" id="overlay-toggle">
             <div class="overlay fullscreen">
                 <label for="overlay-toggle" onclick="audioPlay();videoPlay()">
@@ -103,10 +59,11 @@ Whether you are looking for household essentials, personal care items, or someth
             </video>
 
             <section class="fullscreen text-content">
-</div>
+    </div>
             <div id="center">
 
                 <h1 style=" font-family: derk; font-size: 2em; text-align: center; text-shadow: 0 0 0.40em #fff;"><strong style="color: #ff9a00;">SHANTRY</strong> <strong style="color: #c900ff;">COMPANY</strong></h1>
+
                 <h3 style=" font-family: derk; font-size: 2em; text-align: center; text-shadow: 0 0 0.40em #000;"><strong>Spooky Edition</strong></h3>
                 <div style="" class="socials">
                     <span>
@@ -117,10 +74,6 @@ Whether you are looking for household essentials, personal care items, or someth
                         >
                  <a href="/projects/slides/" class="drugs" style="text-shadow: 0 0 0.40em #000; text-decoration:none; font-family: derk; font-size: 1.6em;">slides</a>
                     </span>
-                    <!--<span>
-                         >
-                 <a href="/chat" class="drugs" style="text-shadow: 0 0 0.40em #000; text-decoration:none; font-family: derk; font-size: 1.6em;">chat</a>
-                    </span>  i might work on chat one day but for now it just gets people in trouble so im commenting the link-->
                   <span>
                         >
                  <a href="/calculator" class="drugs" style="text-shadow: 0 0 0.40em #000; text-decoration:none; font-family: derk; font-size: 1.6em;">calculator</a>
@@ -151,18 +104,18 @@ Whether you are looking for household essentials, personal care items, or someth
                     </span>
                   <span>
                         >
-                    <a href="/partners" class="drugs" style="text-shadow: 0 0 0.40em #000; text-decoration:none; font-family: derk; font-size: 1.6em;">partner sites</a>
+                 <a href="/partners" class="drugs" style="text-shadow: 0 0 0.40em #000; text-decoration:none; font-family: derk; font-size: 1.6em;">partner sites</a>
                   </span>
-                  <br>
-                  <br>
-                  <br>
                   
+                  
+                  <br><br><br>
                   <span>
                         >
                     Press "a" for a party
-                  <br>
-                  <br>
-                  <br>
+                  </span>
+                  <br><br><br>
+                  
+                  
 
         </main>
     </div>
@@ -180,92 +133,8 @@ Whether you are looking for household essentials, personal care items, or someth
         </div>
     </div>
 
-    <script>
-        // Function to set cookie
-        function setCookie(name, value, days) {
-            const d = new Date();
-            d.setTime(d.getTime() + (days*24*60*60*1000));
-            let expires = "expires="+ d.toUTCString();
-            document.cookie = name + "=" + value + ";" + expires + ";path=/";
-        }
+    <script src="/assets/scripts/privacyPopUp.js"></script>
 
-        // Function to get cookie
-        function getCookie(name) {
-            let cookieArr = document.cookie.split(";");
-            for(let i = 0; i < cookieArr.length; i++) {
-                let cookiePair = cookieArr[i].split("=");
-                if(name == cookiePair[0].trim()) {
-                    return decodeURIComponent(cookiePair[1]);
-                }
-            }
-            return null;
-        }
-
-        window.onload = function() {
-            // Check if user has accepted the privacy policy
-            if (getCookie("privacyAccepted") !== "true") {
-                // Show the modal if the cookie is not set
-                document.getElementById('privacy-modal').style.display = 'block';
-            }
-
-            // Redirect to privacy statement
-            document.getElementById('read-privacy').onclick = function() {
-                window.location.href = '/privacy'; // Replace with your privacy policy URL
-            };
-
-            // Accept privacy policy and close modal
-            document.getElementById('accept-privacy').onclick = function() {
-                document.getElementById('privacy-modal').style.display = 'none';
-                setCookie("privacyAccepted", "true", 30); // Set cookie to expire in 30 days
-            };
-        };
-    </script>
-
-    <style>
-        /* Modal styling */
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1; 
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            background-color: rgba(0, 0, 0, 0.5); 
-        }
-
-        .modal-content {
-            background-color: #fff;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 600px;
-            text-align: center;
-        }
-
-        .modal-content h2 {
-            margin-bottom: 10px;
-        }
-
-        .modal-content p {
-            text-align: left;
-            color: black; /* Make sure text is visible */
-        }
-
-        .modal-content button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #2f3136;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 1.1em;
-        }
-
-        .modal-content button:hover {
-            background-color: #555;
-        }
-    </style>
+    <link rel="stylesheet" href="/assets/css/mightDoSomethin.css">
 </body>
 </html>
