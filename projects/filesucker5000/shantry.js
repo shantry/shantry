@@ -16,7 +16,7 @@ function compressFiles() {
     zip.generateAsync({type: "blob"})
         .then(function (content) {
             const shantryFile = new Blob([content], {type: "application/octet-stream"});
-            saveAs(shantryFile, "sucked.suck");
+            saveAs(shantryFile, fileName);
         });
 }
 
