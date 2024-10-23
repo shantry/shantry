@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minesweeper Madness - ONE MINE HIT, YOU'RE GONE</title>
+    <title>Normal Minesweeper</title>
     <style>
         body {
             font-family: 'Courier New', Courier, monospace;
@@ -75,7 +75,7 @@
             }
         }
 
-        function placeMines() {
+        function placeShitFucks() {
             let placedMines = 0;
             while (placedMines < mines) {
                 let x = Math.floor(Math.random() * gridSize);
@@ -87,7 +87,7 @@
             }
         }
 
-        function calculateAdjacentMines() {
+        function calculateAdjacentShitFucks() {
             for (let i = 0; i < gridSize; i++) {
                 for (let j = 0; j < gridSize; j++) {
                     if (grid[i][j].mine) continue;
@@ -150,8 +150,8 @@
         }
 
         createGrid();
-        placeMines();
-        calculateAdjacentMines();
+        placeShitFucks();
+        calculateAdjacentShitFucks();
     </script>
 </body>
 </html>

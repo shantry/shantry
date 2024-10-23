@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>50/50 Minesweeper</title>
+    <title>Minesweeper</title>
     <style>
         body {
             font-family: 'Courier New', Courier, monospace;
@@ -62,7 +62,7 @@
         const cell = document.querySelector('.cell');
         const resultMessage = document.getElementById('resultMessage');
         const successMessage = document.getElementById('successMessage');
-        let isMine = Math.random() < 0.5;  // 50% chance it's a mine
+        let isMine = Math.random() < 0.5;  // 50% chance it's a mine, it would be funny if i made it some heinous number like 0.9999 lmao
 
         function revealCell() {
             if (isMine) {
