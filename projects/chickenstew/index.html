@@ -1,123 +1,28 @@
+<!--
+
+
+
+   .aMMMb  dMP dMP dMP .aMMMb  dMP dMP dMMMMMP dMMMMb  .dMMMb dMMMMMMP dMMMMMP dMP dMP dMP 
+  dMP"VMP dMP dMP amr dMP"VMP dMP.dMP dMP     dMP dMP dMP" VP   dMP   dMP     dMP dMP dMP  
+ dMP     dMMMMMP dMP dMP     dMMMMK" dMMMP   dMP dMP  VMMMb    dMP   dMMMP   dMP dMP dMP   
+dMP.aMP dMP dMP dMP dMP.aMP dMP"AMF dMP     dMP dMP dP .dMP   dMP   dMP     dMP.dMP.dMP    
+VMMMP" dMP dMP dMP  VMMMP" dMP dMP dMMMMMP dMP dMP  VMMMP"   dMP   dMMMMMP  VMMMPVMMP"     
+                                                                                           
+
+words can sometimes be "RARE" according to google, set the definition up accordingly using the example for callipygian
+they also could be INFORMAL, HISTORICAL, etc.
+
+
+
+
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CHICKENSTEW</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            transition: background-color 0.3s, color 0.3s;
-            background-color: #121212;
-            color: #f0f0f0;
-        }
-
-        /* Video background container */
-        .video-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* Sends the video to the background */
-            overflow: hidden;
-        }
-
-        .video-background video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .title {
-            text-align: center;
-            font-size: 36px;
-            margin-top: 20px;
-            z-index: 1; /* Make sure the title stays above the video */
-        }
-
-        .dictionary {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: rgba(30, 30, 30, 0.8); /* Slight transparency */
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
-            z-index: 1; /* Ensures dictionary is above the video */
-            position: relative;
-        }
-
-        .term {
-            font-weight: bold;
-            margin-top: 20px;
-            font-size: 24px;
-        }
-
-        .info-box {
-            display: inline-block;
-            padding: 4px 10px;
-            background-color: #ececec;
-            color: #555;
-            border-radius: 5px;
-            font-size: 12px;
-            margin-right: 10px;
-        }
-
-        .definition {
-            margin-left: 20px;
-            margin-bottom: 10px;
-        }
-
-        .sentence {
-            margin-left: 20px;
-            margin-bottom: 20px;
-            font-style: italic;
-            color: #cccccc;
-        }
-
-        .toggle-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            align-items: center;
-            font-size: 20px;
-            cursor: pointer;
-            z-index: 2; /* Toggle button above the video */
-        }
-
-        .toggle-icon {
-            margin-right: 10px;
-        }
-
-        .dark-mode {
-            background-color: #121212;
-            color: #f0f0f0;
-        }
-
-        .dark-mode .dictionary {
-            background-color: rgba(30, 30, 30, 0.8);
-            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
-        }
-
-        .light-mode {
-            background-color: #f0f0f0;
-            color: #121212;
-        }
-
-        .light-mode .dictionary {
-            background-color: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Styles for the moon and sun icons */
-        .sun, .moon {
-            font-size: 24px;
-        }
-
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="dark-mode">
 
@@ -134,9 +39,9 @@
 
     <div class="dictionary">
         <!-- Callipygian entry -->
-        <div class="term">callipygian <br>
+        <div class="term" style=" color: #fff; font-family: Arial, Helvetica, sans-serif; font-size: 2em; text-align: center; text-shadow: 0 0 0.40em #7b5804;">callipygian <br>
             <div class="info-box"><i>adjective</i></div>
-            <div class="info-box"><strong>RARE</strong></div>
+            <div class="info-box" style=" text-shadow: 0 0 0.40em #800869;"><strong>RARE</strong></div>
             <br>
         </div>
         <br>
@@ -146,7 +51,7 @@
         <br>
 
         <!-- Esoteric entry -->
-        <div class="term">esoteric <br>
+        <div class="term" style=" color: #fff; font-family: Arial, Helvetica, sans-serif; font-size: 2em; text-align: center; text-shadow: 0 0 0.40em #7b5804;">esoteric <br>
             <div class="info-box"><i>adjective</i></div>
             <br>
         </div>
@@ -157,7 +62,7 @@
         <br>
 
         <!-- shanty -->
-        <div class="term">shanty <br>
+        <div class="term" style=" color: #fff; font-family: Arial, Helvetica, sans-serif; font-size: 2em; text-align: center; text-shadow: 0 0 0.40em #7b5804;">shanty <br>
             <div class="info-box"><i>noun</i></div>
             <br>
         </div>
@@ -168,7 +73,7 @@
         <br>
 
         <!-- lilt -->
-        <div class="term">lilt <br>
+        <div class="term" style=" color: #fff; font-family: Arial, Helvetica, sans-serif; font-size: 2em; text-align: center; text-shadow: 0 0 0.40em #7b5804;">lilt <br>
             <div class="info-box"><i>noun, verb</i></div>
             <br>
         </div>
@@ -177,24 +82,22 @@
         <div class="definition">describes the swinging tempo of music</div>
         <div class="sentence"><i>you might like jazz because of its disctinctive lilt</i></div>
         <br>
+        <!-- palaver -->
+        <div class="term" style=" color: #fff; font-family: Arial, Helvetica, sans-serif; font-size: 2em; text-align: center; text-shadow: 0 0 0.40em #7b5804;">palaver <br>
+            <div class="info-box"><i>noun</i></div>
+            <div class="info-box" style=" text-shadow: 0 0 0.40em #fff;"><strong>INFORMAL</strong></div>
+            <br>
+        </div>
+        <br>
+
+        <div class="definition">unnecessarily elaborate or complex procedure</div>
+        <div class="sentence"><i>the process has a lot of palaver involved</i></div>
+        <br>
+
     </div>
 
-    <script>
-        const toggleButton = document.getElementById('themeToggle');
-        const body = document.body;
-        const icon = document.querySelector('.toggle-icon');
 
-        toggleButton.addEventListener('click', () => {
-            body.classList.toggle('light-mode');
-            body.classList.toggle('dark-mode');
-
-            if (body.classList.contains('light-mode')) {
-                icon.textContent = '☀️'; // Change to sun icon
-            } else {
-                icon.textContent = '🌙'; // Change to moon icon
-            }
-        });
-    </script>
+    
 
 </body>
 </html>

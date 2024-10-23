@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minesweeper - Random Missing Piece</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #222;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(10, 40px);
+            gap: 5px;
+        }
+        .cell {
+            width: 40px;
+            height: 40px;
+            background-color: #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .cell.revealed {
+            background-color: #888;
+        }
+        .cell.mine {
+            background-color: #e74c3c;
+        }
+        .missing {
+            background-color: transparent;
+            cursor: default;
+        }
+        #gameOverMessage {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: red;
+            font-size: 24px;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"></div>
+    <div id="gameOverMessage">💀 GAME OVER! YOU HIT A MINE! 💀</div>
+
+    <script>
+        const container = document.querySelector('.container');
+        const gridSize = 10;
+        const mines = 15;
+        let grid = [];
+        let gameOver = false;
+
+        // Randomize the missing piece location
+        const missingX = Math.floor(Math.random() * gridSize);
+        const missingY = Math.floor(Math.random() * gridSize);
+
+        function createGrid() {
+            for (let i = 0; i < gridSize; i++) {
+                grid[i] = [];
+                for (let j = 0; j < gridSize; j++) {
+                    const cell = document.createElement('div');
+                    cell.classList.add('cell');
+                    if (i === missingX && j === missingY) {
+                        cell.classList.add('missing');
+                        cell.style.pointerEvents = 'none';  // Can't interact with the missing square!
+                    } else {
+                        cell.addEventListener('click', () => revealCell(i, j));
+                    }
+                    container.appendChild(cell);
+                    grid[i][j] = { element: cell, mine: false, revealed: false, adjacentMines: 0 };
+                }
+            }
+        }
+
+        function placeMines() {
+            let placedMines = 0;
+            while (placedMines < mines) {
+                let x = Math.floor(Math.random() * gridSize);
+                let y = Math.floor(Math.random() * gridSize);
+                if (!grid[x][y].mine && !(x === missingX && y === missingY)) {  // Don't place a mine in the missing spot!
+                    grid[x][y].mine = true;
+                    placedMines++;
+                }
+            }
+        }
+
+        function calculateAdjacentMines() {
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    if (grid[i][j].mine || (i === missingX && j === missingY)) continue;  // Skip the missing piece!
+                    let count = 0;
+                    for (let x = -1; x <= 1; x++) {
+                        for (let y = -1; y <= 1; y++) {
+                            let newX = i + x;
+                            let newY = j + y;
+                            if (newX >= 0 && newX < gridSize && newY >= 0 && newY < gridSize && grid[newX][newY].mine) {
+                                count++;
+                            }
+                        }
+                    }
+                    grid[i][j].adjacentMines = count;
+                }
+            }
+        }
+
+        function revealCell(x, y) {
+            if (gameOver) return;  // The end.
+
+            const cell = grid[x][y];
+            if (cell.revealed) return;
+
+            cell.revealed = true;
+            cell.element.classList.add('revealed');
+
+            if (cell.mine) {
+                cell.element.classList.add('mine');
+                cell.element.innerHTML = '💣';
+                endGame();  // Boom.
+            } else if (cell.adjacentMines > 0) {
+                cell.element.innerHTML = cell.adjacentMines;
+            } else {
+                for (let dx = -1; dx <= 1; dx++) {
+                    for (let dy = -1; dy <= 1; dy++) {
+                        let newX = x + dx;
+                        let newY = y + dy;
+                        if (newX >= 0 && newX < gridSize && newY >= 0 && newY < gridSize) {
+                            revealCell(newX, newY);
+                        }
+                    }
+                }
+            }
+        }
+
+        function endGame() {
+            gameOver = true;
+            document.getElementById('gameOverMessage').style.display = 'block';
+            // Reveal all mines in their madness!
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    if (grid[i][j].mine) {
+                        grid[i][j].element.classList.add('revealed');
+                        grid[i][j].element.classList.add('mine');
+                        grid[i][j].element.innerHTML = '💣';
+                    }
+                }
+            }
+        }
+
+        createGrid();
+        placeMines();
+        calculateAdjacentMines();
+    </script>
+</body>
+</html>
