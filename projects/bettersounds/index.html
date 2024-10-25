@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Recorder & Editor</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #333; color: #fff; text-align: center; }
+        #controls { margin-top: 20px; }
+        button { margin: 5px; padding: 10px; font-size: 16px; cursor: pointer; }
+        #waveform { background: #444; height: 200px; margin-top: 20px; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <h1>Audio Recorder & Editor</h1>
+    <div id="controls">
+        <button id="recordButton">Start Recording</button>
+        <button id="stopButton" class="hidden">Stop Recording</button>
+        <button id="playButton" class="hidden">Play</button>
+        <button id="downloadButton" class="hidden">Download</button>
+    </div>
+    <div id="waveform"></div>
+
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+    <script>
+        const recordButton = document.getElementById('recordButton');
+        const stopButton = document.getElementById('stopButton');
+        const playButton = document.getElementById('playButton');
+        const downloadButton = document.getElementById('downloadButton');
+
+        let mediaRecorder;
+        let audioChunks = [];
+        let audioBlob;
+        let wavesurfer;
+
+        recordButton.addEventListener('click', () => {
+            navigator.mediaDevices.getUserMedia({ audio: true })
+                .then(stream => {
+                    mediaRecorder = new MediaRecorder(stream);
+                    mediaRecorder.start();
+                    recordButton.classList.add('hidden');
+                    stopButton.classList.remove('hidden');
+                    audioChunks = [];
+                    mediaRecorder.ondataavailable = event => {
+                        audioChunks.push(event.data);
+                    };
+                })
+                .catch(err => console.error('Permission denied or other error: ', err));
+        });
+
+        stopButton.addEventListener('click', () => {
+            mediaRecorder.stop();
+            stopButton.classList.add('hidden');
+            recordButton.classList.remove('hidden');
+            mediaRecorder.onstop = () => {
+                audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                wavesurfer = WaveSurfer.create({
+                    container: '#waveform',
+                    waveColor: '#74b9ff',
+                    progressColor: '#0984e3',
+                    barWidth: 2
+                });
+                wavesurfer.load(URL.createObjectURL(audioBlob));
+                playButton.classList.remove('hidden');
+                downloadButton.classList.remove('hidden');
+            };
+        });
+
+        playButton.addEventListener('click', () => {
+            if (wavesurfer) wavesurfer.playPause();
+        });
+
+        downloadButton.addEventListener('click', () => {
+            const url = URL.createObjectURL(audioBlob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = 'recording.wav';
+            document.body.appendChild(a);
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+    </script>
+</body>
+</html>

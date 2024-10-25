@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Downloader</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f2f2f2;
+        }
+        .container {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+        }
+        h1 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+        input[type="url"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #ffffff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 1em;
+            color: #ff0000;
+        }
+        #warning {
+            color: #ff0000;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>YouTube Video Downloader</h1>
+        <p>Enter the YouTube URL below to "download" the video:</p>
+        <form id="downloadForm">
+            <input type="url" id="videoUrl" placeholder="https://www.youtube.com/watch?v=..." required>
+            <br>
+            <button type="button" onclick="downloadVideo()">Download Video</button>
+        </form>
+        <p id="message"></p>
+        <p id="warning">Note: This example is for display purposes only. Actual downloading of YouTube videos without proper permissions violates YouTube's terms of service.</p>
+    </div>
+
+    <script>
+        function downloadVideo() {
+            const videoUrl = document.getElementById('videoUrl').value;
+            const message = document.getElementById('message');
+            if (!videoUrl) {
+                alert('Please enter a valid YouTube URL');
+                return;
+            }
+
+            // This is an example of code that, if implemented, would actually attempt to download a YouTube video.
+            // DO NOT USE: This violates YouTube's terms of service.
+            // Fetch request to backend server (pseudo example)
+            fetch('/download', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ videoUrl })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to download video');
+                }
+                return response.blob();
+            })
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = 'video.mp4';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                message.innerText = 'Download started...';
+            })
+            .catch(error => {
+                message.innerText = 'Error: ' + error.message;
+            });
+        }
+    </script>
+</body>
+</html>
