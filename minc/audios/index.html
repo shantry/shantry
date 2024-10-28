@@ -9,57 +9,72 @@
         <script src="/minc/script.js"></script>
         <link href="https://moderncss.goodvessel92551.repl.co/style.css" rel="stylesheet" type="text/css" />
         <style>
+#preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #000; /* Dark as my empty soul */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1; /* Start with full opacity */
+    transition: opacity 1s ease-out; /* Fade out... like fading sanity */
+}
 
-          #preloader {
-              position: fixed;
-              left: 0;
-              top: 0;
-              width: 100%;
-              height: 100%;
-              background: #000; /* Darkness, because obviously */
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              z-index: 9999;
-          }
-          
-          .loader {
-              border: 16px solid #f3f3f3; /* Light grey ring of your destiny */
-              border-top: 16px solid #3498db; /* A slice of color in the dark */
-              border-radius: 50%;
-              width: 120px;
-              height: 120px;
-              animation: spin 2s linear infinite; /* Yes, spin—go round, and round, and round! */
-          }
-          
-          @keyframes spin {
-              0% { transform: rotate(0deg); }
-              100% { transform: rotate(360deg); }
-          }
-          
-          
+#loadingMessage {
+    color: #f3f3f3;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+}
+
+.loader {
+    border: 16px solid #f3f3f3; /* Circle of suffering */
+    border-top: 16px solid #3498db; /* Color of false hope */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite; /* Spinning forever, around, and around... */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
             </style>
           
             <script>
-          
           document.addEventListener("DOMContentLoaded", function() {
-              // Once the content is fully loaded, we do our deed.
-              window.addEventListener("load", function() {
-                  let preloader = document.getElementById("preloader");
-                  let content = document.getElementById("content");
-                  preloader.style.display = 'none'; // Shush, stop spinning.
-                  content.style.display = 'block'; // Behold, my glory.
-              });
-          });
-          
-          
+    window.addEventListener("load", function() {
+        let preloader = document.getElementById("preloader");
+        let content = document.getElementById("content");
+
+        // Make the preloader fade away
+        preloader.style.opacity = '0'; // The final breath of the loader.
+        
+        // Wait for the fade-out to complete before hiding it completely
+        setTimeout(function() {
+            preloader.style.display = 'none'; // Go gently into the dark night.
+            content.style.display = 'block'; // Reveal what lies beyond.
+        }, 1000); // Wait 1 second for the fade-out transition to complete
+    });
+});
+
             </script>
           </head>
           
           
           <div id="preloader">
             <div class="loader"></div>
-          </div>
+            <p id="loadingMessage">this may take a while, (your browser is currently downloading 140 separate audio files)</p>
+        </div>
+        
 
       <body>
       <div class='title'>
