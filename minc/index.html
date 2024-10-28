@@ -15,7 +15,59 @@
   <script src="/minc/right.js"></script>
   <script src="https://replit.com/public/js/repl-auth-v2.js"></script>
   <link href="https://bouncecss.bookie0.repl.co/bounce.css" rel="stylesheet" type="text/css" />
+
+  <style>
+
+#preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #000; /* Darkness, because obviously */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey ring of your destiny */
+    border-top: 16px solid #3498db; /* A slice of color in the dark */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite; /* Yes, spin—go round, and round, and round! */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+  </style>
+
+  <script>
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Once the content is fully loaded, we do our deed.
+    window.addEventListener("load", function() {
+        let preloader = document.getElementById("preloader");
+        let content = document.getElementById("content");
+        preloader.style.display = 'none'; // Shush, stop spinning.
+        content.style.display = 'block'; // Behold, my glory.
+    });
+});
+
+
+  </script>
 </head>
+
+
+<div id="preloader">
+  <div class="loader"></div>
+</div>
 
 <body>
 <div class='title'>
