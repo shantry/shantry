@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acid Trip Visuals</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="acidCanvas"></canvas>
+</body>
+<script>
+const canvas = document.getElementById('acidCanvas');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const colors = [
+    '#FF69B4', '#FF8C00', '#FFD700', '#00FF00', '#00FA9A', '#00CED1', '#1E90FF', '#9932CC', '#FF1493', '#ADFF2F', '#9400D3'
+];
+
+const circles = [];
+const waves = [];
+
+function random(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+function Circle(x, y, radius, color, speed) {
+    this.x = x;
+    this.y = y;
+    this.radius = radius;
+    this.color = color;
+    this.speed = speed;
+    this.angle = random(0, Math.PI * 2);
+}
+
+Circle.prototype.update = function () {
+    this.x += Math.cos(this.angle) * this.speed;
+    this.y += Math.sin(this.angle) * this.speed;
+    this.angle += random(-0.02, 0.02);
+
+    if (this.x < 0) this.x = canvas.width;
+    if (this.x > canvas.width) this.x = 0;
+    if (this.y < 0) this.y = canvas.height;
+    if (this.y > canvas.height) this.y = 0;
+};
+
+Circle.prototype.draw = function () {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+    ctx.fillStyle = this.color;
+    ctx.shadowBlur = 30;
+    ctx.shadowColor = this.color;
+    ctx.fill();
+};
+
+function createCircles() {
+    for (let i = 0; i < 150; i++) {
+        const radius = random(5, 60);
+        const x = random(0, canvas.width);
+        const y = random(0, canvas.height);
+        const color = colors[Math.floor(random(0, colors.length))];
+        const speed = random(0.5, 3);
+        circles.push(new Circle(x, y, radius, color, speed));
+    }
+}
+
+function Wave(x, y, color, frequency, amplitude) {
+    this.x = x;
+    this.y = y;
+    this.color = color;
+    this.frequency = frequency;
+    this.amplitude = amplitude;
+    this.time = random(0, 1000);
+}
+
+Wave.prototype.update = function () {
+    this.time += 0.02;
+};
+
+Wave.prototype.draw = function () {
+    ctx.beginPath();
+    for (let i = 0; i < canvas.width; i++) {
+        const yOffset = Math.sin(i * this.frequency + this.time) * this.amplitude;
+        ctx.lineTo(i, this.y + yOffset);
+    }
+    ctx.strokeStyle = this.color;
+    ctx.lineWidth = 2;
+    ctx.shadowBlur = 15;
+    ctx.shadowColor = this.color;
+    ctx.stroke();
+};
+
+function createWaves() {
+    for (let i = 0; i < 5; i++) {
+        const y = random(0, canvas.height);
+        const color = colors[Math.floor(random(0, colors.length))];
+        const frequency = random(0.01, 0.05);
+        const amplitude = random(20, 100);
+        waves.push(new Wave(0, y, color, frequency, amplitude));
+    }
+}
+
+function animate() {
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    circles.forEach(circle => {
+        circle.update();
+        circle.draw();
+    });
+
+    waves.forEach(wave => {
+        wave.update();
+        wave.draw();
+    });
+
+    requestAnimationFrame(animate);
+}
+
+createCircles();
+createWaves();
+animate();
+
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+</script>
+</html>
