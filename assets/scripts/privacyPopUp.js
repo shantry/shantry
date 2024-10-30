@@ -27,7 +27,7 @@ window.onload = function() {
 
     // Redirect to privacy statement
     document.getElementById('read-privacy').onclick = function() {
-        window.location.href = '/privacy'; // Replace with your privacy policy URL
+        window.location.href = '/terms'; // Replace with your privacy policy URL
     };
 
     // Accept privacy policy and close modal
