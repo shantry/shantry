@@ -1,139 +1,114 @@
-
-
-
-<!--im really desperate to make this code look cleaner than this, its really hard to read even coming from me, i wrote half of this code.-->
-
-<!--im also trying to understand some weird bugs that happen with reloading the page and simply the fact that the music for the sites work weirdy when its not the video playing sound-->
-
-
-
 <!DOCTYPE html>
 <html lang="en">
-
-<h1 class="title"></h1>
-<p class="title"></p>
-<head>
-    <script src="/assets/scripts/lapDance.js"></script>
-
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <head>
         <meta charset="utf-8">
-<meta name="description" content="Shantry Hub is the one-stop destination for all things Shantry Co. Here, you will find a wide range of high-quality products designed to make your life worse and less enjoyable. From household essentials to personal care items, Shantry Hub has everything you need to keep your home running smoothly.
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- Primary Meta Tags -->
+        <title>Shantry Company</title>
+        <meta name="title" content="Shantry Company">
+        <meta name="description" content="Shantry Hub is your worst nightmare for all things Shantry Co. Here, you'll find a terrible range of low-quality products designed to make your life worse and utterly miserable.">
+        
+        <!-- Social Media Meta Tags -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://shantry.com/">
+        <meta property="og:title" content="Shantry Company">
+        <meta property="og:description" content="Shantry Hub is your worst nightmare for all things Shantry Co. Here, you'll find a terrible range of low-quality products designed to make your life worse and utterly miserable.">
+        <meta property="og:image" content="/assets/images/preview.png">
+        <meta property="twitter:card" content="summary_large_image">
+        <meta name="theme-color" content="#2f3136">
 
-Our team of expert product developers has spent countless hours researching and testing each and every one of our products to ensure that they meet the highest standards of quality and performance. We are committed to providing our customers with the very best products at affordable prices, and we are constantly updating our inventory with new and exciting items.
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
 
-In addition to our carefully curated selection of products, Shantry Hub also offers a number of helpful resources, such as tips and tricks for using our products, detailed product descriptions, and customer reviews. We want to make sure that you have all the information you need to make informed purchasing decisions.
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="assets/css/main.css">
+        <link rel="stylesheet" href="/assets/css/mightDoSomethin.css">
+        <link rel="stylesheet" href="https://unpkg.com/movement.css/movement.css">
 
-Whether you are looking for household essentials, personal care items, or something a little more unique, Shantry Hub has you covered. Visit us today and discover the many ways that Shantry Co can enhance your life.">
-
-
-<title>Shantry Company</title>
-
-
-
-            <meta name="theme-color" content="#2f3136">
-            <link rel="stylesheet" href="assets/css/main.css">
-          <script src=/assets/scripts/script.js></script>
-  <link href="https://unpkg.com/movement.css/movement.css" rel="stylesheet">
-
-
+        <!-- Scripts -->
+        <script src="/assets/scripts/lapDance.js" defer></script>
+        <script src="/assets/scripts/script.js" defer></script>
+        <script src="/assets/scripts/mediaPlay.js" defer></script>
+        <script src="/assets/scripts/privacyPopUp.js" defer></script>
     </head>
+
     <body>
-    <div id="fade-in-content">
-      <div class="snowflake"></div>
+        <div id="fade-in-content">
+            <div class="snowflake"></div>
 
-        <main>
-            <script src="/assets/scripts/mediaPlay.js"></script>
-           <input type="checkbox" autocomplete="off" id="overlay-toggle">
-            <div class="overlay fullscreen">
-                <label for="overlay-toggle" onclick="audioPlay();videoPlay()">
-                    <span class="no-hover" style="font-family: derk; font-size: 0.6em;">tap to enter</span>
-                    <span class="hover" style="font-family: derk; font-size: 0.6em;">abandon hope all ye who enter here</span>
-                </label>
-            </div>
-            <audio muted autoplay="false" loop="" preload="auto" id="audio">
-                <source src="assets/audio/audio.mp3" type="audio/mp3">
-                <!--<source src="Bad_To_The_Bone_Riff.mp3" type="audio/mp3"> this makes bad to the bone --> 
-            </audio>
-            <video style="filter: blur(10px);" loop="" playsinline="" autoplay="true" preload="auto" class="fullscreen bg-video" id="video">
-                <source src="/assets/images/halloween.mp4" type="video/mp4">
-            </video>
+            <main>
+                <!-- Overlay Toggle -->
+                <input type="checkbox" autocomplete="off" id="overlay-toggle">
+                <div class="overlay fullscreen">
+                    <label for="overlay-toggle" onclick="audioPlay();videoPlay()">
+                        <span class="no-hover" style="font-family: 'Creepster', cursive; font-size: 0.6em;">tap to enter</span>
+                        <span class="hover" style="font-family: 'Creepster', cursive; font-size: 0.6em;">abandon hope all ye who enter here</span>
+                    </label>
+                </div>
 
-            <section class="fullscreen text-content">
-    </div>
-            <div id="center">
+                <!-- Media Elements -->
+                <audio id="audio" muted loop preload="auto">
+                    <source src="assets/audio/audio.mp3" type="audio/mp3">
+                </audio>
 
-                <h1 style=" font-family: derk; font-size: 2em; text-align: center; text-shadow: 0 0 0.40em #fff;"><strong style="color: #ff9a00;">SHANTRY</strong> <strong style="color: #c900ff;">COMPANY</strong></h1>
+                <video id="video" class="fullscreen bg-video" style="filter: blur(10px);" loop playsinline autoplay preload="auto">
+                    <source src="/assets/images/halloween.mp4" type="video/mp4">
+                </video>
 
-                <h3 style=" font-family: derk; font-size: 2em; text-align: center; text-shadow: 0 0 0.40em #000;"><strong>Spooky Edition</strong></h3>
-                <div class="socials">
-                    <span>
-                        >
-                 <a href="/minc" class="drugs" style="text-shadow: 0 0 0.40em #000; text-decoration:none; font-family: derk; font-size: 1.6em;">minc</a>
-                    </span>
-                    <span>
-                        >
-                 <a href="/projects/slides/" class="drugs" style="text-shadow: 0 0 0.40em #000; text-decoration:none; font-family: derk; font-size: 1.6em;">slides</a>
-                    </span>
-                  <span>
-                        >
-                 <a href="/calculator" class="drugs" style="text-shadow: 0 0 0.40em #000; text-decoration:none; font-family: derk; font-size: 1.6em;">calculator</a>
-                    </span>
-                    <span>
-                        >
-                 <a href="/calculator/temperature" class="drugs" style="text-shadow: 0 0 0.40em #000; text-decoration:none; font-family: derk; font-size: 1.6em;">calculator (convert temperature)</a>
-                    </span>  
-                  <span>
-                        >
-                 <a href="/creator" class="drugs" style="text-shadow: 0 0 0.40em #000; text-decoration:none; font-family: derk; font-size: 1.6em;">creator</a>
-                    </span>
-                  <span>
-                        >
-                 <a href="/social" class="drugs" style="text-shadow: 0 0 0.40em #000; text-decoration:none; font-family: derk; font-size: 1.6em;">social media</a>
-                    </span>
-                  <span>
-                        >
-                 <a href="/terminal" class="drugs" style="text-shadow: 0 0 0.40em #000; text-decoration:none; font-family: derk; font-size: 1.6em;">terminal</a>
-                    </span>
-                  <span>
-                        >
-                 <a href="/misleadingbrowser" class="drugs" style="text-shadow: 0 0 0.40em #000; text-decoration:none; font-family: derk; font-size: 1.6em;">misleading browser</a>
-                    </span>
-                  <span>
-                        >
-                 <a href="/projects" class="drugs" style="text-shadow: 0 0 0.40em #000; text-decoration:none; font-family: derk; font-size: 1.6em;">games/projects</a>
-                    </span>
-                  <span>
-                        >
-                 <a href="/partners" class="drugs" style="text-shadow: 0 0 0.40em #000; text-decoration:none; font-family: derk; font-size: 1.6em;">partner sites</a>
-                  </span>
-                  
-                  
-                  <br><br><br>
-                  <span>
-                        >
-                    Press "a" for a party
-                  </span>
-                  <br><br><br>
-                  
-                  
+                <!-- Main Content -->
+                <section class="fullscreen text-content">
+                    <div id="center">
+                        <h1 style="font-family: 'Creepster', cursive; font-size: 2em; text-align: center; text-shadow: 0 0 0.40em #fff;">
+                            <strong style="color: #ff9a00;">SHANTRY</strong> 
+                            <strong style="color: #c900ff;">COMPANY</strong>
+                        </h1>
 
-        </main>
-    </div>
+                        <h3 style="font-family: 'Creepster', cursive; font-size: 2em; text-align: center; text-shadow: 0 0 0.40em #000;">
+                            <strong>Spooky Edition</strong>
+                        </h3>
 
-    <!-- Modal popup for privacy statement -->
-    <div id="privacy-modal" class="modal">
-        <div class="modal-content">
-            <h2>terms and conditions</h2>
-            <p>
-                we value your privacy. by continuing to use this site, you agree to our terms and conditions as listed at shantry.com/terms. please take a moment to review the full document.
-            </p>
-            <button id="read-privacy">read terms and conditions</button>
-            <button id="accept-privacy">accept our terms.</button>
+                        <!-- Navigation Links -->
+                        <nav class="socials">
+                            <span>> <a href="/minc" class="drugs nav-link">minc</a></span>
+                            <span>> <a href="/projects/slides/" class="drugs nav-link">slides</a></span>
+                            <span>> <a href="/calculator" class="drugs nav-link">calculator</a></span>
+                            <span>> <a href="/calculator/temperature" class="drugs nav-link">calculator (convert temperature)</a></span>
+                            <span>> <a href="/creator" class="drugs nav-link">creator</a></span>
+                            <span>> <a href="/social" class="drugs nav-link">social media</a></span>
+                            <span>> <a href="/terminal" class="drugs nav-link">terminal</a></span>
+                            <span>> <a href="/misleadingbrowser" class="drugs nav-link">misleading browser</a></span>
+                            <span>> <a href="/projects" class="drugs nav-link">games/projects</a></span>
+                            <span>> <a href="/partners" class="drugs nav-link">partner sites</a></span>
+
+                            <br><br><br>
+                            <span>> Press "a" for a party</span>
+                            <br><br><br>
+                        </nav>
+                    </div>
+                </section>
+            </main>
         </div>
-    </div>
 
-    <script src="/assets/scripts/privacyPopUp.js"></script>
+        <!-- Privacy Modal -->
+        <div id="privacy-modal" class="modal">
+            <div class="modal-content">
+                <h2>Terms and Conditions</h2>
+                <p>We value your privacy. By continuing to use this site, you agree to our terms and conditions as listed at shantry.com/terms. Please take a moment to review the full document.</p>
+                <button id="read-privacy">Read Terms and Conditions</button>
+                <button id="accept-privacy">Accept Our Terms</button>
+            </div>
+        </div>
 
-    <link rel="stylesheet" href="/assets/css/mightDoSomethin.css">
-</body>
+        <style>
+            .nav-link {
+                text-shadow: 0 0 0.40em #000;
+                text-decoration: none;
+                font-family: 'Creepster', cursive;
+                font-size: 1.6em;
+            }
+        </style>
+    </body>
 </html>
