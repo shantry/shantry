@@ -21,7 +21,7 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
 
         <!-- Stylesheets -->
         <link rel="stylesheet" href="assets/css/main.css">
@@ -37,21 +37,21 @@
 
     <body>
         <div id="fade-in-content">
-            <div class="snowflake"></div>
+            <div class="leaves"></div>
 
             <main>
                 <!-- Overlay Toggle -->
                 <input type="checkbox" autocomplete="off" id="overlay-toggle">
                 <div class="overlay fullscreen">
                     <label for="overlay-toggle" onclick="audioPlay();videoPlay()">
-                        <span class="no-hover" style="font-family: 'Creepster', cursive; font-size: 0.6em;">tap to enter</span>
-                        <span class="hover" style="font-family: 'Creepster', cursive; font-size: 0.6em;">abandon hope all ye who enter here</span>
+                        <span class="no-hover" style="font-family: 'Satisfy', cursive; font-size: 0.8em;">tap to enter</span>
+                        <span class="hover" style="font-family: 'Satisfy', cursive; font-size: 0.8em;">give thanks and enter</span>
                     </label>
                 </div>
 
                 <!-- Media Elements -->
                 <audio id="audio" muted loop preload="auto">
-                    <source src="assets/audio/audio.mp3" type="audio/mp3">
+                    <source src="assets/audio/audiom.mp3" type="audio/mp3">
                 </audio>
 
                 <video id="video" class="fullscreen bg-video" style="filter: blur(10px);" loop playsinline autoplay preload="auto">
@@ -61,30 +61,30 @@
                 <!-- Main Content -->
                 <section class="fullscreen text-content">
                     <div id="center">
-                        <h1 style="font-family: 'Creepster', cursive; font-size: 2em; text-align: center; text-shadow: 0 0 0.40em #fff;">
-                            <strong style="color: #ff9a00;">SHANTRY</strong> 
-                            <strong style="color: #c900ff;">COMPANY</strong>
+                        <h1 style="font-family: 'Satisfy', cursive; font-size: 2.5em; text-align: center; text-shadow: 0 0 0.40em #fff;">
+                            <strong style="color: #D2691E;">SHANTRY</strong> 
+                            <strong style="color: #8B4513;">COMPANY</strong>
                         </h1>
 
-                        <h3 style="font-family: 'Creepster', cursive; font-size: 2em; text-align: center; text-shadow: 0 0 0.40em #000;">
-                            <strong>Spooky Edition</strong>
+                        <h3 style="font-family: 'Satisfy', cursive; font-size: 2em; text-align: center; text-shadow: 0 0 0.40em #000;">
+                            <strong>Thanksgiving Edition</strong>
                         </h3>
 
                         <!-- Navigation Links -->
                         <nav class="socials">
-                            <span>> <a href="/minc" class="drugs nav-link">minc</a></span>
-                            <span>> <a href="/projects/slides/" class="drugs nav-link">slides</a></span>
-                            <span>> <a href="/calculator" class="drugs nav-link">calculator</a></span>
-                            <span>> <a href="/calculator/temperature" class="drugs nav-link">calculator (convert temperature)</a></span>
-                            <span>> <a href="/creator" class="drugs nav-link">creator</a></span>
-                            <span>> <a href="/social" class="drugs nav-link">social media</a></span>
-                            <span>> <a href="/terminal" class="drugs nav-link">terminal</a></span>
-                            <span>> <a href="/misleadingbrowser" class="drugs nav-link">misleading browser</a></span>
-                            <span>> <a href="/projects" class="drugs nav-link">games/projects</a></span>
-                            <span>> <a href="/partners" class="drugs nav-link">partner sites</a></span>
+                            <span>> <a href="/minc" class="autumn nav-link">minc</a></span>
+                            <span>> <a href="/projects/slides/" class="autumn nav-link">slides</a></span>
+                            <span>> <a href="/calculator" class="autumn nav-link">calculator</a></span>
+                            <span>> <a href="/calculator/temperature" class="autumn nav-link">calculator (convert temperature)</a></span>
+                            <span>> <a href="/creator" class="autumn nav-link">creator</a></span>
+                            <span>> <a href="/social" class="autumn nav-link">social media</a></span>
+                            <span>> <a href="/terminal" class="autumn nav-link">terminal</a></span>
+                            <span>> <a href="/misleadingbrowser" class="autumn nav-link">misleading browser</a></span>
+                            <span>> <a href="/projects" class="autumn nav-link">games/projects</a></span>
+                            <span>> <a href="/partners" class="autumn nav-link">partner sites</a></span>
 
                             <br><br><br>
-                            <span>> Press "a" for a party</span>
+                            <span>> Press "t" for turkey time</span>
                             <br><br><br>
                         </nav>
                     </div>
@@ -106,8 +106,31 @@
             .nav-link {
                 text-shadow: 0 0 0.40em #000;
                 text-decoration: none;
-                font-family: 'Creepster', cursive;
+                font-family: 'Satisfy', cursive;
                 font-size: 1.6em;
+                color: #D2691E;
+            }
+
+            .leaves {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                background: url('/assets/images/leaf.png');
+                animation: falling-leaves 10s linear infinite;
+            }
+
+            @keyframes falling-leaves {
+                0% {
+                    background-position: 0 0;
+                    opacity: 1;
+                }
+                100% {
+                    background-position: 500px 1000px;
+                    opacity: 0;
+                }
             }
         </style>
     </body>
