@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #001830;
+    overflow: hidden;
+}
+
+.background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.blur-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    animation: float 10s infinite ease-in-out;
+}
+
+#circle1 {
+    width: 300px;
+    height: 300px;
+    background: #0066cc;
+    top: 20%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+#circle2 {
+    width: 400px;
+    height: 400px;
+    background: #003366;
+    top: 40%;
+    right: 20%;
+    animation-delay: -3s;
+}
+
+#circle3 {
+    width: 350px;
+    height: 350px;
+    background: #0099ff;
+    bottom: 20%;
+    left: 40%;
+    animation-delay: -6s;
+}
+
+.text-container {
+    position: relative;
+    z-index: 2;
+}
+
+.wordart {
+    color: #FFFFFF;
+    font-family: Arial, sans-serif;
+    font-size: 5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 
+        2px 2px 0 #000,
+        4px 4px 0 #0066cc,
+        6px 6px 0 #003366,
+        8px 8px 10px rgba(0, 0, 0, 0.5);
+    transform: perspective(500px) rotateX(20deg);
+    animation: shine 2s infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(30px, 30px);
+    }
+}
+
+@keyframes shine {
+    0%, 100% {
+        text-shadow: 
+            2px 2px 0 #000,
+            4px 4px 0 #0066cc,
+            6px 6px 0 #003366,
+            8px 8px 10px rgba(0, 0, 0, 0.5);
+    }
+    50% {
+        text-shadow: 
+            2px 2px 0 #000,
+            4px 4px 0 #0099ff,
+            6px 6px 0 #0066cc,
+            8px 8px 15px rgba(0, 0, 0, 0.7);
+    }
+} 
