@@ -76,7 +76,7 @@ body {
 }
 a {
   text-decoration:none;
-  color:gray!important
+  color:darkgray!important
 }
 a:hover {
   transition:.4s!important;
