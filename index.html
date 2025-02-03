@@ -29,6 +29,7 @@
         <link rel="stylesheet" href="https://unpkg.com/movement.css/movement.css">
 
         <!-- Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
         <script src="/assets/scripts/lapDance.js" defer></script>
         <script src="/assets/scripts/script.js" defer></script>
         <script src="/assets/scripts/mediaPlay.js" defer></script>
@@ -72,16 +73,16 @@
 
                         <!-- Navigation Links -->
                         <nav class="socials">
-                            <span>> <a href="/minc" class="autumn nav-link">minc</a></span>
-                            <span>> <a href="/projects/slides/" class="autumn nav-link">slides</a></span>
-                            <span>> <a href="/calculator" class="autumn nav-link">calculator</a></span>
-                            <span>> <a href="/calculator/temperature" class="autumn nav-link">calculator (convert temperature)</a></span>
-                            <span>> <a href="/creator" class="autumn nav-link">creator</a></span>
-                            <span>> <a href="/social" class="autumn nav-link">social media</a></span>
-                            <span>> <a href="/terminal" class="autumn nav-link">terminal</a></span>
-                            <span>> <a href="/misleadingbrowser" class="autumn nav-link">misleading browser</a></span>
-                            <span>> <a href="/projects" class="autumn nav-link">games/projects</a></span>
-                            <span>> <a href="/partners" class="autumn nav-link">partner sites</a></span>
+                            <span>> <a href="/minc" class="autumn nav-link" onclick="handleLinkClick(event, '/minc')">minc</a></span>
+                            <span>> <a href="/projects/slides/" class="autumn nav-link" onclick="handleLinkClick(event, '/projects/slides/')">slides</a></span>
+                            <span>> <a href="/calculator" class="autumn nav-link" onclick="handleLinkClick(event, '/calculator')">calculator</a></span>
+                            <span>> <a href="/calculator/temperature" class="autumn nav-link" onclick="handleLinkClick(event, '/calculator/temperature')">calculator (convert temperature)</a></span>
+                            <span>> <a href="/creator" class="autumn nav-link" onclick="handleLinkClick(event, '/creator')">creator</a></span>
+                            <span>> <a href="/social" class="autumn nav-link" onclick="handleLinkClick(event, '/social')">social media</a></span>
+                            <span>> <a href="/terminal" class="autumn nav-link" onclick="handleLinkClick(event, '/terminal')">terminal</a></span>
+                            <span>> <a href="/misleadingbrowser" class="autumn nav-link" onclick="handleLinkClick(event, '/misleadingbrowser')">misleading browser</a></span>
+                            <span>> <a href="/projects" class="autumn nav-link" onclick="handleLinkClick(event, '/projects')">games/projects</a></span>
+                            <span>> <a href="/partners" class="autumn nav-link" onclick="handleLinkClick(event, '/partners')">partner sites</a></span>
 
                             <br><br><br>
                             <span>> Press "a" for valentines flowers</span>
@@ -121,5 +122,23 @@
                 background: url('/assets/images/valentines-leaf.png');
             }
         </style>
+
+        <script>
+            function handleLinkClick(event, url) {
+                event.preventDefault();
+                launchConfetti();
+                setTimeout(() => {
+                    window.location.href = url;
+                }, 2000);
+            }
+
+            function launchConfetti() {
+                confetti({
+                    particleCount: 10000,
+                    spread: 1000,
+                    origin: { y: -0.4 }
+                });
+            }
+        </script>
     </body>
 </html>
