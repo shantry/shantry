@@ -19,3 +19,14 @@ trigger.addEventListener("click", (event) => {
 	trigger.classList.add("clicked");
 	trigger.classList.toggle("active");
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Make elements appear in sequence
+  const elements = document.querySelectorAll("nav.socials span");
+  elements.forEach((el, index) => {
+      setTimeout(() => {
+          el.style.opacity = "1";
+      }, 1000 + index * 200); // Stagger appearance
+  });
+});
