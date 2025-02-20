@@ -1,28 +1,63 @@
-function applyAnimations() {
-    const animations = ['spin', 'bounce', 'shake', 'flip', 'wiggle', 'pulse'];
-    const style = document.createElement('style');
-    style.innerHTML = `
-        @keyframes spin { 0% { transform: rotate(0); } 100% { transform: rotate(360deg); } }
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
-        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-10px); } 75% { transform: translateX(10px); } }
-        @keyframes flip { 0%, 100% { transform: rotateY(0); } 50% { transform: rotateY(180deg); } }
-        @keyframes wiggle { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-10deg); } 75% { transform: rotate(10deg); } }
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
-        body * { animation: 1.5s infinite; }
-    `;
-    document.head.appendChild(style);
-    document.querySelectorAll('*').forEach(el => {
-        el.style.animationName = animations[Math.floor(Math.random() * animations.length)];
-        el.style.animationDuration = Math.random() * 2 + 0.5 + 's';
-        el.style.animationIterationCount = 'infinite';
-        el.style.animationTimingFunction = 'ease-in-out';
-    });
+function applyBookmarkletEffects() {
+    function shakeScreen() {
+        let intensity = 10;
+        let interval = setInterval(() => {
+            document.body.style.transform = `translate(${Math.random() * intensity - intensity / 2}px, ${Math.random() * intensity - intensity / 2}px) rotate(${Math.random() * 5 - 2.5}deg)`;
+        }, 50);
+        setTimeout(() => {
+            clearInterval(interval);
+            document.body.style.transform = "";
+        }, 2000);
+    }
+
+    function removeRandomElements() {
+        document.querySelectorAll("*").forEach(el => {
+            if (Math.random() > 0.7) {
+                let offsetX = (Math.random() - 0.5) * 500;
+                let offsetY = (Math.random() - 0.5) * 500;
+                let rotation = Math.random() * 360;
+                el.style.transition = "transform 2s ease-out, opacity 2s ease-out";
+                el.style.transform = `translate(${offsetX}px, ${offsetY}px) rotate(${rotation}deg) scale(0)`;
+                el.style.opacity = "0";
+                setTimeout(() => el.remove(), 2000);
+            }
+        });
+    }
+
+    function explosionEffect() {
+        let explosion = document.createElement("div");
+        explosion.style.position = "fixed";
+        explosion.style.top = "50%";
+        explosion.style.left = "50%";
+        explosion.style.width = "500px";
+        explosion.style.height = "500px";
+        explosion.style.background = "radial-gradient(circle, red, orange, yellow, transparent)";
+        explosion.style.borderRadius = "50%";
+        explosion.style.transform = "translate(-50%, -50%) scale(0)";
+        explosion.style.transition = "transform 0.5s ease-out, opacity 0.5s ease-out";
+        explosion.style.opacity = "1";
+        document.body.appendChild(explosion);
+        setTimeout(() => {
+            explosion.style.transform = "translate(-50%, -50%) scale(3)";
+            explosion.style.opacity = "0";
+        }, 50);
+        setTimeout(() => explosion.remove(), 1000);
+    }
+
+    function playExplosionSound() {
+        new Audio("https://www.myinstants.com/media/sounds/explosion.mp3").play();
+    }
+
+    shakeScreen();
+    removeRandomElements();
+    explosionEffect();
+    playExplosionSound();
 }
 
 // Add an event listener for key presses
 document.addEventListener('keydown', function(event) {
-    // Check if the 'A' key is pressed (key code 65)
+    // Check if the 'A' key is pressed
     if (event.key === 'a' || event.key === 'A') {
-        applyAnimations();
+        applyBookmarkletEffects();
     }
 });
