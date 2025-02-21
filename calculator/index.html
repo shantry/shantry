@@ -2,42 +2,91 @@
 <html>
   <head>
     <style>
-      html {
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         text-align: center;
       }
       .rainbow_text_animated {
-    background: linear-gradient(to right, #6666ff, #0099ff , #00ff00, #ff3399, #6666ff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: rainbow_animation 6s ease-in-out infinite;
-    background-size: 400% 100%;
-}
+        background: linear-gradient(to right, #6666ff, #0099ff, #00ff00, #ff3399, #6666ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: rainbow_animation 6s ease-in-out infinite;
+        background-size: 400% 100%;
+      }
+      h1, h4 {
+        margin: 0;
+      }
+      form {
+        margin-top: 20px;
+      }
+      label {
+        display: block;
+        margin: 10px 0 5px;
+      }
+      input, select, button {
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      button {
+        background-color: #0099ff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #007acc;
+      }
+      #result {
+        margin-top: 20px;
+        font-size: 1.5em;
+        color: #333;
+      }
     </style>
     <title>Misleading Calculator</title>
     <link href="https://moderncss.goodvessel92551.repl.co/style.css" rel="stylesheet" type="text/css" />  
   </head>
   <body>
-    <h1 class="rainbow rainbow_text_animated">Misleading Calculator</h1><h4>by Shantry CO</h4>
-    <form>
-      <label for="first-number">Enter first number to calculate:</label>
-      <input type="number" id="first-number" name="first-number"><br><br>
-      
-      <label for="operation">Choose an operation:</label>
-      <select id="operation" name="operation">
-        <option value="+">Addition (+)</option>
-        <option value="-">Subtraction (-)</option>
-        <option value="x">Multiplication (x)</option>
-        <option value="/">Division (/)</option>
-      </select><br><br>
-      
-      <label for="second-number">Enter second number to calculate:</label>
-      <input type="number" id="second-number" name="second-number"><br><br>
-      
-      <button type="button" onclick="calculate()">Calculate</button>
-    </form>
-    <br>
-    <h2 id="result"></h2>
+    <div class="container">
+      <h1 class="rainbow_text_animated">Misleading Calculator</h1>
+      <h4>by Shantry CO</h4>
+      <form>
+        <label for="first-number">Enter first number to calculate:</label>
+        <input type="number" id="first-number" name="first-number"><br><br>
+        
+        <label for="operation">Choose an operation:</label>
+        <select id="operation" name="operation">
+          <option value="+">Addition (+)</option>
+          <option value="-">Subtraction (-)</option>
+          <option value="x">Multiplication (x)</option>
+          <option value="/">Division (/)</option>
+        </select><br><br>
+        
+        <label for="second-number">Enter second number to calculate:</label>
+        <input type="number" id="second-number" name="second-number"><br><br>
+        
+        <button type="button" onclick="calculate()">Calculate</button>
+      </form>
+      <br>
+      <h2 id="result"></h2>
+    </div>
   </body>
   
   <script>
