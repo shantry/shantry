@@ -224,21 +224,6 @@ span::before {
 		top: 0;
 		transition: 300ms top 280ms ease-in-out;
 	}
-	&::before {
-		content: "3";
-		letter-spacing: 0;
-		color: #e6e1d6;
-		font-weight: 500;
-		font-size: 1.4rem;
-		line-height: 2.4rem;
-		padding: 0 0.7rem;
-		height: 2.4rem;
-		background: radial-gradient(orangered 50%, red 75%);
-		border-radius: 1.2rem;
-		position: absolute;
-		top: -1.2rem;
-		left: 0.7rem;
-	}
 	&:hover {
 		background: #362f21;
 		color: #e6e1d6;
@@ -358,21 +343,6 @@ button {
 		position: relative;
 		top: 0;
 		transition: 300ms top 280ms ease-in-out;
-	}
-	&::before {
-		content: "3";
-		letter-spacing: 0;
-		color: #e6e1d6;
-		font-weight: 500;
-		font-size: 1.4rem;
-		line-height: 2.4rem;
-		padding: 0 0.7rem;
-		height: 2.4rem;
-		background: radial-gradient(orangered 50%, red 75%);
-		border-radius: 1.2rem;
-		position: absolute;
-		top: -1.2rem;
-		left: 0.7rem;
 	}
 	&:hover {
 		background: #362f21;
