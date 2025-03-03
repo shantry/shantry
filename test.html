@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collaborative Whiteboard</title>
+    <style>
+        body { text-align: center; }
+        canvas { border: 1px solid black; cursor: crosshair; }
+    </style>
+</head>
+<body>
+    <h1>Collaborative Whiteboard</h1>
+    <canvas id="whiteboard" width="800" height="500"></canvas>
+    <br>
+    <button onclick="clearBoard()">Clear</button>
+    <input type="color" id="colorPicker" value="#000000">
+
+    <!-- Firebase Modules (Import as ES Modules) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, onSnapshot, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        // Firebase Config
+        const firebaseConfig = {
+  apiKey: "AIzaSyDuGL5Sdje_l55lwTT_hs9mAwf78HWeB5I",
+  authDomain: "collardgreens.firebaseapp.com",
+  projectId: "collardgreens",
+  storageBucket: "collardgreens.firebasestorage.app",
+  messagingSenderId: "259704587231",
+  appId: "1:259704587231:web:9a8d60e06a03f0247eba6a",
+  measurementId: "G-Y0KD6EE52K"
+};
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const drawingsCollection = collection(db, "drawings");
+
+        // Canvas setup
+        const canvas = document.getElementById("whiteboard");
+        const ctx = canvas.getContext("2d");
+        let drawing = false;
+        let color = document.getElementById("colorPicker").value;
+        let lastX = 0, lastY = 0;
+
+        canvas.addEventListener("mousedown", (e) => {
+            drawing = true;
+            lastX = e.offsetX;
+            lastY = e.offsetY;
+        });
+        canvas.addEventListener("mouseup", async () => drawing = false);
+        canvas.addEventListener("mousemove", draw);
+        document.getElementById("colorPicker").addEventListener("input", e => color = e.target.value);
+
+        async function draw(e) {
+            if (!drawing) return;
+            const x = e.offsetX;
+            const y = e.offsetY;
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(x, y);
+            ctx.stroke();
+            lastX = x;
+            lastY = y;
+
+            await addDoc(drawingsCollection, { x1: lastX, y1: lastY, x2: x, y2: y, color });
+        }
+
+        onSnapshot(drawingsCollection, (snapshot) => {
+            snapshot.docChanges().forEach((change) => {
+                if (change.type === "added") {
+                    const { x1, y1, x2, y2, color } = change.doc.data();
+                    ctx.strokeStyle = color;
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.moveTo(x1, y1);
+                    ctx.lineTo(x2, y2);
+                    ctx.stroke();
+                }
+            });
+        });
+
+        async function clearBoard() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const querySnapshot = await getDocs(drawingsCollection);
+            querySnapshot.forEach(async (docItem) => {
+                await deleteDoc(doc(db, "drawings", docItem.id));
+            });
+        }
+    </script>
+</body>
+</html>
