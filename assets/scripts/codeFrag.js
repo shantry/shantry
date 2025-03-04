@@ -14,12 +14,12 @@ To add a code fragment to your page, use this format (with codeFragment, and loa
 function loadAudioVideo() { //<div id="audioVideo"><script src="../assets/scripts/codeFrag.js"></script><script>loadAudioVideo();</script></div>
     const homeButtonHTML = `
         <audio id="audio" loop preload="auto">
-                    <source src="../assets/audio/Scents.mp3" type="audio/mp3">
-                </audio>
+                <source src="../assets/audio/Scents.mp3" type="audio/mp3">
+            </audio>
 
-                <video id="video" class="fullscreen bg-video"  loop playsinline autoplay preload="auto">
-                    <source src="../assets/images/patrick.mp4" type="video/mp4">
-                </video>
+            <video id="video" class="fullscreen bg-video" style="filter: blur(10px);" loop playsinline autoplay preload="auto">
+                <source src="../assets/images/patrick.mp4" type="video/mp4">
+            </video>
         `;
     document.getElementById('audioVideo').innerHTML = homeButtonHTML;
 }
