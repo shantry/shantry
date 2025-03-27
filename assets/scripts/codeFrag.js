@@ -24,4 +24,17 @@ function loadAudioVideo() { //<div id="audioVideo"><script src="../assets/script
     document.getElementById('audioVideo').innerHTML = homeButtonHTML;
 }
 
+function loadAudioVideotemplate() { //<div id="audioVideo"><script src="../assets/scripts/codeFrag.js"></script><script>loadAudioVideotemplate();</script></div>
+    const homeButtonHTML = `
+        <audio id="audio" loop preload="auto">
+                <source src="../assets/audio/Scents.mp3" type="audio/mp3">
+            </audio>
+
+            <video id="video" class="fullscreen bg-video" style="filter: blur(10px);" loop playsinline autoplay preload="auto">
+                <source src="../assets/images/bg1.mp4" type="video/mp4">
+            </video>
+        `;
+    document.getElementById('audioVideo').innerHTML = homeButtonHTML;
+}
+
   
