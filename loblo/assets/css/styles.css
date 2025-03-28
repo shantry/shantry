@@ -1,0 +1,44 @@
+body {
+    background-color: #1a1a1a;
+    color: #eaeaea;
+    font-family: 'Creepster', cursive; /* Example of a creepy font */
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3 {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+a {
+    color: #ff4d4d;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ff1a1a;
+    text-decoration: underline;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+.section {
+    border: 1px solid #444;
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #2a2a2a;
+    border-radius: 5px;
+}
+
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}

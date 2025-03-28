@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Page</title>
+    <style>
+        .hidden { display: none; }
+        #flash { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 9999; }
+    </style>
+</head>
+<body>
+    <audio id="background-audio" src="your-audio-file.mp3"></audio>
+    <div id="flash"></div>
+    <h1>Sample Heading</h1>
+    <h2>Another Heading</h2>
+    <p>Sample paragraph text.</p>
+    <img src="your-image.jpg" alt="Sample Image">
+    <ul>
+        <li>List Item 1</li>
+        <li>List Item 2</li>
+    </ul>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        // Play audio after a delay
+        setTimeout(() => {
+            const audioElement = document.getElementById('background-audio');
+            if (audioElement) {
+                audioElement.play();
+            }
+        }, 3000);
+
+        // Randomly hide and reappear elements
+        setInterval(() => {
+            const elements = document.querySelectorAll('h1, h2, p, img, ul li');
+            if (elements.length > 0) {
+                const randomElement = elements[Math.floor(Math.random() * elements.length)];
+                randomElement.classList.toggle('hidden');
+                setTimeout(() => {
+                    randomElement.classList.remove('hidden');
+                }, Math.random() * 5000 + 2000); // Reappear after 2-7 seconds
+            }
+        }, 4000);
+
+        // Flash effect
+        setInterval(() => {
+            const flash = document.getElementById('flash');
+            if (flash) {
+                flash.style.display = 'block';
+                setTimeout(() => {
+                    flash.style.display = 'none';
+                }, 100);
+    });
+    </script>
+</body>
+</html>
+
+        // Random background color flashes
+        setInterval(() => {
+            document.body.style.backgroundColor = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+            setTimeout(() => {
+                document.body.style.backgroundColor = 'white';
+            }, 200);
+        }, 7000);
+
+        // Consolidated random transformations
+        setInterval(() => {
+            const elements = document.querySelectorAll('h1, h2, p, img, ul li');
+            elements.forEach(el => {
+                const translateX = Math.random() * 20 - 10; // Translate between -10 and 10px
+                const translateY = Math.random() * 20 - 10;
+                const scale = Math.random() * 0.5 + 0.75; // Scale between 0.75 and 1.25
+                const rotation = Math.random() * 20 - 10; // Rotate between -10 and 10 degrees
+                el.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale}) rotate(${rotation}deg)`;
+            });
+        }, 500);
+    });
+</script>
