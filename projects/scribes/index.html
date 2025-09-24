@@ -3,229 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shantry Scribes</title>
+    <title>Shantry Scribes - Word Style Editor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #2b579a;
+            --primary-hover-color: #1a4278;
+            --border-color: #d1d1d1;
+            --bg-color: #f0f2f5;
+            --page-bg-color: #ffffff;
+            --text-color: #333333;
+            --ribbon-bg-color: #ffffff;
+            --button-bg-color: transparent;
+            --button-hover-bg: #e6e6e6;
+        }
+
         body {
-            font-family: 'Calibri', sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Segoe UI', 'Calibri', 'Arial', sans-serif;
+            background-color: var(--bg-color);
             margin: 0;
             padding: 0;
             display: flex;
+            flex-direction: column;
             height: 100vh;
             overflow: hidden;
             transition: background-color 0.3s ease;
         }
-        .editor-container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            margin: 20px;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 4px;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        .toolbar {
+
+        /* --- Ribbon Toolbar --- */
+        .ribbon {
+            background-color: var(--ribbon-bg-color);
+            padding: 5px 15px;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             display: flex;
             flex-wrap: wrap;
-            border-bottom: 2px solid #ddd;
-            padding: 10px;
-            background-color: #f0f0f0;
+            align-items: center;
         }
-        .toolbar button, .toolbar select, .toolbar input {
-            background-color: #0078d4;
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            margin: 5px;
+        .ribbon-group {
+            display: flex;
+            align-items: center;
+            border-right: 1px solid var(--border-color);
+            padding: 5px 15px;
+            margin-right: 15px;
+        }
+        .ribbon-group:last-child {
+            border-right: none;
+        }
+        .ribbon-group .group-content {
+            display: flex;
+            flex-direction: column;
+        }
+        .ribbon-group .group-title {
+            font-size: 11px;
+            color: #666;
+            text-align: center;
+            margin-top: 4px;
+        }
+        .toolbar-row {
+            display: flex;
+            align-items: center;
+        }
+        .ribbon button, .ribbon select, .ribbon input {
+            background-color: var(--button-bg-color);
+            color: var(--text-color);
+            border: 1px solid transparent;
+            padding: 6px;
+            margin: 2px;
             cursor: pointer;
-            border-radius: 4px;
+            border-radius: 3px;
+            font-size: 14px;
+            min-width: 32px;
+            text-align: center;
+            transition: background-color 0.2s ease;
         }
-        .toolbar button:hover, .toolbar select:hover, .toolbar input:hover {
-            background-color: #005bb5;
+        .ribbon button:hover, .ribbon select:hover, .ribbon input:hover {
+            background-color: var(--button-hover-bg);
+            border-color: #c5c5c5;
         }
-        .editor {
+        .ribbon select {
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+        .ribbon input[type="color"] {
+            width: 24px;
+            height: 24px;
+            padding: 0;
+            border: none;
+            cursor: pointer;
+        }
+        .ribbon .color-picker-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        .ribbon .color-picker-wrapper label {
+            font-size: 12px;
+        }
+
+        /* --- Editor Area --- */
+        .editor-area {
             flex: 1;
             padding: 20px;
-            border: none;
-            font-size: 16px;
             overflow-y: auto;
-            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+        }
+        .page {
+            width: 8.5in;
+            min-height: 11in;
+            padding: 1in;
+            background-color: var(--page-bg-color);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             outline: none;
-            background-color: #fefefe;
-            color: #333;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            font-size: 12pt;
+            line-height: 1.5;
+            color: var(--text-color);
+            margin-bottom: 20px;
         }
-        .editor blockquote {
-            border-left: 5px solid #ccc;
-            margin: 20px 0;
-            padding-left: 15px;
-            color: #555;
-            font-style: italic;
+        .page:focus {
+            box-shadow: 0 0 15px rgba(43, 87, 154, 0.5);
         }
-        .theme-popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            z-index: 1000;
+
+        /* --- Status Bar --- */
+        .status-bar {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            font-size: 12px;
+            text-align: right;
         }
-        .theme-popup h3 {
-            margin-top: 0;
+
+        /* --- File Name Input --- */
+        .file-name-input {
+            padding: 6px 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 3px;
+            font-size: 12px;
         }
-        .theme-popup button {
-            margin: 10px 0;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
+        
+        /* Dark Mode Theme */
+        body.dark-mode {
+            --primary-color: #4a8bf5;
+            --primary-hover-color: #3a75d1;
+            --border-color: #444;
+            --bg-color: #2a2a2e;
+            --page-bg-color: #1e1e1e;
+            --text-color: #e0e0e0;
+            --ribbon-bg-color: #333333;
+            --button-hover-bg: #555;
         }
-        .theme-popup .close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #ff5c5c;
-        }
-        .dark-mode {
-            background-color: #333;
-        }
-        .dark-mode .editor-container {
-            background-color: #222;
-            color: #ddd;
-        }
-        .dark-mode .editor {
-            background-color: #2b2b2b;
-            color: #ddd;
-        }
-        .dark-mode .toolbar {
-            background-color: #444;
-            border-bottom: 2px solid #555;
-        }
-        .dark-mode .toolbar button, .dark-mode .toolbar select, .dark-mode .toolbar input {
-            background-color: #555;
-        }
-        .dark-mode .toolbar button:hover, .dark-mode .toolbar select:hover, .dark-mode .toolbar input:hover {
-            background-color: #666;
-        }
-        .theme-dark-blue .editor-container {
-            background-color: #1a1a2e;
-            color: #e0e0e0;
-        }
-        .theme-dark-blue .editor {
-            background-color: #16213e;
-            color: #e0e0e0;
-        }
-        .theme-dark-blue .toolbar {
-            background-color: #0f3460;
-            border-bottom: 2px solid #1a1a2e;
-        }
-        .theme-dark-blue .toolbar button, .theme-dark-blue .toolbar select, .theme-dark-blue .toolbar input {
-            background-color: #0f3460;
-        }
-        .theme-dark-blue .toolbar button:hover, .theme-dark-blue .toolbar select:hover, .theme-dark-blue .toolbar input:hover {
-            background-color: #16213e;
-        }
-        .theme-light .editor-container {
-            background-color: #ffffff;
-            color: #333333;
-        }
-        .theme-light .editor {
-            background-color: #f4f4f4;
-            color: #333333;
-        }
-        .theme-light .toolbar {
-            background-color: #e0e0e0;
-            border-bottom: 2px solid #cccccc;
-        }
-        .theme-light .toolbar button, .theme-light .toolbar select, .theme-light .toolbar input {
-            background-color: #cccccc;
-            color: #000000; /* Set text color to black */
-        }
-        .theme-light .toolbar button:hover, .theme-light .toolbar select:hover, .theme-light .toolbar input:hover {
-            background-color: #bfbfbf;
-            color: #000000; /* Keep text color black on hover */
-        }
+        body.dark-mode .ribbon-group .group-title { color: #aaa; }
     </style>
 </head>
 <body>
-    <div class="editor-container">
-        <div class="toolbar">
-            <button onclick="formatText('bold')">Bold</button>
-            <button onclick="formatText('italic')">Italic</button>
-            <button onclick="formatText('underline')">Underline</button>
-            <select onchange="formatText('fontName', this.value)">
-                <option value="Arial">Arial</option>
-                <option value="Georgia">Georgia</option>
-                <option value="Calibri">Calibri</option>
-                <option value="Courier New">Courier New</option>
-                <option value="Times New Roman">Times New Roman</option>
-                <option value="Verdana">Verdana</option>
-                <option value="Garamond">Garamond</option>
-                <option value="Trebuchet MS">Trebuchet MS</option>
-                <option value="Comic Sans MS">Comic Sans MS</option>
-                <option value="Lucida Console">Lucida Console</option>
-                <option value="Tahoma">Tahoma</option>
-                <option value="Palatino">Palatino</option>
-                <option value="Impact">Impact</option>
-                <option value="Sans-serif">Sans-serif</option>
-                <option value="Serif">Serif</option>
-                <option value="Monospace">Monospace</option>
-                <option value="Helvetica">Helvetica</option>
-                <option value="Arial Black">Arial Black</option>
-                <option value="Segoe UI">Segoe UI</option>
-                <option value="Century Gothic">Century Gothic</option>
-                <option value="Franklin Gothic Medium">Franklin Gothic Medium</option>
-                <option value="Lucida Sans">Lucida Sans</option>
-                <option value="Gadget">Gadget</option>
-                <option value="Futura">Futura</option>
-                <option value="Geneva">Geneva</option>
-                <option value="Gill Sans">Gill Sans</option>
-                <option value="Optima">Optima</option>
-            </select>
 
-
-
-            <select onchange="formatText('fontSize', this.value)">
-                <option value="1">8</option>
-                <option value="2">10</option>
-                <option value="3">12</option>
-                <option value="4">14</option>
-                <option value="5">18</option>
-                <option value="6">24</option>
-                <option value="7">36</option>
-            </select>
-            <button onclick="formatText('insertUnorderedList')">Bullet List</button>
-            <button onclick="formatText('insertOrderedList')">Numbered List</button>
-            <button onclick="formatText('justifyLeft')">Align Left</button>
-            <button onclick="formatText('justifyCenter')">Align Center</button>
-            <button onclick="formatText('justifyRight')">Align Right</button>
-            <button onclick="formatText('blockquote')">Blockquote</button>
-            <input type="text" id="fileName" placeholder="Enter file name" style="margin: 5px; padding: 8px; border-radius: 4px; border: 1px solid #ddd;">
-            <button onclick="saveFile()">Save</button>
-            <input type="file" id="fileInput" accept=".shantry" style="display:none;" onchange="uploadFile(event)">
-            <button onclick="document.getElementById('fileInput').click()">Upload</button>
-            <button onclick="showThemePopup()">Choose Theme</button>
+    <div class="ribbon">
+        <div class="ribbon-group">
+            <div class="group-content">
+                <div class="toolbar-row">
+                    <input type="text" id="fileName" placeholder="document_name" class="file-name-input">
+                    <button onclick="saveFile()" title="Save"><i class="fa-solid fa-floppy-disk"></i></button>
+                    <button onclick="document.getElementById('fileInput').click()" title="Upload"><i class="fa-solid fa-upload"></i></button>
+                    <input type="file" id="fileInput" accept=".shantry" style="display:none;" onchange="uploadFile(event)">
+                </div>
+            </div>
         </div>
-        <div class="editor" contenteditable="true">
-            <p>Start writing your masterpeice...</p>
+
+        <div class="ribbon-group">
+             <div class="group-content">
+                <div class="toolbar-row">
+                    <button onclick="formatText('undo')" title="Undo"><i class="fas fa-undo"></i></button>
+                    <button onclick="formatText('redo')" title="Redo"><i class="fas fa-redo"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="ribbon-group">
+            <div class="group-content">
+                <div class="toolbar-row">
+                    <select onchange="formatText('fontName', this.value)" title="Font Family">
+                        <option value="Calibri" selected>Calibri</option>
+                        <option value="Arial">Arial</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Courier New">Courier New</option>
+                        <option value="Times New Roman">Times New Roman</option>
+                        <option value="Verdana">Verdana</option>
+                    </select>
+                    <select onchange="formatText('fontSize', this.value)" title="Font Size">
+                        <option value="1">8</option>
+                        <option value="2">10</option>
+                        <option value="3" selected>12</option>
+                        <option value="4">14</option>
+                        <option value="5">18</option>
+                        <option value="6">24</option>
+                        <option value="7">36</option>
+                    </select>
+                </div>
+                <div class="toolbar-row">
+                    <button onclick="formatText('bold')" title="Bold"><i class="fas fa-bold"></i></button>
+                    <button onclick="formatText('italic')" title="Italic"><i class="fas fa-italic"></i></button>
+                    <button onclick="formatText('underline')" title="Underline"><i class="fas fa-underline"></i></button>
+                    <button onclick="formatText('strikethrough')" title="Strikethrough"><i class="fas fa-strikethrough"></i></button>
+                    <button onclick="formatText('subscript')" title="Subscript"><i class="fas fa-subscript"></i></button>
+                    <button onclick="formatText('superscript')" title="Superscript"><i class="fas fa-superscript"></i></button>
+                    <div class="color-picker-wrapper">
+                        <input type="color" id="fontColorPicker" onchange="formatText('foreColor', this.value)" title="Font Color">
+                    </div>
+                     <div class="color-picker-wrapper">
+                        <input type="color" id="highlightColorPicker" onchange="formatText('hiliteColor', this.value)" title="Highlight Color">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ribbon-group">
+             <div class="group-content">
+                <div class="toolbar-row">
+                    <button onclick="formatText('justifyLeft')" title="Align Left"><i class="fas fa-align-left"></i></button>
+                    <button onclick="formatText('justifyCenter')" title="Align Center"><i class="fas fa-align-center"></i></button>
+                    <button onclick="formatText('justifyRight')" title="Align Right"><i class="fas fa-align-right"></i></button>
+                    <button onclick="formatText('justifyFull')" title="Justify"><i class="fas fa-align-justify"></i></button>
+                    <button onclick="formatText('insertUnorderedList')" title="Bulleted List"><i class="fas fa-list-ul"></i></button>
+                    <button onclick="formatText('insertOrderedList')" title="Numbered List"><i class="fas fa-list-ol"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="ribbon-group">
+            <div class="group-content">
+                <div class="toolbar-row">
+                     <button onclick="insertLink()" title="Insert Link"><i class="fas fa-link"></i></button>
+                     <button onclick="formatText('insertHorizontalRule')" title="Insert Horizontal Line">&mdash;</button>
+                     <select onchange="formatText('formatBlock', this.value)" title="Headings">
+                        <option value="p">Paragraph</option>
+                        <option value="h1">Heading 1</option>
+                        <option value="h2">Heading 2</option>
+                        <option value="h3">Heading 3</option>
+                     </select>
+                     <button onclick="formatText('removeFormat')" title="Clear Formatting"><i class="fas fa-text-slash"></i></button>
+                </div>
+            </div>
+        </div>
+        
+         <div class="ribbon-group">
+            <div class="group-content">
+                <div class="toolbar-row">
+                    <button onclick="applyTheme('light-mode')" title="Light Mode"><i class="fa-solid fa-sun"></i></button>
+                    <button onclick="applyTheme('dark-mode')" title="Dark Mode"><i class="fa-solid fa-moon"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="editor-area">
+        <div class="page" id="editor" contenteditable="true">
+            <p>Start writing your masterpiece...</p>
         </div>
     </div>
 
-    <div id="themePopup" class="theme-popup">
-        <button class="close" onclick="hideThemePopup()">X</button>
-        <h3>Select a Theme</h3>
-        <button onclick="applyTheme('theme-light')">Light Mode</button>
-        <button onclick="applyTheme('dark-mode')">Dark Mode</button>
-        <button onclick="applyTheme('theme-dark-blue')">Dark Blue Mode</button>
+    <div class="status-bar">
+        <span id="word-count">Words: 5</span> | <span id="char-count">Characters: 31</span>
     </div>
 
     <script>
-        const encryptionKey = "adlongshantrysmithereenswascreatedbyaccident";  // Change this key for more security
+        const editor = document.getElementById('editor');
+        const encryptionKey = "a_very_secret_key_for_shantry_scribes"; // For production, manage keys securely
 
         function xorEncryptDecrypt(input, key) {
             let output = '';
@@ -237,42 +281,64 @@
 
         function formatText(command, value = null) {
             document.execCommand(command, false, value);
+            editor.focus();
+        }
+
+        function insertLink() {
+            const url = prompt("Enter the URL:");
+            if (url) {
+                formatText('createLink', url);
+            }
         }
 
         function saveFile() {
             const fileName = document.getElementById('fileName').value || 'document';
-            const content = document.querySelector('.editor').innerHTML;
+            const content = editor.innerHTML;
             const encryptedContent = xorEncryptDecrypt(content, encryptionKey);
             const blob = new Blob([encryptedContent], { type: 'text/plain' });
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
             a.download = `${fileName}.shantry`;
             a.click();
+            URL.revokeObjectURL(a.href);
         }
 
         function uploadFile(event) {
             const file = event.target.files[0];
+            if (!file) return;
+
             const reader = new FileReader();
             reader.onload = function(e) {
-                const encryptedContent = e.target.result;
-                const decryptedContent = xorEncryptDecrypt(encryptedContent, encryptionKey);
-                document.querySelector('.editor').innerHTML = decryptedContent;
+                try {
+                    const encryptedContent = e.target.result;
+                    const decryptedContent = xorEncryptDecrypt(encryptedContent, encryptionKey);
+                    editor.innerHTML = decryptedContent;
+                    updateWordCount();
+                } catch (error) {
+                    alert('Failed to decrypt or read the file. It might be corrupted or saved with a different key.');
+                    console.error("Decryption failed:", error);
+                }
             };
             reader.readAsText(file);
         }
 
-        function showThemePopup() {
-            document.getElementById('themePopup').style.display = 'block';
-        }
-
-        function hideThemePopup() {
-            document.getElementById('themePopup').style.display = 'none';
-        }
-
         function applyTheme(themeClass) {
             document.body.className = themeClass;
-            hideThemePopup();
         }
+
+        function updateWordCount() {
+            const text = editor.innerText || '';
+            const words = text.trim().split(/\s+/).filter(word => word.length > 0);
+            const wordCount = text.trim() === '' ? 0 : words.length;
+            const charCount = text.length;
+
+            document.getElementById('word-count').textContent = `Words: ${wordCount}`;
+            document.getElementById('char-count').textContent = `Characters: ${charCount}`;
+        }
+
+        // Initial word count and event listener
+        editor.addEventListener('input', updateWordCount);
+        window.addEventListener('load', updateWordCount);
     </script>
 </body>
 </html>
