@@ -1,119 +1,184 @@
+<!--
+
+ /$$$$$$$$ /$$$$$$ /$$       /$$$$$$$$  /$$$$$$  /$$   /$$  /$$$$$$  /$$   /$$ /$$$$$$$$ /$$$$$$$  /$$$$$$$   /$$$$$$   /$$$$$$   /$$$$$$ 
+| $$_____/|_  $$_/| $$      | $$_____/ /$$__  $$| $$  | $$ /$$__  $$| $$  /$$/| $$_____/| $$__  $$| $$____/  /$$$_  $$ /$$$_  $$ /$$$_  $$
+| $$        | $$  | $$      | $$      | $$  \__/| $$  | $$| $$  \__/| $$ /$$/ | $$      | $$  \ $$| $$      | $$$$\ $$| $$$$\ $$| $$$$\ $$
+| $$$$$     | $$  | $$      | $$$$$   |  $$$$$$ | $$  | $$| $$      | $$$$$/  | $$$$$   | $$$$$$$/| $$$$$$$ | $$ $$ $$| $$ $$ $$| $$ $$ $$
+| $$__/     | $$  | $$      | $$__/    \____  $$| $$  | $$| $$      | $$  $$  | $$__/   | $$__  $$|_____  $$| $$\ $$$$| $$\ $$$$| $$\ $$$$
+| $$        | $$  | $$      | $$       /$$  \ $$| $$  | $$| $$    $$| $$\  $$ | $$      | $$  \ $$ /$$  \ $$| $$ \ $$$| $$ \ $$$| $$ \ $$$
+| $$       /$$$$$$| $$$$$$$$| $$$$$$$$|  $$$$$$/|  $$$$$$/|  $$$$$$/| $$ \  $$| $$$$$$$$| $$  | $$|  $$$$$$/|  $$$$$$/|  $$$$$$/|  $$$$$$/
+|__/      |______/|________/|________/ \______/  \______/  \______/ |__/  \__/|________/|__/  |__/ \______/  \______/  \______/  \______/ 
+                                                                                                                                          
+                                                                                                                                          
+ the future of sucking.                                                                                                                                         
+
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shantry File Sucker 5000</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            padding: 20px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FILESUCKER5000</title>
+  <style>
+    body {
+      font-family: "Verdana", "Comic Sans MS", sans-serif;
+      background: url("https://www.transparenttextures.com/patterns/stardust.png"), linear-gradient(to bottom, #000033, #330066);
+      color: #fff;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+      animation: bgScroll 60s linear infinite;
+    }
 
-        h1 {
-            color: #007BFF;
-            text-align: center;
-        }
+    @keyframes bgScroll {
+      from { background-position: 0 0; }
+      to { background-position: 0 1000px; }
+    }
 
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
+    h1 {
+      font-family: "Impact", sans-serif;
+      font-size: 48px;
+      color: #00ffcc;
+      text-shadow: 3px 3px 8px #ff00ff, 0 0 20px #00ffff;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
 
-        .file-input-group {
-            margin-bottom: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: rgba(0, 0, 0, 0.7);
+      border: 4px ridge #00ffcc;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 30px #ff00ff;
+    }
 
-        .file-input-group label {
-            font-weight: bold;
-        }
+    .file-input-group {
+      margin: 25px 0;
+      padding: 15px;
+      border: 3px dashed #ff00ff;
+      background: rgba(255, 255, 255, 0.1);
+    }
 
-        .file-input-group input[type="file"] {
-            padding: 10px;
-            border: 2px solid #007BFF;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+    .file-input-group label {
+      font-weight: bold;
+      font-size: 18px;
+      color: #ffff66;
+      display: block;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px #000;
+    }
 
-        .file-input-group button {
-            padding: 10px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
+    input[type="file"], input[type="text"] {
+      padding: 10px;
+      border: 2px inset #00ffcc;
+      border-radius: 6px;
+      background: #111;
+      color: #00ffcc;
+      width: 80%;
+      margin: 5px auto;
+      display: block;
+      font-family: "Courier New", monospace;
+    }
 
-        .file-input-group button:hover {
-            background-color: #0056b3;
-        }
+    button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #fff;
+      border: 2px outset #ff00ff;
+      border-radius: 8px;
+      cursor: pointer;
+      text-transform: uppercase;
+      background: linear-gradient(to bottom, #ff00ff, #660066);
+      box-shadow: 0 0 10px #00ffcc;
+      transition: transform 0.2s ease-in-out;
+    }
 
-        #filesystem {
-            margin-top: 20px;
-            padding: 10px;
-            border: 2px dashed #007BFF;
-            border-radius: 5px;
-            background-color: #e9f7ff;
-        }
+    button:hover {
+      transform: scale(1.1);
+      background: linear-gradient(to bottom, #00ffcc, #006666);
+    }
 
-        .file {
-            margin: 5px 0;
-            padding: 8px;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    #filesystem {
+      margin-top: 20px;
+      padding: 15px;
+      border: 3px groove #00ffff;
+      border-radius: 8px;
+      background: rgba(0, 255, 255, 0.1);
+      color: #fff;
+      text-align: left;
+      font-size: 14px;
+      font-family: "Courier New", monospace;
+    }
 
-        .file button {
-            padding: 5px 10px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+    .file {
+      margin: 10px 0;
+      padding: 10px;
+      border: 2px solid #ff00ff;
+      border-radius: 6px;
+      background: rgba(255, 0, 255, 0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #00ffcc;
+    }
 
-        .file button:hover {
-            background-color: #218838;
-        }
-    </style>
+    .file button {
+      background: linear-gradient(to bottom, #33cc33, #006600);
+      border: 2px outset #33ff33;
+      font-size: 14px;
+      text-transform: none;
+      padding: 5px 12px;
+    }
+
+    .file button:hover {
+      background: linear-gradient(to bottom, #00ff99, #004422);
+      transform: scale(1.05);
+    }
+
+    /* Retro "NEW" badge */
+    .new-badge {
+      font-size: 14px;
+      color: yellow;
+      font-weight: bold;
+      text-shadow: 1px 1px red;
+      animation: blink 1s infinite alternate;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+  </style>
 </head>
 <body>
-    <h1>Shantry Compressor and Extractor</h1>
-    <div class="container">
-        <div class="file-input-group">
-            <label for="fileInput">Select files to compress:</label>
-            <input type="file" id="fileInput" multiple>
-            <input type="text" name="filename" id="fileName">
-            <button id="compressBtn">Compress to .suck</button>
-        </div>
+  <h1>🚀 FILESUCKER5000 🚀</h1>
+  <marquee behavior="scroll" direction="left" scrollamount="6" style="color:lime; font-weight:bold; margin-bottom:20px;">
+    Welcome to the future of sucking.
+  </marquee>
 
-        <div class="file-input-group">
-            <label for="shantryInput">Select a .suck file to extract:</label>
-            <input type="file" id="shantryInput">
-            <button id="extractBtn">Extract .suck</button>
-        </div>
-
-        <div id="filesystem"></div>
+  <div class="container">
+    <div class="file-input-group">
+      <label for="fileInput">📂 Select files to compress: <span class="new-badge">NEW!</span></label>
+      <input type="file" id="fileInput" multiple>
+      <input type="text" name="filename" id="fileName" placeholder="Enter filename...">
+      <button id="compressBtn">💾 Compress to .suck</button>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-    <script src="shantry.js"></script>
+    <div class="file-input-group">
+      <label for="shantryInput">🗜️ Select a .suck file to extract:</label>
+      <input type="file" id="shantryInput">
+      <button id="extractBtn">📂 Extract .suck</button>
+    </div>
+
+    <div id="filesystem"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <script src="shantry.js"></script>
 </body>
 </html>
