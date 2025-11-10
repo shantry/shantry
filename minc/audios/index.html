@@ -1,945 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Misleading INC Audio Hub</title>
-  <link rel="shortcut icon" href="/images/loco (copy).ico"/>
-  <style>
-    body {
-      font-family: "Inter", Arial, sans-serif;
-      margin: 0;
-      background: #111;
-      color: #eee;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centralized Audio Player</title>
+<style>
+  body {
+    background: #111;
+    color: #eee;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    header {
-      text-align: center;
-      padding: 2rem;
-    }
+  header {
+    text-align: center;
+    padding: 2rem 1rem;
+  }
 
-    header img {
-      width: 100px;
-      display: block;
-      margin: 0 auto;
-    }
+  header h1 {
+    color: #58a6ff;
+    margin-bottom: 0.5rem;
+  }
 
-    header h1 {
-      margin: 0.5rem 0;
-      font-size: 2rem;
-      color: #58a6ff;
-    }
+  #trackList {
+    width: 90%;
+    max-width: 600px;
+    margin-bottom: 2rem;
+  }
 
-    .search-container {
-      margin: 1rem 0;
-      text-align: center;
-    }
+  #trackList button {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    margin: 0.25rem 0;
+    background: #1a1a1a;
+    border: none;
+    color: #eee;
+    text-align: left;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
 
-    input[type="text"] {
-      padding: 0.5rem 1rem;
-      width: 250px;
-      border: none;
-      border-radius: 9999px;
-      background: #222;
-      color: #fff;
-      outline: none;
-      transition: 0.3s;
-    }
+  #trackList button:hover {
+    background: #333;
+  }
 
-    input[type="text"]:focus {
-      width: 300px;
-      background: #333;
-    }
+  #playerContainer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #0d1117;
+    padding: 1rem;
+    border-top: 1px solid #222;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .audio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1rem;
-      width: 90%;
-      max-width: 1000px;
-      padding-bottom: 6rem;
-    }
-
-    .audio-card {
-      background: #1a1a1a;
-      border-radius: 12px;
-      padding: 1rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-      transition: transform 0.2s;
-    }
-
-    .audio-card:hover {
-      transform: translateY(-4px);
-    }
-
-    .audio-card h3 {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-      color: #58a6ff;
-      text-align: center;
-    }
-
-    audio {
-      width: 100%;
-      outline: none;
-    }
-
-    #playerBar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: #0d1117;
-      border-top: 1px solid #222;
-      padding: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    #nowPlaying {
-      font-size: 0.9rem;
-      color: #ccc;
-      flex: 1;
-    }
-
-    #mainPlayer {
-      flex: 3;
-      width: 100%;
-    }
-
-    #backToTop {
-      position: fixed;
-      bottom: 80px;
-      right: 20px;
-      background: #58a6ff;
-      color: #000;
-      border: none;
-      padding: 0.7rem 1rem;
-      border-radius: 9999px;
-      cursor: pointer;
-      display: none;
-      box-shadow: 0 0 10px rgba(88,166,255,0.5);
-    }
-
-    #backToTop:hover {
-      background: #79c0ff;
-    }
-  </style>
+  audio {
+    width: 90%;
+    max-width: 600px;
+  }
+</style>
 </head>
 <body>
-  <header>
-    <img src="/minc/images/LOVE.png" alt="Logo">
-    <h1>Misleading INC Audio Hub</h1>
-    <p>Listen, explore, and vibe — all in one place.</p>
-  </header>
 
-  <div class="search-container">
-    <input type="text" id="search" placeholder="Search audio...">
-  </div>
-
-  <div class="audio-grid" id="audioGrid">
-    <!-- Example card -->
-    <!-- Repeat these dynamically or manually -->
-      <h1>Talent Show 2024 (incomplete) Setlist:</h1>
-      <h3>02 - Just Love</h3>
-      <audio controls>
-        <source src="/minc/audio/08 - Just Love.mp3" type="audio/mpeg">
-      </audio>
-      <br>
-
-      <h3>04 - House that Built Me</h3>
-      <audio controls>
-        <source src="/minc/audio/04 - House that Built Me.mp3" type="audio/mpeg">
-      </audio>
-      <br>
-
-      <h3>05 - I Am Not Okay</h3>
-      <audio controls>
-        <source src="/minc/audio/05 - I Am Not Okay.mp3" type="audio/mpeg">
-      </audio>
-      <br>
-
-      <h3>07 - In My Own Little Corner</h3>
-      <audio controls>
-        <source src="/minc/audio/07 - In My Own Little Corner.mp3" type="audio/mpeg">
-      </audio>
-      <br>
-
-      <h3>08 - This is Halloween</h3>
-      <audio controls>
-        <source src="/minc/audio/02 - This is Halloween.mp3" type="audio/mpeg">
-      </audio>
-      <br>
-
-      <h3>09 - Angel of Music</h3>
-      <audio controls>
-        <source src="/minc/audio/Angel of Music.mp3" type="audio/mpeg">
-      </audio>
-      <br>
-
-      <h3>10 - Thinking Out Loud</h3>
-      <audio controls>
-        <source src="/minc/audio/10 - Thinking Out Loud.mp3" type="audio/mpeg">
-      </audio>
-      <br>
-
-      <h3>11 - Dead Mom</h3>
-      <audio controls>
-        <source src="/minc/audio/11 - Dead Mom.mp3" type="audio/mpeg">
-      </audio>
-      <br>
-
-      <h3>12 - Die with a Smile</h3>
-      <audio controls>
-        <source src="/minc/audio/12 - Die with a Smile.mp3" type="audio/mpeg">
-      </audio>
-      <br>
-
-      <h3>13? - Love Me Like You Do</h3>
-      <audio controls>
-        <source src="/minc/audio/13 - Love Me Like You Do.mp3" type="audio/mpeg">
-      </audio>
-      <br>
-      <br>
-      <br>
-      <br>
-
-      <h1>main audios:</h1>
-
-      <h3>runch2.mp3</h3>
-<audio controls>
-<source src="/minc/audio/runch2.wav" type="audio/mpeg">
-</audio>
-
-      <h3>runch1.mp3</h3>
-<audio controls>
-<source src="/minc/audio/runch1.wav" type="audio/mpeg">
-</audio>
-
-      <h3>Beatititiututututuruur-output.mp3</h3>
-<audio controls>
-<source src="/minc/audio/Beatititiututututuruur-output.mp3" type="audio/mpeg">
-</audio>
-
-<h3>beatmemp3.mp3</h3>
-<audio controls>
-<source src="/minc/audio/aeae.mp3" type="audio/mpeg">
-</audio>
-
-<h3>Sh-Boob.mp3</h3>
-<audio controls>
-<source src="/minc/audio/Sh-Boob.mp3" type="audio/mpeg">
-</audio>
-
-<h3>POV: Papa Whiskey maons in your ear</h3>
-<audio controls>
-<source src="/minc/audio/1.mp3" type="audio/mpeg">
-</audio>
-
-<h3>America Died</h3>
-<audio controls>
-<source src="/minc/audio/AmericanDied.mp3" type="audio/mpeg">
-</audio>
-
-<h3>Papa Whiskey Died 14:00 4/29/22.</h3>
-<audio controls>
-<source src="/minc/audio/ThisWILLBeTheDayThatIDie.mp3" type="audio/mpeg">
-</audio>
-
-<h3>I didn't know what to name this.</h3>
-<audio controls>
-<source src="/minc/audio/MrHolo.mp3" type="audio/mpeg">
-</audio>
-
-<h3>Alkaline Pie</h3>
-<audio controls>
-<source src="/minc/audio/AlkalinePie.mp3" type="audio/mpeg">
-</audio>
-
-<h3>Carry on my Wayward Sin</h3>
-<audio controls>
-<source src="/minc/audio/CarryOnMyWaywardSin.mp3" type="audio/mpeg">
-</audio>
-
-<h3>Hotel Carcas</h3>
-<audio controls>
-<source src="/minc/audio/HotelCarcas.mp3" type="audio/mpeg">
-</audio>
-
-<h3>We Are Blowing Up</h3>
-<audio controls>
-<source src="/minc/audio/WeAreBlowingUp.mp3" type="audio/mpeg">
-</audio>
-
-<h3>Exit Sadman</h3>
-<audio controls>
-<source src="/minc/audio/ExitSadman.mp3" type="audio/mpeg">
-</audio>
-
-<h3>Metalloids: Two</h3>
-<h6 class="sub">NOT AN INSTRUMENTAL the intro is vey long even after cut.</h6>
-<audio controls>
-<source src="/minc/audio/metalloids_ two.mp3" type="audio/mpeg">
-</audio>
-
-<h3>Seat Home Alama</h3>
-<audio controls>
-<source src="/minc/audio/SeatHomeAlama.mp3" type="audio/mpeg">
-</audio>
-
-<h3>Bohemian Crapsody.mp3</h3>
-<audio controls>
-<source src="/minc/audio/BohemianCrapsody.mp3" type="audio/mpeg">
-</audio>
-
-<h3>8 Bit Conversation.mp3</h3>
-<audio controls>
-<source src="/minc/audio/8BitConvo.mp3" type="audio/mpeg">
-</audio>
-
-<h3>AgonyForSatan.mp3</h3>
-<audio controls>
-<source src="/minc/audio/AgonyForSatan.mp3" type="audio/mpeg">
-</audio>
-
-<h4>Do not ask why the Gangnam Biles are different lengths.</h4>
-
-<h3>GangnamBile Except More Audible.mp3</h3>
-<audio controls>
-<source src="/minc/audio/GangnamBileButMoreAudible.mp3" type="audio/mpeg">
-</audio>
-
-<h3>GangnamBile.mp3</h3>
-<audio controls>
-<source src="/minc/audio/GangnamBile.mp3" type="audio/mpeg">
-</audio>
-
-<h3>pokeymongov3.mp3</h3>
-<audio controls>
-<source src="/minc/audio/pokeymongov3.mp3" type="audio/mpeg">
-</audio>
-
-<h3>Pokey Mango.wav</h3>
-<audio controls>
-<source src="/minc/audio/pokeymango.wav" type="audio/mpeg">
-</audio>
-
-<h3>Bowling Mic.mp3</h3>
-<audio controls>
-<source src="/minc/audio/BowlingMic.mp3" type="audio/mpeg">
-</audio>
-
-<h3>burnsauce.mp3</h3>
-<audio controls>
-<source src="/minc/audio/Burnplz.mp3" type="audio/mpeg">
-</audio>
-
-<h3>Walter Hardwel Shady.mp3</h3>
-<audio controls>
-<source src="/minc/audio/Walter Hardwel Shady.mp3" type="audio/mpeg">
-</audio>
-
-<h3>Grill</h3>
-<audio controls>
-<source src="/minc/audio/Grill.mp3" type="audio/mpeg">
-</audio>
-
-<h3>K(KK)ongo Music</h3>
-<audio controls>
-<source src="/minc/audio/NiggerDoesTheDougie.mp3" type="audio/mpeg">
-</audio>
-
-<h3>Lets Get Retarded</h3>
-<audio controls>
-<source src="/minc/audio/LetsGetRetarded.mp3" type="audio/mpeg">
-</audio>
-
-<h3>Satan's Calling!</h3>
-<audio controls>
-<source src="/minc/audio/TheElderGods.mp3" type="audio/mpeg">
-</audio>
-
-<h3>kidnapping but everyone explodes.mp3</h3>
-<audio controls>
-<source src="/minc/audio/kidnapping but everyone explodes.mp3" type="audio/mpeg">
-</audio>
-
-<h3>Like a Wise Man Once Said...</h3>
-<audio controls>
-<source src="/minc/audio/WiseManGivingCPR.mp3" type="audio/mpeg">
-</audio>
-
-<h3>gardener of legs.mp3</h3>
-<audio controls>
-<source src="/minc/audio/28 - Misleading INC - gardener of legs.mp3" type="audio/mpeg">
-</audio>
-
-<h3>attentionteachers.mp3</h3>
-<audio controls>
-<source src="/minc/audio/29 - Misleading INC - attentionteachers.mp3" type="audio/mpeg">
-</audio>
-
-<h3>meat.mp3</h3>
-<audio controls>
-<source src="/minc/audio/29 - misleading - meat.mp3" type="audio/mpeg">
-</audio>
-
-<h3>sad alamwham.mp3</h3>
-<audio controls>
-<source src="/minc/audio/27 - Misleading INC - sad alamwham.mp3" type="audio/mpeg">
-</audio>
-
-<h3>aluminumcans.mp3</h3>
-<audio controls>
-<source src="/minc/audio/27 - misleading - aluminumcans.mp3" type="audio/mpeg">
-</audio>
-
-<h3>ClapYoyr-HaHjjjuujjkjikijik.mp3</h3>
-<audio controls>
-<source src="/minc/audio/26 - Misleading INC - ClapYoyr-HaHjjjuujjkjikijik.mp3" type="audio/mpeg">
-</audio>
-
-<h3>MYNINJA.mp3</h3>
-<audio controls>
-<source src="/minc/audio/26 - misleading - MYNINJA.mp3" type="audio/mpeg">
-</audio>
-
-<h3>MENENGA.mp3</h3>
-<audio controls>
-<source src="/minc/audio/25 - misleading - MENENGA.mp3" type="audio/mpeg">
-</audio>
-
-<h3>the better saucy two of us.mp3</h3>
-<audio controls>
-<source src="/minc/audio/24 - misleading - the better saucy two of us.mp3" type="audio/mpeg">
-</audio>
-
-<h3>UsOfTwoTheJust.mp3</h3>
-<audio controls>
-<source src="/minc/audio/21 - misleading - UsOfTwoTheJust.mp3" type="audio/mpeg">
-</audio>
-
-<h3>LikeADumpsterFire.mp3</h3>
-<audio controls>
-<source src="/minc/audio/20 - misleading - LikeADumpsterFire.mp3" type="audio/mpeg">
-</audio>
-
-<h3>FuckerDamnYouFucking.mp3</h3>
-<audio controls>
-<source src="/minc/audio/20 - misleading - FuckerDamnYouFucking.mp3" type="audio/mpeg">
-</audio>
-
-<h3>TheSaucyTwoOfUs.mp3</h3>
-<audio controls>
-<source src="/minc/audio/19 - misleading - TheSaucyTwoOfUs.mp3" type="audio/mpeg">
-</audio>
-
-<h3>slowdescentintomadness.mp3</h3>
-<audio controls>
-<source src="/minc/audio/19 - misleading - slowdescentintomadness.mp3" type="audio/mpeg">
-</audio>
-
-<h3>blockygameboomboom.mp3</h3>
-<audio controls>
-<source src="/minc/audio/18 - misleading - blockygameboomboom.mp3" type="audio/mpeg">
-</audio>
-
-<h3>hey babayyyy.mp3</h3>
-<audio controls>
-<source src="/minc/audio/17 - misleading - hey babayyyy.mp3" type="audio/mpeg">
-</audio>
-
-<h3>Mr. Bomb.mp3</h3>
-<audio controls>
-<source src="/minc/audio/16 - misleading - Mr. Bomb.mp3" type="audio/mpeg">
-</audio>
-
-<h1>Christmas Carol</h1>
-<audio controls>
-<source src="/minc/audio/16 - misleading - Christmas Carol.mp3" type="audio/mpeg">
-</audio>
-
-<h1>GeniousofUndertail</h1>
-<audio controls>
-<source src="/minc/audio/15 - misleading - geniousofundertale.mp3" type="audio/mpeg">
-</audio>
-
-<h1>E</h1>
-<audio controls>
-<source src="/minc/audio/15 - misleading - E.mp3" type="audio/mpeg">
-</audio>
-
-<h3>vagfsgidfgoisdgopigosdfg.mp3</h3>
-<audio controls>
-<source src="/minc/audio/14 - misleading - vagfsgidfgoisdgopigosdfg.mp3" type="audio/mpeg">
-</audio>
-
-<h3>tthe class when the teacher leavesmp3.mp3</h3>
-<audio controls>
-<source src="/minc/audio/14 - misleading - tthe class when the teacher leavesmp3.mp3" type="audio/mpeg">
-</audio>
-
-<h3>cough.mp3</h3>
-<audio controls>
-<source src="/minc/audio/13 - misleading - cough.mp3" type="audio/mpeg">
-</audio>
-
-<h3>PREPAREYOURTOWERS.mp3</h3>
-<audio controls>
-<source src="/minc/audio/12 - misleading - PREPAREYOURTOWERS.mp3" type="audio/mpeg">
-</audio>
-
-<h3>AlloyCans.mp3</h3>
-<audio controls>
-<source src="/minc/audio/12 - misleading - alloycans.mp3" type="audio/mpeg">
-</audio>
-
-<h3>UsOfTwoTheHust</h3>
-<audio controls>
-<source src="/minc/audio/11 - misleading - UsOfTwoTheHust.mp3" type="audio/mpeg">
-</audio>
-
-<h3>turtlebeach.mp3</h3>
-<audio controls>
-<source src="/minc/audio/11 - misleading - turtlebeach.mp3" type="audio/mpeg">
-</audio>
-
-<h3>SomethingBetter.mp3</h3>
-<audio controls>
-<source src="/minc/audio/10 - misleading - SomethingBetter.mp3" type="audio/mpeg">
-</audio>
-
-<h3>BusyClsas.mp3</h3>
-<audio controls>
-<source src="/minc/audio/10 - misleading - BusyClsas.mp3" type="audio/mpeg">
-</audio>
-
-<h3>JustTheTwoSlimeShadys.mp3</h3>
-<audio controls>
-<source src="/minc/audio/09 - misleading - JustTheTwoSlimeShadys.mp3" type="audio/mpeg">
-</audio>
-
-<h3>implodingpain.mp3</h3>
-<audio controls>
-<source src="/minc/audio/09 - misleading - implodingpain.mp3" type="audio/mpeg">
-</audio>
-
-<h3>eating babirs.mp3</h3>
-<audio controls>
-<source src="/minc/audio/08 - misleading - eating babirs.mp3" type="audio/mpeg">
-</audio>
-
-<h3>crar.mp3</h3>
-<audio controls>
-<source src="/minc/audio/08 - misleading - crar.mp3" type="audio/mpeg">
-</audio>
-
-<h3>ScreamingOfTheDamnedChildren.mp3</h3>
-<audio controls>
-<source src="/minc/audio/07 - misleading - ScreamingOfTheDamnedChildren.mp3" type="audio/mpeg">
-</audio>
-
-<h3>TheChristmasOfHarming.mp3</h3>
-<audio controls>
-<source src="/minc/audio/06 - misleading - TheChristmasOfHarming.mp3" type="audio/mpeg">
-</audio>
-
-<h3>Uguuguhg.mp3</h3>
-<audio controls>
-<source src="/minc/audio/05 - misleading - Uguuguhg.mp3" type="audio/mpeg">
-</audio>
-
-<h3>speedrunningclass.mp3</h3>
-<audio controls>
-<source src="/minc/audio/05 - misleading - speedrunningclass.mp3" type="audio/mpeg">
-</audio>
-
-<h3>ausio mas.mp3</h3>
-<audio controls>
-<source src="/minc/audio/04 - misleading - ausio mas.mp3" type="audio/mpeg">
-</audio>
-
-<h3>JUUUUUUST THE TWOO OF UUUUUUUSSSSS.mp3</h3>
-<audio controls>
-<source src="/minc/audio/03 - misleading - JUUUUUUST THE TWOO OF UUUUUUUSSSSS.mp3" type="audio/mpeg">
-</audio>
-
-<h3>iReady.mp3</h3>
-<audio controls>
-<source src="/minc/audio/03 - misleading - iReady.mp3" type="audio/mpeg">
-</audio>
-
-<h3>ascared.mp3</h3>
-<audio controls>
-<source src="/minc/audio/02 - misleading - ascared.mp3" type="audio/mpeg">
-</audio>
-
-<h3>Shash_Coom.mp3</h3>
-<audio controls>
-<source src="/minc/audio/01 - misleading - Shash-Coom.mp3" type="audio/mpeg">
-</audio>
-
-<h3>NidKapping.mp3</h3>
-<audio controls>
-<source src="/minc/audio/NidKapping.mp3" type="audio/mpeg">
-</audio>
-
-<h3>lant.mp3</h3>
-<audio controls>
-<source src="/minc/audio/lant.mp3" type="audio/mpeg">
-</audio>
-
-<h3>revolting door.mp3</h3>
-<audio controls>
-<source src="/minc/audio/revolting door.mp3" type="audio/mpeg">
-</audio>
-
-<h3>kidnapping.mp3</h3>
-<audio controls>
-<source src="/minc/audio/kidnapping.mp3" type="audio/mpeg">
-</audio>
-
-<h3>the price isnt.mp3 (VOLUME WARNING!!!)</h3>
-<audio controls>
-<source src="/minc/audio/the price isnt.mp3" type="audio/mpeg">
-</audio>
-
-<h3>Retarded Schizophrenia.mp3</h3>
-<audio controls>
-<source src="/minc/audio/RetardedSchizophrenia.mp3" type="audio/mpeg">
-</audio>
-
-<h3>Winders.mp3</h3>
-<audio controls>
-<source src="/minc/audio/Winders.mp3" type="audio/mpeg">
-</audio>
-
-<h3>Gust The Two of Us.mp3</h3>
-<audio controls>
-<source src="/minc/audio/GustTheTwoOfUs.mp3" type="audio/mpeg">
-</audio>
-
-<h3>The Price is Wrong.mp3</h3>
-<audio controls>
-<source src="/minc/audio/ThePriceisWrong.mp3" type="audio/mpeg">
-</audio>
-
-<h3>Uguuugguguguugugugguhg.mp3</h3>
-<audio controls>
-<source src="/minc/audio/Uguuugguguguugugugguhg.mp3" type="audio/mpeg">
-</audio>
-
-<h3>the better saucy two of us.mp3</h3>
-<audio controls>
-<source src="/minc/audio/the better saucy two of us.mp3" type="audio/mpeg">
-</audio>
-
-<h3>shitting in the outlet</h3>
-<audio controls>
-<source src="/minc/audio/EnglishNotMyFirstLanguage.mp3" type="audio/mpeg">
-</audio>
-
-<h3>sugar sugarersrartr.mp3</h3>
-<audio controls>
-<source src="/minc/audio/sugar sugarersrartr.mp3" type="audio/mpeg">
-</audio>
-
-<h3>oldmon.mp3</h3>
-<audio controls>
-<source src="/minc/audio/oldmon.mp3" type="audio/mpeg">
-</audio>
-
-<h3>oh.mp3</h3>
-<audio controls>
-<source src="/minc/audio/oh.mp3" type="audio/mpeg">
-</audio>
-
-<h3>newearbuds.mp3</h3>
-<audio controls>
-<source src="/minc/audio/newearbuds.mp3" type="audio/mpeg">
-</audio>
-
-<h3>miss the aluminumcans.mp3</h3>
-<audio controls>
-<source src="/minc/audio/miss the aluminumcans.mp3" type="audio/mpeg">
-</audio>
-
-<h3>lastchrysler.mp3</h3>
-<audio controls>
-<source src="/minc/audio/lastchrysler.mp3" type="audio/mpeg">
-</audio>
-
-<h3>gimmethemeaaeaeaeaeeat.mp3</h3>
-<audio controls>
-<source src="/minc/audio/loop.mp3" type="audio/mpeg">
-</audio>
-
-<h3>last.mp3</h3>
-<audio controls>
-<source src="/minc/audio/last.mp3" type="audio/mpeg">
-</audio>
-
-<h3>JoustTheTwoOfUs.mp3</h3>
-<audio controls>
-<source src="/minc/audio/JoustTheTwoOfUs.mp3" type="audio/mpeg">
-</audio>
-
-<h3>it wont work.mp3</h3>
-<audio controls>
-<source src="/minc/audio/it wont work.mp3" type="audio/mpeg">
-</audio>
-
-<h3>I'm gonna brown.mp3</h3>
-<audio controls>
-<source src="/minc/audio/I'm gonna brown.mp3" type="audio/mpeg">
-</audio>
-
-<h3>heavenly background music.mp3</h3>
-<audio controls>
-<source src="/minc/audio/heavenly background music.mp3" type="audio/mpeg">
-</audio>
-
-<h3>geniousofvagina.mp3</h3>
-<audio controls>
-<source src="/minc/audio/geniousofvagina.mp3" type="audio/mpeg">
-</audio>
-
-<h3>gardening of what the hell.mp3</h3>
-<audio controls>
-<source src="/minc/audio/gardening of what the hell.mp3" type="audio/mpeg">
-</audio>
-
-<h3>extremly bipolar.mp3</h3>
-<audio controls>
-<source src="/minc/audio/extremly bipolar.mp3" type="audio/mpeg">
-</audio>
-
-<h3>constipain.mp3</h3>
-<audio controls>
-<source src="/minc/audio/constipain.mp3" type="audio/mpeg">
-</audio>
-
-<h3>coke coke.mp3</h3>
-<audio controls>
-<source src="/minc/audio/coke coke.mp3" type="audio/mpeg">
-</audio>
-
-<h3>clap your gardening of american pussy.mp3</h3>
-<audio controls>
-<source src="/minc/audio/clap your gardening of american pussy.mp3" type="audio/mpeg">
-</audio>
-
-<h3>bipolar.mp3</h3>
-<audio controls>
-<source src="/minc/audio/bipolar.mp3" type="audio/mpeg">
-</audio>
-
-<h3>agushs.mp3</h3>
-<audio controls>
-<source src="/minc/audio/agushs.mp3" type="audio/mpeg">
-</audio>
-
-<h3>sad alam.mp3</h3>
-<audio controls>
-<source src="/minc/audio/24 - Misleading INC - sad alam.mp3" type="audio/mpeg">
-</audio>
-
-<h3>Genious of LoveGhegrehrgehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhe.mp3</h3>
-<audio controls>
-<source src="/minc/audio/23 - Misleading INC - Genius of Loveghegerfheererheghfhegrhegrhegrehgrerghegrhegrhegrhegrhegrehgrhegrhegrhergehrgheregrhehrgehrgehrhergerhghgerghergherhgerhgergherhgerghergehrehrgeghrgeghrgehrgehrgerhegrhegrhegrhegrg.mp3" type="audio/mpeg">
-</audio>
-
-<h3>Kaleb when Elanor Rigby.mp3</h3>
-<audio controls>
-<source src="/minc/audio/22 - Misleading INC - Kaleb when Eleanor Rigby.mp3" type="audio/mpeg">
-</audio>
-
-<h3>21st century humor.mp3</h3>
-<audio controls>
-<source src="/minc/audio/30 - Misleading INC - 21st century humor.mp3" type="audio/mpeg">
-</audio>
-
-<h3>please no.mp3</h3>
-<audio controls>
-<source src="/minc/audio/21 - Misleading INC - please no.mp3" type="audio/mpeg">
-</audio>
-
-<h3>Kaleb when rage.mp3</h3>
-<audio controls>
-<source src="/minc/audio/20 - Misleading INC - Kaleb when rage.mp3" type="audio/mpeg">
-</audio>
-
-<h3>constipation.mp3</h3>
-<audio controls>
-<source src="/minc/audio/19 - Misleading INC - constipation.mp3" type="audio/mpeg">
-</audio>
-
-<h3>left ear.mp3</h3>
-<audio controls>
-<source src="/minc/audio/18 - Misleading INC - left ear.mp3" type="audio/mpeg">
-</audio>
-
-<h3>its just a burning memory.mp3</h3>
-<audio controls>
-<source src="/minc/audio/17 - Misleading INC - Its just a burning memory.mp3" type="audio/mpeg">
-</audio>
-
-<h3>im not sure.mp3</h3>
-<audio controls>
-<source src="/minc/audio/16 - Misleading INC - im not sure.mp3" type="audio/mpeg">
-</audio>
-
-<h3>i yelled and broke the space time continuiom.mp3</h3>
-<audio controls>
-<source src="/minc/audio/15 - Misleading INC - i yelled and broke the space time continuiom.mp3" type="audio/mpeg">
-</audio>
-
-<h3>microwaving gas.mp3</h3>
-<audio controls>
-<source src="/minc/audio/14 - Misleading INC - microwaving gas.mp3" type="audio/mpeg">
-</audio>
-
-<h3>DO NOT USE.mp3</h3>
-<audio controls>
-<source src="/minc/audio/12 - Misleading INC - DO NOT USE.mp3" type="audio/mpeg">
-</audio>
-
-<h3>pain.mp3</h3>
-<audio controls>
-<source src="/minc/audio/11 - Misleading INC - pain.mp3" type="audio/mpeg">
-</audio>
-
-<h3>SadWindowsXP.mp3</h3>
-<audio controls>
-<source src="/minc/audio/10 - Misleading INC - SadWindowsXP.mp3" type="audio/mpeg">
-</audio>
-
-<h3>BreadAndButterChips.mp3</h3>
-<audio controls>
-<source src="/minc/audio/09 - Misleading INC - BreadAndButterChips.mp3" type="audio/mpeg">
-</audio>
-
-<h3>amog.mp3</h3>
-<audio controls>
-<source src="/minc/audio/08 - Misleading INC - amog.mp3" type="audio/mpeg">
-</audio>
-
-<h3>robust downsyndrome jr screaming.mp3</h3>
-<audio controls>
-<source src="/minc/audio/07 - Misleading INC - robust downsyndrome jr screaming.mp3" type="audio/mpeg">
-</audio>
-
-<h3>dababy suge yea yea lyrics.mp3</h3>
-<audio controls>
-<source src="/minc/audio/06 - Misleading INC - Dababy Suge Yea Yea lyrics.mp3" type="audio/mpeg">
-</audio>
-
-<h3>icanttakeitanymore.mp3</h3>
-<audio controls>
-<source src="/minc/audio/05 - Misleading INC - icanttakeitanymore.mp3" type="audio/mpeg">
-</audio>
-
-<h3>crying dleeemon.mp3</h3>
-<audio controls>
-<source src="/minc/audio/04 - Misleading INC - CryingDleeemon.mp3" type="audio/mpeg">
-</audio>
-
-<h3>awahwahcan boy.mp3</h3>
-<audio controls>
-<source src="/minc/audio/03 - Misleading INC - awahwahcan boy.mp3" type="audio/mpeg">
-</audio>
-<h3>sad genioud of love.mp3</h3>
-<audio controls>
-<source src="/minc/audio/01 - Misleading INC - sad genioud of love.mp3" type="audio/mpeg">
-</audio>
-
-<h3>paper.mp3</h3>
-<audio controls>
-<source src="/minc/audio/02 - Misleading INC - paper.mp3" type="audio/mpeg">
-</audio>
-
-<h3>peeneater3000.mp3</h3>
-<audio controls>
-<source src="/minc/audio/peeneater3000.mp3" type="audio/mpeg">
-</audio>
-
-<h3 class="dis">ShouldveKnownBetter.mp3</h3>
-<audio controls>
-<source src="/minc/audio/ShouldveKnownBetter.mp3" type="audio/mpeg">
-</audio>
-
-<h3>MattsGreatSing.mp3</h3>
-<audio controls>
-<source src="/minc/audio/MattsGreatSing.mp3" type="audio/mpeg">
-</audio>
-
-<h3>pigbiotech.mp3</h3>
-<audio controls>
-<source src="/minc/audio/PigBioTech.mp3" type="audio/mpeg">
-</audio>
-
-<h3>pincushionman.mp3</h3>
-<audio controls>
-<source src="/minc/audio/pincushionman.mp3" type="audio/mpeg">
-</audio>
-
-<h3>pinto man.mp3</h3>
-<audio controls>
-<source src="/minc/audio/pinto.mp3" type="audio/mpeg">
-</audio>
-    
-
-    <!-- Add the rest here, same structure -->
-  </div>
-
-  <div id="playerBar">
-    <div id="nowPlaying">Nothing playing</div>
-    <audio id="mainPlayer" controls></audio>
-  </div>
-
-  <button id="backToTop">↑ Top</button>
-
-  <script>
-    const searchInput = document.getElementById('search');
-    const cards = document.querySelectorAll('.audio-card');
-    const mainPlayer = document.getElementById('mainPlayer');
-    const nowPlaying = document.getElementById('nowPlaying');
-    const backToTop = document.getElementById('backToTop');
-
-    // Filter audios
-    searchInput.addEventListener('input', e => {
-      const term = e.target.value.toLowerCase();
-      cards.forEach(card => {
-        card.style.display = card.textContent.toLowerCase().includes(term) ? 'block' : 'none';
-      });
+<header>
+  <h1>Misleading INC Audio Hub</h1>
+  <p>Click a track to play in the central player</p>
+</header>
+
+<div id="trackList">
+  <button data-src="/minc/audio/08 - Just Love.mp3">Just Love</button>
+  <button data-src="/minc/audio/04 - House that Built Me.mp3">House that Built Me</button>
+  <button data-src="/minc/audio/05 - I Am Not Okay.mp3">I Am Not Okay</button>
+  <button data-src="/minc/audio/07 - In My Own Little Corner.mp3">In My Own Little Corner</button>
+  <button data-src="/minc/audio/02 - This is Halloween.mp3">This is Halloween</button>
+  <button data-src="/minc/audio/Angel of Music.mp3">Angel of Music</button>
+  <button data-src="/minc/audio/10 - Thinking Out Loud.mp3">Thinking Out Loud</button>
+  <button data-src="/minc/audio/11 - Dead Mom.mp3">Dead Mom</button>
+  <button data-src="/minc/audio/12 - Die with a Smile.mp3">Die with a Smile</button>
+  <button data-src="/minc/audio/13 - Love Me Like You Do.mp3">Love Me Like You Do</button>
+  
+  <button data-src="/minc/audio/runch2.wav">runch2</button>
+  <button data-src="/minc/audio/runch1.wav">runch1</button>
+  <button data-src="/minc/audio/Beatititiututututuruur-output.mp3">Beatititiututututuruur-output</button>
+  <button data-src="/minc/audio/aeae.mp3">beatmemp3</button>
+  <button data-src="/minc/audio/Sh-Boob.mp3">Sh-Boob</button>
+  <button data-src="/minc/audio/1.mp3">POV: Papa Whiskey maons in your ear</button>
+  <button data-src="/minc/audio/AmericanDied.mp3">America Died</button>
+  <button data-src="/minc/audio/ThisWILLBeTheDayThatIDie.mp3">Papa Whiskey Died 14:00 4/29/22</button>
+  <button data-src="/minc/audio/MrHolo.mp3">I didn't know what to name this</button>
+  <button data-src="/minc/audio/AlkalinePie.mp3">Alkaline Pie</button>
+  <button data-src="/minc/audio/CarryOnMyWaywardSin.mp3">Carry on my Wayward Sin</button>
+  <button data-src="/minc/audio/HotelCarcas.mp3">Hotel Carcas</button>
+  <button data-src="/minc/audio/WeAreBlowingUp.mp3">We Are Blowing Up</button>
+  <button data-src="/minc/audio/ExitSadman.mp3">Exit Sadman</button>
+  <button data-src="/minc/audio/metalloids_ two.mp3">Metalloids: Two</button>
+  <button data-src="/minc/audio/SeatHomeAlama.mp3">Seat Home Alama</button>
+  <button data-src="/minc/audio/BohemianCrapsody.mp3">Bohemian Crapsody</button>
+  <button data-src="/minc/audio/8BitConvo.mp3">8 Bit Conversation</button>
+  <button data-src="/minc/audio/AgonyForSatan.mp3">AgonyForSatan</button>
+  
+  <button data-src="/minc/audio/GangnamBileButMoreAudible.mp3">GangnamBile Except More Audible</button>
+  <button data-src="/minc/audio/GangnamBile.mp3">GangnamBile</button>
+  <button data-src="/minc/audio/pokeymongov3.mp3">pokeymongov3</button>
+  <button data-src="/minc/audio/pokeymango.wav">Pokey Mango</button>
+  <button data-src="/minc/audio/BowlingMic.mp3">Bowling Mic</button>
+  <button data-src="/minc/audio/Burnplz.mp3">burnsauce</button>
+  <button data-src="/minc/audio/Walter Hardwel Shady.mp3">Walter Hardwel Shady</button>
+  <button data-src="/minc/audio/Grill.mp3">Grill</button>
+  <button data-src="/minc/audio/NiggerDoesTheDougie.mp3">K(KK)ongo Music</button>
+  <button data-src="/minc/audio/LetsGetRetarded.mp3">Lets Get Retarded</button>
+  <button data-src="/minc/audio/TheElderGods.mp3">Satan's Calling!</button>
+  <button data-src="/minc/audio/kidnapping but everyone explodes.mp3">kidnapping but everyone explodes</button>
+  <button data-src="/minc/audio/WiseManGivingCPR.mp3">Like a Wise Man Once Said...</button>
+  <button data-src="/minc/audio/28 - Misleading INC - gardener of legs.mp3">gardener of legs</button>
+  <button data-src="/minc/audio/29 - Misleading INC - attentionteachers.mp3">attentionteachers</button>
+  <button data-src="/minc/audio/29 - misleading - meat.mp3">meat</button>
+  <button data-src="/minc/audio/27 - Misleading INC - sad alamwham.mp3">sad alamwham</button>
+  <button data-src="/minc/audio/27 - misleading - aluminumcans.mp3">aluminumcans</button>
+  <button data-src="/minc/audio/26 - Misleading INC - ClapYoyr-HaHjjjuujjkjikijik.mp3">ClapYoyr-HaHjjjuujjkjikijik</button>
+  <button data-src="/minc/audio/26 - misleading - MYNINJA.mp3">MYNINJA</button>
+  <button data-src="/minc/audio/25 - misleading - MENENGA.mp3">MENENGA</button>
+  <button data-src="/minc/audio/24 - misleading - the better saucy two of us.mp3">the better saucy two of us</button>
+  <button data-src="/minc/audio/21 - misleading - UsOfTwoTheJust.mp3">UsOfTwoTheJust</button>
+  <button data-src="/minc/audio/20 - misleading - LikeADumpsterFire.mp3">LikeADumpsterFire</button>
+  <button data-src="/minc/audio/20 - misleading - FuckerDamnYouFucking.mp3">FuckerDamnYouFucking</button>
+  <button data-src="/minc/audio/19 - misleading - TheSaucyTwoOfUs.mp3">TheSaucyTwoOfUs</button>
+  <button data-src="/minc/audio/19 - misleading - slowdescentintomadness.mp3">slowdescentintomadness</button>
+  <button data-src="/minc/audio/18 - misleading - blockygameboomboom.mp3">blockygameboomboom</button>
+  <button data-src="/minc/audio/17 - misleading - hey babayyyy.mp3">hey babayyyy</button>
+  <button data-src="/minc/audio/16 - misleading - Mr. Bomb.mp3">Mr. Bomb</button>
+  <button data-src="/minc/audio/16 - misleading - Christmas Carol.mp3">Christmas Carol</button>
+  <button data-src="/minc/audio/15 - misleading - geniousofundertale.mp3">GeniousofUndertail</button>
+  <button data-src="/minc/audio/15 - misleading - E.mp3">E</button>
+  <button data-src="/minc/audio/14 - misleading - vagfsgidfgoisdgopigosdfg.mp3">vagfsgidfgoisdgopigosdfg</button>
+  <button data-src="/minc/audio/14 - misleading - tthe class when the teacher leavesmp3.mp3">tthe class when the teacher leaves</button>
+  <button data-src="/minc/audio/13 - misleading - cough.mp3">cough</button>
+  <button data-src="/minc/audio/12 - misleading - PREPAREYOURTOWERS.mp3">PREPAREYOURTOWERS</button>
+  <button data-src="/minc/audio/12 - misleading - alloycans.mp3">AlloyCans</button>
+  <button data-src="/minc/audio/11 - misleading - UsOfTwoTheHust.mp3">UsOfTwoTheHust</button>
+  <button data-src="/minc/audio/11 - misleading - turtlebeach.mp3">turtlebeach</button>
+  <button data-src="/minc/audio/10 - misleading - SomethingBetter.mp3">SomethingBetter</button>
+  <button data-src="/minc/audio/10 - misleading - BusyClsas.mp3">BusyClsas</button>
+  <button data-src="/minc/audio/09 - misleading - JustTheTwoSlimeShadys.mp3">JustTheTwoSlimeShadys</button>
+  <button data-src="/minc/audio/09 - misleading - implodingpain.mp3">implodingpain</button>
+  <button data-src="/minc/audio/08 - misleading - eating babirs.mp3">eating babirs</button>
+  <button data-src="/minc/audio/08 - misleading - crar.mp3">crar</button>
+  <button data-src="/minc/audio/07 - misleading - ScreamingOfTheDamnedChildren.mp3">ScreamingOfTheDamnedChildren</button>
+  <button data-src="/minc/audio/06 - misleading - TheChristmasOfHarming.mp3">TheChristmasOfHarming</button>
+  <button data-src="/minc/audio/05 - misleading - Uguuguhg.mp3">Uguuguhg</button>
+  <button data-src="/minc/audio/05 - misleading - speedrunningclass.mp3">speedrunningclass</button>
+  <button data-src="/minc/audio/04 - misleading - ausio mas.mp3">ausio mas</button>
+  <button data-src="/minc/audio/03 - misleading - JUUUUUUST THE TWOO OF UUUUUUUSSSSS.mp3">JUUUUUUST THE TWOO OF UUUUUUUSSSSS</button>
+  <button data-src="/minc/audio/03 - misleading - iReady.mp3">iReady</button>
+  <button data-src="/minc/audio/02 - misleading - ascared.mp3">ascared</button>
+  <button data-src="/minc/audio/01 - misleading - Shash-Coom.mp3">Shash_Coom</button>
+  <button data-src="/minc/audio/NidKapping.mp3">NidKapping</button>
+  <button data-src="/minc/audio/lant.mp3">lant</button>
+  <button data-src="/minc/audio/revolting door.mp3">revolting door</button>
+  <button data-src="/minc/audio/kidnapping.mp3">kidnapping</button>
+  <button data-src="/minc/audio/the price isnt.mp3">the price isnt (VOLUME WARNING)</button>
+  <button data-src="/minc/audio/RetardedSchizophrenia.mp3">Retarded Schizophrenia</button>
+  <button data-src="/minc/audio/Winders.mp3">Winders</button>
+  <button data-src="/minc/audio/GustTheTwoOfUs.mp3">Gust The Two of Us</button>
+  <button data-src="/minc/audio/ThePriceisWrong.mp3">The Price is Wrong</button>
+  <button data-src="/minc/audio/Uguuugguguguugugugguhg.mp3">Uguuugguguguugugugguhg</button>
+  <button data-src="/minc/audio/the better saucy two of us.mp3">the better saucy two of us</button>
+  <button data-src="/minc/audio/EnglishNotMyFirstLanguage.mp3">shitting in the outlet</button>
+  <button data-src="/minc/audio/sugar sugarersrartr.mp3">sugar sugarersrartr</button>
+  <button data-src="/minc/audio/oldmon.mp3">oldmon</button>
+  <button data-src="/minc/audio/oh.mp3">oh</button>
+  <button data-src="/minc/audio/newearbuds.mp3">newearbuds</button>
+  <button data-src="/minc/audio/miss the aluminumcans.mp3">miss the aluminumcans</button>
+  <button data-src="/minc/audio/lastchrysler.mp3">lastchrysler</button>
+  <button data-src="/minc/audio/loop.mp3">gimmethemeaaeaeaeaeeat</button>
+  <button data-src="/minc/audio/last.mp3">last</button>
+  <button data-src="/minc/audio/JoustTheTwoOfUs.mp3">JoustTheTwoOfUs</button>
+  <button data-src="/minc/audio/it wont work.mp3">it wont work</button>
+  <button data-src="/minc/audio/I'm gonna brown.mp3">I'm gonna brown</button>
+  <button data-src="/minc/audio/heavenly background music.mp3">heavenly background music</button>
+  <button data-src="/minc/audio/geniousofvagina.mp3">geniousofvagina</button>
+  <button data-src="/minc/audio/gardening of what the hell.mp3">gardening of what the hell</button>
+  <button data-src="/minc/audio/extremly bipolar.mp3">extremly bipolar</button>
+  <button data-src="/minc/audio/constipain.mp3">constipain</button>
+  <button data-src="/minc/audio/coke coke.mp3">coke coke</button>
+  <button data-src="/minc/audio/clap your gardening of american pussy.mp3">clap your gardening of american pussy</button>
+  <button data-src="/minc/audio/bipolar.mp3">bipolar</button>
+  <button data-src="/minc/audio/agushs.mp3">agushs</button>
+  <button data-src="/minc/audio/24 - Misleading INC - sad alam.mp3">sad alam</button>
+  <button data-src="/minc/audio/23 - Misleading INC - Genius of Loveghegerfheererheghfhe...">Genious of Love</button>
+  <button data-src="/minc/audio/22 - Misleading INC - Kaleb when Eleanor Rigby.mp3">Kaleb when Elanor Rigby</button>
+  <button data-src="/minc/audio/30 - Misleading INC - 21st century humor.mp3">21st century humor</button>
+  <button data-src="/minc/audio/21 - Misleading INC - please no.mp3">please no</button>
+  <button data-src="/minc/audio/20 - Misleading INC - Kaleb when rage.mp3">Kaleb when rage</button>
+  <button data-src="/minc/audio/19 - Misleading INC - constipation.mp3">constipation</button>
+  <button data-src="/minc/audio/18 - Misleading INC - left ear.mp3">left ear</button>
+  <button data-src="/minc/audio/17 - Misleading INC - Its just a burning memory.mp3">its just a burning memory</button>
+  <button data-src="/minc/audio/16 - Misleading INC - im not sure.mp3">im not sure</button>
+  <button data-src="/minc/audio/15 - Misleading INC - i yelled and broke the space time continuiom.mp3">i yelled and broke the space time continuiom</button>
+  <button data-src="/minc/audio/14 - Misleading INC - microwaving gas.mp3">microwaving gas</button>
+  <button data-src="/minc/audio/12 - Misleading INC - DO NOT USE.mp3">DO NOT USE</button>
+  <button data-src="/minc/audio/11 - Misleading INC - pain.mp3">pain</button>
+  <button data-src="/minc/audio/10 - Misleading INC - SadWindowsXP.mp3">SadWindowsXP</button>
+  <button data-src="/minc/audio/09 - Misleading INC - BreadAndButterChips.mp3">BreadAndButterChips</button>
+  <button data-src="/minc/audio/08 - Misleading INC - amog.mp3">amog</button>
+  <button data-src="/minc/audio/07 - Misleading INC - robust downsyndrome jr screaming.mp3">robust downsyndrome jr screaming</button>
+  <button data-src="/minc/audio/06 - Misleading INC - Dababy Suge Yea Yea lyrics.mp3">dababy suge yea yea lyrics</button>
+  <button data-src="/minc/audio/05 - Misleading INC - icanttakeitanymore.mp3">icanttakeitanymore</button>
+  <button data-src="/minc/audio/04 - Misleading INC - CryingDleeemon.mp3">crying dleeemon</button>
+  <button data-src="/minc/audio/03 - Misleading INC - awahwahcan boy.mp3">awahwahcan boy</button>
+  <button data-src="/minc/audio/01 - Misleading INC - sad genioud of love.mp3">sad genioud of love</button>
+  <button data-src="/minc/audio/02 - Misleading INC - paper.mp3">paper</button>
+  <button data-src="/minc/audio/peeneater3000.mp3">peeneater3000</button>
+  <button data-src="/minc/audio/ShouldveKnownBetter.mp3">ShouldveKnownBetter</button>
+  <button data-src="/minc/audio/MattsGreatSing.mp3">MattsGreatSing</button>
+  <button data-src="/minc/audio/PigBioTech.mp3">pigbiotech</button>
+  <button data-src="/minc/audio/pincushionman.mp3">pincushionman</button>
+  <button data-src="/minc/audio/pinto.mp3">pinto</button>
+  <button data-src="/minc/audio/Jaw.mp3">Jaw</button>
+  <button data-src="/minc/audio/Bubba.mp3">Bubba</button>
+  <button data-src="/minc/audio/BlackerThanBlack.mp3">BlackerThanBlack</button>
+  <button data-src="/minc/audio/Demolition.mp3">Demolition</button>
+</div>
+
+<div id="playerContainer">
+  <div id="nowPlaying">Nothing playing</div>
+  <audio id="mainPlayer" controls></audio>
+</div>
+
+<script>
+  const trackButtons = document.querySelectorAll('#trackList button');
+  const mainPlayer = document.getElementById('mainPlayer');
+  const nowPlaying = document.getElementById('nowPlaying');
+
+  trackButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const src = button.getAttribute('data-src');
+      const title = button.textContent;
+      mainPlayer.src = src;
+      mainPlayer.play();
+      nowPlaying.textContent = 'Now Playing: ' + title;
     });
+  });
+</script>
 
-    // Centralized audio playback
-    document.querySelectorAll('.audio-card audio').forEach(audio => {
-      audio.addEventListener('play', function() {
-        const src = this.getAttribute('src');
-        const title = this.getAttribute('data-title');
-        mainPlayer.src = src;
-        mainPlayer.play();
-        nowPlaying.textContent = `Now Playing: ${title}`;
-        // Pause other inline players
-        document.querySelectorAll('.audio-card audio').forEach(a => {
-          if (a !== this) a.pause();
-        });
-      });
-    });
-
-    // Back to top button
-    window.addEventListener('scroll', () => {
-      backToTop.style.display = window.scrollY > 400 ? 'block' : 'none';
-    });
-    backToTop.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
-  </script>
 </body>
 </html>
