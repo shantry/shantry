@@ -19,6 +19,25 @@ function loadAudioVideo() { //<div id="audioVideo"><script src="../assets/script
             <video id="video" class="fullscreen bg-video" style="filter: blur(10px);" loop muted playsinline autoplay preload="auto">
                 <source src="../scheleton.mp4" type="video/mp4">
             </video>
+            <script>console.log("                                                                                                              
+                                                                                                              
+                                                                                                              
+  :####:   ##    ##    :##:    ###   ##  ########  ######:  ###    ###             :####:   .####.            
+ :######   ##    ##     ##     ###   ##  ########  #######  .##:  :##.             ######   ######            
+ ##:  :#   ##    ##    ####    ###:  ##     ##     ##   :##  ###  ###            :##:  .#  :##  ##:           
+ ##        ##    ##    ####    ####  ##     ##     ##    ##   ##::##             ##        ##:  :##           
+ ###:      ##    ##   :#  #:   ##:#: ##     ##     ##   :##    ####              ##.       ##    ##           
+ :#####:   ########    #::#    ## ## ##     ##     #######:    ####              ##        ##    ##           
+  .#####:  ########   ##  ##   ## ## ##     ##     ######      :##:              ##        ##    ##           
+     :###  ##    ##   ######   ## :#:##     ##     ##   ##.     ##               ##.       ##    ##           
+       ##  ##    ##  .######.  ##  ####     ##     ##   ##      ##               ##        ##:  :##           
+ #:.  :##  ##    ##  :##  ##:  ##  :###     ##     ##   :##     ##               :##:  .#  :##  ##:     ##    
+ #######:  ##    ##  ###  ###  ##   ###     ##     ##    ##:    ##                 ######   ######      ##    
+ .#####:   ##    ##  ##:  :##  ##   ###     ##     ##    ###    ##                 :####:   .####.      ##    
+                                                                                                              
+                                                                                                              
+                                                                                                              
+                                                                                                              ")</script>
         `;
     document.getElementById('audioVideo').innerHTML = homeButtonHTML;
     document.getElementById('video').playbackRate = 2;

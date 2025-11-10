@@ -1,858 +1,945 @@
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Reading To Do, i-Ready</title>
-        <link rel="stylesheet" href="/minc/audios/style.css?v=1.0">
-        <link rel="shortcut icon" href="/images/loco (copy).ico"/>
-        <script src="/minc/script.js"></script>
-        <link href="https://moderncss.goodvessel92551.repl.co/style.css" rel="stylesheet" type="text/css" />
-        <style>
-#preloader {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: #000; /* Dark as my empty soul */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    opacity: 1; /* Start with full opacity */
-    transition: opacity 1s ease-out; /* Fade out... like fading sanity */
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Misleading INC Audio Hub</title>
+  <link rel="shortcut icon" href="/images/loco (copy).ico"/>
+  <style>
+    body {
+      font-family: "Inter", Arial, sans-serif;
+      margin: 0;
+      background: #111;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
 
-#loadingMessage {
-    color: #f3f3f3;
-    margin-top: 20px;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    text-align: center;
-}
+    header {
+      text-align: center;
+      padding: 2rem;
+    }
 
-.loader {
-    border: 16px solid #f3f3f3; /* Circle of suffering */
-    border-top: 16px solid #3498db; /* Color of false hope */
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite; /* Spinning forever, around, and around... */
-}
+    header img {
+      width: 100px;
+      display: block;
+      margin: 0 auto;
+    }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
+    header h1 {
+      margin: 0.5rem 0;
+      font-size: 2rem;
+      color: #58a6ff;
+    }
 
-            </style>
-          
-            <script>
-          document.addEventListener("DOMContentLoaded", function() {
-    window.addEventListener("load", function() {
-        let preloader = document.getElementById("preloader");
-        let content = document.getElementById("content");
+    .search-container {
+      margin: 1rem 0;
+      text-align: center;
+    }
 
-        // Make the preloader fade away
-        preloader.style.opacity = '0'; // The final breath of the loader.
-        
-        // Wait for the fade-out to complete before hiding it completely
-        setTimeout(function() {
-            preloader.style.display = 'none'; // Go gently into the dark night.
-            content.style.display = 'block'; // Reveal what lies beyond.
-        }, 1000); // Wait 1 second for the fade-out transition to complete
-    });
-});
+    input[type="text"] {
+      padding: 0.5rem 1rem;
+      width: 250px;
+      border: none;
+      border-radius: 9999px;
+      background: #222;
+      color: #fff;
+      outline: none;
+      transition: 0.3s;
+    }
 
-            </script>
-          </head>
-          
-          
-          <div id="preloader">
-            <div class="loader"></div>
-            <p id="loadingMessage">this may take a while, (your browser is currently downloading 140 separate audio files)</p>
-        </div>
-        
+    input[type="text"]:focus {
+      width: 300px;
+      background: #333;
+    }
 
-      <body>
-      <div class='title'>
-        <picture>
-          <img src="/minc/images/LOVE.png" style="width:250;">
-        </picture>
-        <picture class="pic">
-          <img class="pic" src="/minc/images/pickles.png" style="width:250;">
-        </picture>
-        <h1 class="title">AUDIO PAGE</h1>
-      </div>
-      <div class="sub">
-        <h5 class="sub">moved all audios to this page to make it easier to find stuff</h5>
-        <h5 class="sub">im too lazy to add search so just use ctrl + f</h5>
-        <h6 class="dis">(text like this means the audio is disabled, mentally)</h6>
-        <a href="/minc/images/Reading To Do Iready.png"><h3>PANIC!</h3></a>
-        <br>
-        <br>
-      </div>
+    .audio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+      width: 90%;
+      max-width: 1000px;
+      padding-bottom: 6rem;
+    }
 
-      <div class="aud">
-        <h1>Talent Show 2024 (incomplete) Setlist:</h1>
-        <h3>02 - Just Love</h3>
-        <audio controls>
-          <source src="/minc/audio/08 - Just Love.mp3" type="audio/mpeg">
-        </audio>
-        <br>
+    .audio-card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      transition: transform 0.2s;
+    }
 
-        <h3>04 - House that Built Me</h3>
-        <audio controls>
-          <source src="/minc/audio/04 - House that Built Me.mp3" type="audio/mpeg">
-        </audio>
-        <br>
+    .audio-card:hover {
+      transform: translateY(-4px);
+    }
 
-        <h3>05 - I Am Not Okay</h3>
-        <audio controls>
-          <source src="/minc/audio/05 - I Am Not Okay.mp3" type="audio/mpeg">
-        </audio>
-        <br>
+    .audio-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: #58a6ff;
+      text-align: center;
+    }
 
-        <h3>07 - In My Own Little Corner</h3>
-        <audio controls>
-          <source src="/minc/audio/07 - In My Own Little Corner.mp3" type="audio/mpeg">
-        </audio>
-        <br>
+    audio {
+      width: 100%;
+      outline: none;
+    }
 
-        <h3>08 - This is Halloween</h3>
-        <audio controls>
-          <source src="/minc/audio/02 - This is Halloween.mp3" type="audio/mpeg">
-        </audio>
-        <br>
+    #playerBar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #0d1117;
+      border-top: 1px solid #222;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
 
-        <h3>09 - Angel of Music</h3>
-        <audio controls>
-          <source src="/minc/audio/Angel of Music.mp3" type="audio/mpeg">
-        </audio>
-        <br>
+    #nowPlaying {
+      font-size: 0.9rem;
+      color: #ccc;
+      flex: 1;
+    }
 
-        <h3>10 - Thinking Out Loud</h3>
-        <audio controls>
-          <source src="/minc/audio/10 - Thinking Out Loud.mp3" type="audio/mpeg">
-        </audio>
-        <br>
+    #mainPlayer {
+      flex: 3;
+      width: 100%;
+    }
 
-        <h3>11 - Dead Mom</h3>
-        <audio controls>
-          <source src="/minc/audio/11 - Dead Mom.mp3" type="audio/mpeg">
-        </audio>
-        <br>
+    #backToTop {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background: #58a6ff;
+      color: #000;
+      border: none;
+      padding: 0.7rem 1rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      display: none;
+      box-shadow: 0 0 10px rgba(88,166,255,0.5);
+    }
 
-        <h3>12 - Die with a Smile</h3>
-        <audio controls>
-          <source src="/minc/audio/12 - Die with a Smile.mp3" type="audio/mpeg">
-        </audio>
-        <br>
+    #backToTop:hover {
+      background: #79c0ff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="/minc/images/LOVE.png" alt="Logo">
+    <h1>Misleading INC Audio Hub</h1>
+    <p>Listen, explore, and vibe — all in one place.</p>
+  </header>
 
-        <h3>13? - Love Me Like You Do</h3>
-        <audio controls>
-          <source src="/minc/audio/13 - Love Me Like You Do.mp3" type="audio/mpeg">
-        </audio>
-        <br>
-        <br>
-        <br>
-        <br>
+  <div class="search-container">
+    <input type="text" id="search" placeholder="Search audio...">
+  </div>
 
-        <h1>main audios:</h1>
+  <div class="audio-grid" id="audioGrid">
+    <!-- Example card -->
+    <!-- Repeat these dynamically or manually -->
+      <h1>Talent Show 2024 (incomplete) Setlist:</h1>
+      <h3>02 - Just Love</h3>
+      <audio controls>
+        <source src="/minc/audio/08 - Just Love.mp3" type="audio/mpeg">
+      </audio>
+      <br>
 
-        <h3>runch2.mp3</h3>
+      <h3>04 - House that Built Me</h3>
+      <audio controls>
+        <source src="/minc/audio/04 - House that Built Me.mp3" type="audio/mpeg">
+      </audio>
+      <br>
+
+      <h3>05 - I Am Not Okay</h3>
+      <audio controls>
+        <source src="/minc/audio/05 - I Am Not Okay.mp3" type="audio/mpeg">
+      </audio>
+      <br>
+
+      <h3>07 - In My Own Little Corner</h3>
+      <audio controls>
+        <source src="/minc/audio/07 - In My Own Little Corner.mp3" type="audio/mpeg">
+      </audio>
+      <br>
+
+      <h3>08 - This is Halloween</h3>
+      <audio controls>
+        <source src="/minc/audio/02 - This is Halloween.mp3" type="audio/mpeg">
+      </audio>
+      <br>
+
+      <h3>09 - Angel of Music</h3>
+      <audio controls>
+        <source src="/minc/audio/Angel of Music.mp3" type="audio/mpeg">
+      </audio>
+      <br>
+
+      <h3>10 - Thinking Out Loud</h3>
+      <audio controls>
+        <source src="/minc/audio/10 - Thinking Out Loud.mp3" type="audio/mpeg">
+      </audio>
+      <br>
+
+      <h3>11 - Dead Mom</h3>
+      <audio controls>
+        <source src="/minc/audio/11 - Dead Mom.mp3" type="audio/mpeg">
+      </audio>
+      <br>
+
+      <h3>12 - Die with a Smile</h3>
+      <audio controls>
+        <source src="/minc/audio/12 - Die with a Smile.mp3" type="audio/mpeg">
+      </audio>
+      <br>
+
+      <h3>13? - Love Me Like You Do</h3>
+      <audio controls>
+        <source src="/minc/audio/13 - Love Me Like You Do.mp3" type="audio/mpeg">
+      </audio>
+      <br>
+      <br>
+      <br>
+      <br>
+
+      <h1>main audios:</h1>
+
+      <h3>runch2.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/runch2.wav" type="audio/mpeg">
+<source src="/minc/audio/runch2.wav" type="audio/mpeg">
 </audio>
 
-        <h3>runch1.mp3</h3>
+      <h3>runch1.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/runch1.wav" type="audio/mpeg">
+<source src="/minc/audio/runch1.wav" type="audio/mpeg">
 </audio>
 
-        <h3>Beatititiututututuruur-output.mp3</h3>
+      <h3>Beatititiututututuruur-output.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/Beatititiututututuruur-output.mp3" type="audio/mpeg">
+<source src="/minc/audio/Beatititiututututuruur-output.mp3" type="audio/mpeg">
 </audio>
 
 <h3>beatmemp3.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/aeae.mp3" type="audio/mpeg">
+<source src="/minc/audio/aeae.mp3" type="audio/mpeg">
 </audio>
 
 <h3>Sh-Boob.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/Sh-Boob.mp3" type="audio/mpeg">
+<source src="/minc/audio/Sh-Boob.mp3" type="audio/mpeg">
 </audio>
 
 <h3>POV: Papa Whiskey maons in your ear</h3>
 <audio controls>
-  <source src="/minc/audio/1.mp3" type="audio/mpeg">
+<source src="/minc/audio/1.mp3" type="audio/mpeg">
 </audio>
 
 <h3>America Died</h3>
 <audio controls>
-  <source src="/minc/audio/AmericanDied.mp3" type="audio/mpeg">
+<source src="/minc/audio/AmericanDied.mp3" type="audio/mpeg">
 </audio>
 
 <h3>Papa Whiskey Died 14:00 4/29/22.</h3>
 <audio controls>
-  <source src="/minc/audio/ThisWILLBeTheDayThatIDie.mp3" type="audio/mpeg">
+<source src="/minc/audio/ThisWILLBeTheDayThatIDie.mp3" type="audio/mpeg">
 </audio>
 
 <h3>I didn't know what to name this.</h3>
 <audio controls>
-  <source src="/minc/audio/MrHolo.mp3" type="audio/mpeg">
+<source src="/minc/audio/MrHolo.mp3" type="audio/mpeg">
 </audio>
 
 <h3>Alkaline Pie</h3>
 <audio controls>
-  <source src="/minc/audio/AlkalinePie.mp3" type="audio/mpeg">
+<source src="/minc/audio/AlkalinePie.mp3" type="audio/mpeg">
 </audio>
 
 <h3>Carry on my Wayward Sin</h3>
 <audio controls>
-  <source src="/minc/audio/CarryOnMyWaywardSin.mp3" type="audio/mpeg">
+<source src="/minc/audio/CarryOnMyWaywardSin.mp3" type="audio/mpeg">
 </audio>
 
 <h3>Hotel Carcas</h3>
 <audio controls>
-  <source src="/minc/audio/HotelCarcas.mp3" type="audio/mpeg">
+<source src="/minc/audio/HotelCarcas.mp3" type="audio/mpeg">
 </audio>
 
 <h3>We Are Blowing Up</h3>
 <audio controls>
-  <source src="/minc/audio/WeAreBlowingUp.mp3" type="audio/mpeg">
+<source src="/minc/audio/WeAreBlowingUp.mp3" type="audio/mpeg">
 </audio>
 
 <h3>Exit Sadman</h3>
 <audio controls>
-  <source src="/minc/audio/ExitSadman.mp3" type="audio/mpeg">
+<source src="/minc/audio/ExitSadman.mp3" type="audio/mpeg">
 </audio>
 
 <h3>Metalloids: Two</h3>
 <h6 class="sub">NOT AN INSTRUMENTAL the intro is vey long even after cut.</h6>
 <audio controls>
-  <source src="/minc/audio/metalloids_ two.mp3" type="audio/mpeg">
+<source src="/minc/audio/metalloids_ two.mp3" type="audio/mpeg">
 </audio>
 
 <h3>Seat Home Alama</h3>
 <audio controls>
-  <source src="/minc/audio/SeatHomeAlama.mp3" type="audio/mpeg">
+<source src="/minc/audio/SeatHomeAlama.mp3" type="audio/mpeg">
 </audio>
 
 <h3>Bohemian Crapsody.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/BohemianCrapsody.mp3" type="audio/mpeg">
+<source src="/minc/audio/BohemianCrapsody.mp3" type="audio/mpeg">
 </audio>
 
 <h3>8 Bit Conversation.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/8BitConvo.mp3" type="audio/mpeg">
+<source src="/minc/audio/8BitConvo.mp3" type="audio/mpeg">
 </audio>
 
 <h3>AgonyForSatan.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/AgonyForSatan.mp3" type="audio/mpeg">
+<source src="/minc/audio/AgonyForSatan.mp3" type="audio/mpeg">
 </audio>
 
 <h4>Do not ask why the Gangnam Biles are different lengths.</h4>
 
 <h3>GangnamBile Except More Audible.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/GangnamBileButMoreAudible.mp3" type="audio/mpeg">
+<source src="/minc/audio/GangnamBileButMoreAudible.mp3" type="audio/mpeg">
 </audio>
 
 <h3>GangnamBile.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/GangnamBile.mp3" type="audio/mpeg">
+<source src="/minc/audio/GangnamBile.mp3" type="audio/mpeg">
 </audio>
 
 <h3>pokeymongov3.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/pokeymongov3.mp3" type="audio/mpeg">
+<source src="/minc/audio/pokeymongov3.mp3" type="audio/mpeg">
 </audio>
 
 <h3>Pokey Mango.wav</h3>
 <audio controls>
-  <source src="/minc/audio/pokeymango.wav" type="audio/mpeg">
+<source src="/minc/audio/pokeymango.wav" type="audio/mpeg">
 </audio>
 
 <h3>Bowling Mic.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/BowlingMic.mp3" type="audio/mpeg">
+<source src="/minc/audio/BowlingMic.mp3" type="audio/mpeg">
 </audio>
 
 <h3>burnsauce.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/Burnplz.mp3" type="audio/mpeg">
+<source src="/minc/audio/Burnplz.mp3" type="audio/mpeg">
 </audio>
 
 <h3>Walter Hardwel Shady.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/Walter Hardwel Shady.mp3" type="audio/mpeg">
+<source src="/minc/audio/Walter Hardwel Shady.mp3" type="audio/mpeg">
 </audio>
 
 <h3>Grill</h3>
 <audio controls>
-  <source src="/minc/audio/Grill.mp3" type="audio/mpeg">
+<source src="/minc/audio/Grill.mp3" type="audio/mpeg">
 </audio>
 
 <h3>K(KK)ongo Music</h3>
 <audio controls>
-  <source src="/minc/audio/NiggerDoesTheDougie.mp3" type="audio/mpeg">
+<source src="/minc/audio/NiggerDoesTheDougie.mp3" type="audio/mpeg">
 </audio>
 
 <h3>Lets Get Retarded</h3>
 <audio controls>
-  <source src="/minc/audio/LetsGetRetarded.mp3" type="audio/mpeg">
+<source src="/minc/audio/LetsGetRetarded.mp3" type="audio/mpeg">
 </audio>
 
 <h3>Satan's Calling!</h3>
 <audio controls>
-  <source src="/minc/audio/TheElderGods.mp3" type="audio/mpeg">
+<source src="/minc/audio/TheElderGods.mp3" type="audio/mpeg">
 </audio>
 
 <h3>kidnapping but everyone explodes.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/kidnapping but everyone explodes.mp3" type="audio/mpeg">
+<source src="/minc/audio/kidnapping but everyone explodes.mp3" type="audio/mpeg">
 </audio>
 
 <h3>Like a Wise Man Once Said...</h3>
 <audio controls>
-  <source src="/minc/audio/WiseManGivingCPR.mp3" type="audio/mpeg">
+<source src="/minc/audio/WiseManGivingCPR.mp3" type="audio/mpeg">
 </audio>
 
 <h3>gardener of legs.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/28 - Misleading INC - gardener of legs.mp3" type="audio/mpeg">
+<source src="/minc/audio/28 - Misleading INC - gardener of legs.mp3" type="audio/mpeg">
 </audio>
 
 <h3>attentionteachers.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/29 - Misleading INC - attentionteachers.mp3" type="audio/mpeg">
+<source src="/minc/audio/29 - Misleading INC - attentionteachers.mp3" type="audio/mpeg">
 </audio>
 
 <h3>meat.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/29 - misleading - meat.mp3" type="audio/mpeg">
+<source src="/minc/audio/29 - misleading - meat.mp3" type="audio/mpeg">
 </audio>
 
 <h3>sad alamwham.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/27 - Misleading INC - sad alamwham.mp3" type="audio/mpeg">
+<source src="/minc/audio/27 - Misleading INC - sad alamwham.mp3" type="audio/mpeg">
 </audio>
 
 <h3>aluminumcans.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/27 - misleading - aluminumcans.mp3" type="audio/mpeg">
+<source src="/minc/audio/27 - misleading - aluminumcans.mp3" type="audio/mpeg">
 </audio>
 
 <h3>ClapYoyr-HaHjjjuujjkjikijik.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/26 - Misleading INC - ClapYoyr-HaHjjjuujjkjikijik.mp3" type="audio/mpeg">
+<source src="/minc/audio/26 - Misleading INC - ClapYoyr-HaHjjjuujjkjikijik.mp3" type="audio/mpeg">
 </audio>
 
 <h3>MYNINJA.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/26 - misleading - MYNINJA.mp3" type="audio/mpeg">
+<source src="/minc/audio/26 - misleading - MYNINJA.mp3" type="audio/mpeg">
 </audio>
 
 <h3>MENENGA.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/25 - misleading - MENENGA.mp3" type="audio/mpeg">
+<source src="/minc/audio/25 - misleading - MENENGA.mp3" type="audio/mpeg">
 </audio>
 
 <h3>the better saucy two of us.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/24 - misleading - the better saucy two of us.mp3" type="audio/mpeg">
+<source src="/minc/audio/24 - misleading - the better saucy two of us.mp3" type="audio/mpeg">
 </audio>
 
 <h3>UsOfTwoTheJust.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/21 - misleading - UsOfTwoTheJust.mp3" type="audio/mpeg">
+<source src="/minc/audio/21 - misleading - UsOfTwoTheJust.mp3" type="audio/mpeg">
 </audio>
 
 <h3>LikeADumpsterFire.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/20 - misleading - LikeADumpsterFire.mp3" type="audio/mpeg">
+<source src="/minc/audio/20 - misleading - LikeADumpsterFire.mp3" type="audio/mpeg">
 </audio>
 
 <h3>FuckerDamnYouFucking.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/20 - misleading - FuckerDamnYouFucking.mp3" type="audio/mpeg">
+<source src="/minc/audio/20 - misleading - FuckerDamnYouFucking.mp3" type="audio/mpeg">
 </audio>
 
 <h3>TheSaucyTwoOfUs.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/19 - misleading - TheSaucyTwoOfUs.mp3" type="audio/mpeg">
+<source src="/minc/audio/19 - misleading - TheSaucyTwoOfUs.mp3" type="audio/mpeg">
 </audio>
 
 <h3>slowdescentintomadness.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/19 - misleading - slowdescentintomadness.mp3" type="audio/mpeg">
+<source src="/minc/audio/19 - misleading - slowdescentintomadness.mp3" type="audio/mpeg">
 </audio>
 
 <h3>blockygameboomboom.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/18 - misleading - blockygameboomboom.mp3" type="audio/mpeg">
+<source src="/minc/audio/18 - misleading - blockygameboomboom.mp3" type="audio/mpeg">
 </audio>
 
 <h3>hey babayyyy.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/17 - misleading - hey babayyyy.mp3" type="audio/mpeg">
+<source src="/minc/audio/17 - misleading - hey babayyyy.mp3" type="audio/mpeg">
 </audio>
 
 <h3>Mr. Bomb.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/16 - misleading - Mr. Bomb.mp3" type="audio/mpeg">
+<source src="/minc/audio/16 - misleading - Mr. Bomb.mp3" type="audio/mpeg">
 </audio>
 
 <h1>Christmas Carol</h1>
 <audio controls>
-  <source src="/minc/audio/16 - misleading - Christmas Carol.mp3" type="audio/mpeg">
+<source src="/minc/audio/16 - misleading - Christmas Carol.mp3" type="audio/mpeg">
 </audio>
 
 <h1>GeniousofUndertail</h1>
 <audio controls>
-  <source src="/minc/audio/15 - misleading - geniousofundertale.mp3" type="audio/mpeg">
+<source src="/minc/audio/15 - misleading - geniousofundertale.mp3" type="audio/mpeg">
 </audio>
 
 <h1>E</h1>
 <audio controls>
-  <source src="/minc/audio/15 - misleading - E.mp3" type="audio/mpeg">
+<source src="/minc/audio/15 - misleading - E.mp3" type="audio/mpeg">
 </audio>
 
 <h3>vagfsgidfgoisdgopigosdfg.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/14 - misleading - vagfsgidfgoisdgopigosdfg.mp3" type="audio/mpeg">
+<source src="/minc/audio/14 - misleading - vagfsgidfgoisdgopigosdfg.mp3" type="audio/mpeg">
 </audio>
 
 <h3>tthe class when the teacher leavesmp3.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/14 - misleading - tthe class when the teacher leavesmp3.mp3" type="audio/mpeg">
+<source src="/minc/audio/14 - misleading - tthe class when the teacher leavesmp3.mp3" type="audio/mpeg">
 </audio>
 
 <h3>cough.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/13 - misleading - cough.mp3" type="audio/mpeg">
+<source src="/minc/audio/13 - misleading - cough.mp3" type="audio/mpeg">
 </audio>
 
 <h3>PREPAREYOURTOWERS.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/12 - misleading - PREPAREYOURTOWERS.mp3" type="audio/mpeg">
+<source src="/minc/audio/12 - misleading - PREPAREYOURTOWERS.mp3" type="audio/mpeg">
 </audio>
 
 <h3>AlloyCans.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/12 - misleading - alloycans.mp3" type="audio/mpeg">
+<source src="/minc/audio/12 - misleading - alloycans.mp3" type="audio/mpeg">
 </audio>
 
 <h3>UsOfTwoTheHust</h3>
 <audio controls>
-  <source src="/minc/audio/11 - misleading - UsOfTwoTheHust.mp3" type="audio/mpeg">
+<source src="/minc/audio/11 - misleading - UsOfTwoTheHust.mp3" type="audio/mpeg">
 </audio>
 
 <h3>turtlebeach.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/11 - misleading - turtlebeach.mp3" type="audio/mpeg">
+<source src="/minc/audio/11 - misleading - turtlebeach.mp3" type="audio/mpeg">
 </audio>
 
 <h3>SomethingBetter.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/10 - misleading - SomethingBetter.mp3" type="audio/mpeg">
+<source src="/minc/audio/10 - misleading - SomethingBetter.mp3" type="audio/mpeg">
 </audio>
 
 <h3>BusyClsas.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/10 - misleading - BusyClsas.mp3" type="audio/mpeg">
+<source src="/minc/audio/10 - misleading - BusyClsas.mp3" type="audio/mpeg">
 </audio>
 
 <h3>JustTheTwoSlimeShadys.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/09 - misleading - JustTheTwoSlimeShadys.mp3" type="audio/mpeg">
+<source src="/minc/audio/09 - misleading - JustTheTwoSlimeShadys.mp3" type="audio/mpeg">
 </audio>
 
 <h3>implodingpain.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/09 - misleading - implodingpain.mp3" type="audio/mpeg">
+<source src="/minc/audio/09 - misleading - implodingpain.mp3" type="audio/mpeg">
 </audio>
 
 <h3>eating babirs.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/08 - misleading - eating babirs.mp3" type="audio/mpeg">
+<source src="/minc/audio/08 - misleading - eating babirs.mp3" type="audio/mpeg">
 </audio>
 
 <h3>crar.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/08 - misleading - crar.mp3" type="audio/mpeg">
+<source src="/minc/audio/08 - misleading - crar.mp3" type="audio/mpeg">
 </audio>
 
 <h3>ScreamingOfTheDamnedChildren.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/07 - misleading - ScreamingOfTheDamnedChildren.mp3" type="audio/mpeg">
+<source src="/minc/audio/07 - misleading - ScreamingOfTheDamnedChildren.mp3" type="audio/mpeg">
 </audio>
 
 <h3>TheChristmasOfHarming.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/06 - misleading - TheChristmasOfHarming.mp3" type="audio/mpeg">
+<source src="/minc/audio/06 - misleading - TheChristmasOfHarming.mp3" type="audio/mpeg">
 </audio>
 
 <h3>Uguuguhg.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/05 - misleading - Uguuguhg.mp3" type="audio/mpeg">
+<source src="/minc/audio/05 - misleading - Uguuguhg.mp3" type="audio/mpeg">
 </audio>
 
 <h3>speedrunningclass.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/05 - misleading - speedrunningclass.mp3" type="audio/mpeg">
+<source src="/minc/audio/05 - misleading - speedrunningclass.mp3" type="audio/mpeg">
 </audio>
 
 <h3>ausio mas.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/04 - misleading - ausio mas.mp3" type="audio/mpeg">
+<source src="/minc/audio/04 - misleading - ausio mas.mp3" type="audio/mpeg">
 </audio>
 
 <h3>JUUUUUUST THE TWOO OF UUUUUUUSSSSS.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/03 - misleading - JUUUUUUST THE TWOO OF UUUUUUUSSSSS.mp3" type="audio/mpeg">
+<source src="/minc/audio/03 - misleading - JUUUUUUST THE TWOO OF UUUUUUUSSSSS.mp3" type="audio/mpeg">
 </audio>
 
 <h3>iReady.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/03 - misleading - iReady.mp3" type="audio/mpeg">
+<source src="/minc/audio/03 - misleading - iReady.mp3" type="audio/mpeg">
 </audio>
 
 <h3>ascared.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/02 - misleading - ascared.mp3" type="audio/mpeg">
+<source src="/minc/audio/02 - misleading - ascared.mp3" type="audio/mpeg">
 </audio>
 
 <h3>Shash_Coom.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/01 - misleading - Shash-Coom.mp3" type="audio/mpeg">
+<source src="/minc/audio/01 - misleading - Shash-Coom.mp3" type="audio/mpeg">
 </audio>
 
 <h3>NidKapping.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/NidKapping.mp3" type="audio/mpeg">
+<source src="/minc/audio/NidKapping.mp3" type="audio/mpeg">
 </audio>
 
 <h3>lant.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/lant.mp3" type="audio/mpeg">
+<source src="/minc/audio/lant.mp3" type="audio/mpeg">
 </audio>
 
 <h3>revolting door.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/revolting door.mp3" type="audio/mpeg">
+<source src="/minc/audio/revolting door.mp3" type="audio/mpeg">
 </audio>
 
 <h3>kidnapping.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/kidnapping.mp3" type="audio/mpeg">
+<source src="/minc/audio/kidnapping.mp3" type="audio/mpeg">
 </audio>
 
 <h3>the price isnt.mp3 (VOLUME WARNING!!!)</h3>
 <audio controls>
-  <source src="/minc/audio/the price isnt.mp3" type="audio/mpeg">
+<source src="/minc/audio/the price isnt.mp3" type="audio/mpeg">
 </audio>
 
 <h3>Retarded Schizophrenia.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/RetardedSchizophrenia.mp3" type="audio/mpeg">
+<source src="/minc/audio/RetardedSchizophrenia.mp3" type="audio/mpeg">
 </audio>
 
 <h3>Winders.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/Winders.mp3" type="audio/mpeg">
+<source src="/minc/audio/Winders.mp3" type="audio/mpeg">
 </audio>
 
 <h3>Gust The Two of Us.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/GustTheTwoOfUs.mp3" type="audio/mpeg">
+<source src="/minc/audio/GustTheTwoOfUs.mp3" type="audio/mpeg">
 </audio>
 
 <h3>The Price is Wrong.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/ThePriceisWrong.mp3" type="audio/mpeg">
+<source src="/minc/audio/ThePriceisWrong.mp3" type="audio/mpeg">
 </audio>
 
 <h3>Uguuugguguguugugugguhg.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/Uguuugguguguugugugguhg.mp3" type="audio/mpeg">
+<source src="/minc/audio/Uguuugguguguugugugguhg.mp3" type="audio/mpeg">
 </audio>
 
 <h3>the better saucy two of us.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/the better saucy two of us.mp3" type="audio/mpeg">
+<source src="/minc/audio/the better saucy two of us.mp3" type="audio/mpeg">
 </audio>
 
 <h3>shitting in the outlet</h3>
 <audio controls>
-  <source src="/minc/audio/EnglishNotMyFirstLanguage.mp3" type="audio/mpeg">
+<source src="/minc/audio/EnglishNotMyFirstLanguage.mp3" type="audio/mpeg">
 </audio>
 
 <h3>sugar sugarersrartr.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/sugar sugarersrartr.mp3" type="audio/mpeg">
+<source src="/minc/audio/sugar sugarersrartr.mp3" type="audio/mpeg">
 </audio>
 
 <h3>oldmon.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/oldmon.mp3" type="audio/mpeg">
+<source src="/minc/audio/oldmon.mp3" type="audio/mpeg">
 </audio>
 
 <h3>oh.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/oh.mp3" type="audio/mpeg">
+<source src="/minc/audio/oh.mp3" type="audio/mpeg">
 </audio>
 
 <h3>newearbuds.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/newearbuds.mp3" type="audio/mpeg">
+<source src="/minc/audio/newearbuds.mp3" type="audio/mpeg">
 </audio>
 
 <h3>miss the aluminumcans.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/miss the aluminumcans.mp3" type="audio/mpeg">
+<source src="/minc/audio/miss the aluminumcans.mp3" type="audio/mpeg">
 </audio>
 
 <h3>lastchrysler.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/lastchrysler.mp3" type="audio/mpeg">
+<source src="/minc/audio/lastchrysler.mp3" type="audio/mpeg">
 </audio>
 
 <h3>gimmethemeaaeaeaeaeeat.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/loop.mp3" type="audio/mpeg">
+<source src="/minc/audio/loop.mp3" type="audio/mpeg">
 </audio>
 
 <h3>last.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/last.mp3" type="audio/mpeg">
+<source src="/minc/audio/last.mp3" type="audio/mpeg">
 </audio>
 
 <h3>JoustTheTwoOfUs.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/JoustTheTwoOfUs.mp3" type="audio/mpeg">
+<source src="/minc/audio/JoustTheTwoOfUs.mp3" type="audio/mpeg">
 </audio>
 
 <h3>it wont work.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/it wont work.mp3" type="audio/mpeg">
+<source src="/minc/audio/it wont work.mp3" type="audio/mpeg">
 </audio>
 
 <h3>I'm gonna brown.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/I'm gonna brown.mp3" type="audio/mpeg">
+<source src="/minc/audio/I'm gonna brown.mp3" type="audio/mpeg">
 </audio>
 
 <h3>heavenly background music.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/heavenly background music.mp3" type="audio/mpeg">
+<source src="/minc/audio/heavenly background music.mp3" type="audio/mpeg">
 </audio>
 
 <h3>geniousofvagina.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/geniousofvagina.mp3" type="audio/mpeg">
+<source src="/minc/audio/geniousofvagina.mp3" type="audio/mpeg">
 </audio>
 
 <h3>gardening of what the hell.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/gardening of what the hell.mp3" type="audio/mpeg">
+<source src="/minc/audio/gardening of what the hell.mp3" type="audio/mpeg">
 </audio>
 
 <h3>extremly bipolar.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/extremly bipolar.mp3" type="audio/mpeg">
+<source src="/minc/audio/extremly bipolar.mp3" type="audio/mpeg">
 </audio>
 
 <h3>constipain.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/constipain.mp3" type="audio/mpeg">
+<source src="/minc/audio/constipain.mp3" type="audio/mpeg">
 </audio>
 
 <h3>coke coke.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/coke coke.mp3" type="audio/mpeg">
+<source src="/minc/audio/coke coke.mp3" type="audio/mpeg">
 </audio>
 
 <h3>clap your gardening of american pussy.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/clap your gardening of american pussy.mp3" type="audio/mpeg">
+<source src="/minc/audio/clap your gardening of american pussy.mp3" type="audio/mpeg">
 </audio>
 
 <h3>bipolar.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/bipolar.mp3" type="audio/mpeg">
+<source src="/minc/audio/bipolar.mp3" type="audio/mpeg">
 </audio>
 
 <h3>agushs.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/agushs.mp3" type="audio/mpeg">
+<source src="/minc/audio/agushs.mp3" type="audio/mpeg">
 </audio>
 
 <h3>sad alam.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/24 - Misleading INC - sad alam.mp3" type="audio/mpeg">
+<source src="/minc/audio/24 - Misleading INC - sad alam.mp3" type="audio/mpeg">
 </audio>
 
 <h3>Genious of LoveGhegrehrgehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhehgrgerrghergerhe.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/23 - Misleading INC - Genius of Loveghegerfheererheghfhegrhegrhegrehgrerghegrhegrhegrhegrhegrehgrhegrhegrhergehrgheregrhehrgehrgehrhergerhghgerghergherhgerhgergherhgerghergehrehrgeghrgeghrgehrgehrgerhegrhegrhegrhegrg.mp3" type="audio/mpeg">
+<source src="/minc/audio/23 - Misleading INC - Genius of Loveghegerfheererheghfhegrhegrhegrehgrerghegrhegrhegrhegrhegrehgrhegrhegrhergehrgheregrhehrgehrgehrhergerhghgerghergherhgerhgergherhgerghergehrehrgeghrgeghrgehrgehrgerhegrhegrhegrhegrg.mp3" type="audio/mpeg">
 </audio>
 
 <h3>Kaleb when Elanor Rigby.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/22 - Misleading INC - Kaleb when Eleanor Rigby.mp3" type="audio/mpeg">
+<source src="/minc/audio/22 - Misleading INC - Kaleb when Eleanor Rigby.mp3" type="audio/mpeg">
 </audio>
 
 <h3>21st century humor.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/30 - Misleading INC - 21st century humor.mp3" type="audio/mpeg">
+<source src="/minc/audio/30 - Misleading INC - 21st century humor.mp3" type="audio/mpeg">
 </audio>
 
 <h3>please no.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/21 - Misleading INC - please no.mp3" type="audio/mpeg">
+<source src="/minc/audio/21 - Misleading INC - please no.mp3" type="audio/mpeg">
 </audio>
 
 <h3>Kaleb when rage.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/20 - Misleading INC - Kaleb when rage.mp3" type="audio/mpeg">
+<source src="/minc/audio/20 - Misleading INC - Kaleb when rage.mp3" type="audio/mpeg">
 </audio>
 
 <h3>constipation.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/19 - Misleading INC - constipation.mp3" type="audio/mpeg">
+<source src="/minc/audio/19 - Misleading INC - constipation.mp3" type="audio/mpeg">
 </audio>
 
 <h3>left ear.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/18 - Misleading INC - left ear.mp3" type="audio/mpeg">
+<source src="/minc/audio/18 - Misleading INC - left ear.mp3" type="audio/mpeg">
 </audio>
 
 <h3>its just a burning memory.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/17 - Misleading INC - Its just a burning memory.mp3" type="audio/mpeg">
+<source src="/minc/audio/17 - Misleading INC - Its just a burning memory.mp3" type="audio/mpeg">
 </audio>
 
 <h3>im not sure.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/16 - Misleading INC - im not sure.mp3" type="audio/mpeg">
+<source src="/minc/audio/16 - Misleading INC - im not sure.mp3" type="audio/mpeg">
 </audio>
 
 <h3>i yelled and broke the space time continuiom.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/15 - Misleading INC - i yelled and broke the space time continuiom.mp3" type="audio/mpeg">
+<source src="/minc/audio/15 - Misleading INC - i yelled and broke the space time continuiom.mp3" type="audio/mpeg">
 </audio>
 
 <h3>microwaving gas.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/14 - Misleading INC - microwaving gas.mp3" type="audio/mpeg">
+<source src="/minc/audio/14 - Misleading INC - microwaving gas.mp3" type="audio/mpeg">
 </audio>
 
 <h3>DO NOT USE.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/12 - Misleading INC - DO NOT USE.mp3" type="audio/mpeg">
+<source src="/minc/audio/12 - Misleading INC - DO NOT USE.mp3" type="audio/mpeg">
 </audio>
 
 <h3>pain.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/11 - Misleading INC - pain.mp3" type="audio/mpeg">
+<source src="/minc/audio/11 - Misleading INC - pain.mp3" type="audio/mpeg">
 </audio>
 
 <h3>SadWindowsXP.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/10 - Misleading INC - SadWindowsXP.mp3" type="audio/mpeg">
+<source src="/minc/audio/10 - Misleading INC - SadWindowsXP.mp3" type="audio/mpeg">
 </audio>
 
 <h3>BreadAndButterChips.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/09 - Misleading INC - BreadAndButterChips.mp3" type="audio/mpeg">
+<source src="/minc/audio/09 - Misleading INC - BreadAndButterChips.mp3" type="audio/mpeg">
 </audio>
 
 <h3>amog.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/08 - Misleading INC - amog.mp3" type="audio/mpeg">
+<source src="/minc/audio/08 - Misleading INC - amog.mp3" type="audio/mpeg">
 </audio>
 
 <h3>robust downsyndrome jr screaming.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/07 - Misleading INC - robust downsyndrome jr screaming.mp3" type="audio/mpeg">
+<source src="/minc/audio/07 - Misleading INC - robust downsyndrome jr screaming.mp3" type="audio/mpeg">
 </audio>
 
 <h3>dababy suge yea yea lyrics.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/06 - Misleading INC - Dababy Suge Yea Yea lyrics.mp3" type="audio/mpeg">
+<source src="/minc/audio/06 - Misleading INC - Dababy Suge Yea Yea lyrics.mp3" type="audio/mpeg">
 </audio>
 
 <h3>icanttakeitanymore.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/05 - Misleading INC - icanttakeitanymore.mp3" type="audio/mpeg">
+<source src="/minc/audio/05 - Misleading INC - icanttakeitanymore.mp3" type="audio/mpeg">
 </audio>
 
 <h3>crying dleeemon.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/04 - Misleading INC - CryingDleeemon.mp3" type="audio/mpeg">
+<source src="/minc/audio/04 - Misleading INC - CryingDleeemon.mp3" type="audio/mpeg">
 </audio>
 
 <h3>awahwahcan boy.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/03 - Misleading INC - awahwahcan boy.mp3" type="audio/mpeg">
+<source src="/minc/audio/03 - Misleading INC - awahwahcan boy.mp3" type="audio/mpeg">
 </audio>
 <h3>sad genioud of love.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/01 - Misleading INC - sad genioud of love.mp3" type="audio/mpeg">
+<source src="/minc/audio/01 - Misleading INC - sad genioud of love.mp3" type="audio/mpeg">
 </audio>
 
 <h3>paper.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/02 - Misleading INC - paper.mp3" type="audio/mpeg">
+<source src="/minc/audio/02 - Misleading INC - paper.mp3" type="audio/mpeg">
 </audio>
 
 <h3>peeneater3000.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/peeneater3000.mp3" type="audio/mpeg">
+<source src="/minc/audio/peeneater3000.mp3" type="audio/mpeg">
 </audio>
 
 <h3 class="dis">ShouldveKnownBetter.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/ShouldveKnownBetter.mp3" type="audio/mpeg">
+<source src="/minc/audio/ShouldveKnownBetter.mp3" type="audio/mpeg">
 </audio>
 
 <h3>MattsGreatSing.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/MattsGreatSing.mp3" type="audio/mpeg">
+<source src="/minc/audio/MattsGreatSing.mp3" type="audio/mpeg">
 </audio>
 
 <h3>pigbiotech.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/PigBioTech.mp3" type="audio/mpeg">
+<source src="/minc/audio/PigBioTech.mp3" type="audio/mpeg">
 </audio>
 
 <h3>pincushionman.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/pincushionman.mp3" type="audio/mpeg">
+<source src="/minc/audio/pincushionman.mp3" type="audio/mpeg">
 </audio>
 
 <h3>pinto man.mp3</h3>
 <audio controls>
-  <source src="/minc/audio/pinto.mp3" type="audio/mpeg">
+<source src="/minc/audio/pinto.mp3" type="audio/mpeg">
 </audio>
-      </div>
-      <br>
-      <br>
-      <div>
-        <a href="/">HOME</a>
-      </div>
+    
 
-      <div>
-        <h6>you've reached</h6>
-        <button onclick="topFunction()" id="myBtn" title="long peeneater3000">bottoms up</button>
-      </div>
-      </body>
-      </html>
+    <!-- Add the rest here, same structure -->
+  </div>
+
+  <div id="playerBar">
+    <div id="nowPlaying">Nothing playing</div>
+    <audio id="mainPlayer" controls></audio>
+  </div>
+
+  <button id="backToTop">↑ Top</button>
+
+  <script>
+    const searchInput = document.getElementById('search');
+    const cards = document.querySelectorAll('.audio-card');
+    const mainPlayer = document.getElementById('mainPlayer');
+    const nowPlaying = document.getElementById('nowPlaying');
+    const backToTop = document.getElementById('backToTop');
+
+    // Filter audios
+    searchInput.addEventListener('input', e => {
+      const term = e.target.value.toLowerCase();
+      cards.forEach(card => {
+        card.style.display = card.textContent.toLowerCase().includes(term) ? 'block' : 'none';
+      });
+    });
+
+    // Centralized audio playback
+    document.querySelectorAll('.audio-card audio').forEach(audio => {
+      audio.addEventListener('play', function() {
+        const src = this.getAttribute('src');
+        const title = this.getAttribute('data-title');
+        mainPlayer.src = src;
+        mainPlayer.play();
+        nowPlaying.textContent = `Now Playing: ${title}`;
+        // Pause other inline players
+        document.querySelectorAll('.audio-card audio').forEach(a => {
+          if (a !== this) a.pause();
+        });
+      });
+    });
+
+    // Back to top button
+    window.addEventListener('scroll', () => {
+      backToTop.style.display = window.scrollY > 400 ? 'block' : 'none';
+    });
+    backToTop.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+  </script>
+</body>
+</html>
