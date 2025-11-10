@@ -3,76 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Centralized Audio Player</title>
+<title>Audio Player</title>
 <style>
   body {
-    background: #111;
-    color: #eee;
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 20px;
+    background: #f7f7f7;
   }
 
-  header {
-    text-align: center;
-    padding: 2rem 1rem;
-  }
-
-  header h1 {
-    color: #58a6ff;
-    margin-bottom: 0.5rem;
+  #playerContainer {
+    margin-bottom: 20px;
   }
 
   #trackList {
-    width: 90%;
-    max-width: 600px;
-    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 10px;
+    max-height: 80vh;
+    overflow-y: auto;
   }
 
   #trackList button {
     width: 100%;
-    padding: 0.5rem 1rem;
-    margin: 0.25rem 0;
-    background: #1a1a1a;
+    padding: 8px;
     border: none;
-    color: #eee;
-    text-align: left;
-    border-radius: 8px;
+    border-radius: 5px;
+    background-color: #e0e0e0;
     cursor: pointer;
-    transition: 0.2s;
+    text-align: left;
+    transition: background 0.2s;
   }
 
   #trackList button:hover {
-    background: #333;
+    background-color: #c0c0c0;
   }
 
-  #playerContainer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background: #0d1117;
-    padding: 1rem;
-    border-top: 1px solid #222;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  audio {
-    width: 90%;
-    max-width: 600px;
+  #nowPlaying {
+    margin-top: 10px;
+    font-weight: bold;
   }
 </style>
 </head>
 <body>
 
-<header>
-  <h1>Misleading INC Audio Hub</h1>
-  <p>Click a track to play in the central player</p>
-</header>
+<div id="playerContainer">
+  <audio id="audioPlayer" controls style="width: 100%;"></audio>
+  <div id="nowPlaying">Now Playing: None</div>
+</div>
 
 <div id="trackList">
   <button data-src="/minc/audio/08 - Just Love.mp3">Just Love</button>
@@ -194,7 +171,7 @@
   <button data-src="/minc/audio/bipolar.mp3">bipolar</button>
   <button data-src="/minc/audio/agushs.mp3">agushs</button>
   <button data-src="/minc/audio/24 - Misleading INC - sad alam.mp3">sad alam</button>
-  <button data-src="/minc/audio/23 - Misleading INC - Genius of Loveghegerfheererheghfhe...">Genious of Love</button>
+  <button data-src="/minc/audio/23 - Misleading INC - Genius of Loveghegerfheererheghfhegrhegrhegrehgrerghegrhegrhegrhegrhegrehgrhegrhegrhergehrgheregrhehrgehrgehrhergerhghgerghergherhgerhgergherhgerghergehrehrgeghrgeghrgehrgehrgerhegrhegrhegrhegrg.mp3">Genious of Love</button>
   <button data-src="/minc/audio/22 - Misleading INC - Kaleb when Eleanor Rigby.mp3">Kaleb when Elanor Rigby</button>
   <button data-src="/minc/audio/30 - Misleading INC - 21st century humor.mp3">21st century humor</button>
   <button data-src="/minc/audio/21 - Misleading INC - please no.mp3">please no</button>
@@ -229,23 +206,16 @@
   <button data-src="/minc/audio/Demolition.mp3">Demolition</button>
 </div>
 
-<div id="playerContainer">
-  <div id="nowPlaying">Nothing playing</div>
-  <audio id="mainPlayer" controls></audio>
-</div>
-
 <script>
-  const trackButtons = document.querySelectorAll('#trackList button');
-  const mainPlayer = document.getElementById('mainPlayer');
+  const player = document.getElementById('audioPlayer');
   const nowPlaying = document.getElementById('nowPlaying');
+  const buttons = document.querySelectorAll('#trackList button');
 
-  trackButtons.forEach(button => {
+  buttons.forEach(button => {
     button.addEventListener('click', () => {
-      const src = button.getAttribute('data-src');
-      const title = button.textContent;
-      mainPlayer.src = src;
-      mainPlayer.play();
-      nowPlaying.textContent = 'Now Playing: ' + title;
+      player.src = button.dataset.src;
+      player.play();
+      nowPlaying.textContent = 'Now Playing: ' + button.textContent;
     });
   });
 </script>
