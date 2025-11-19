@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aiden Cipher Translator</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <style>
+        body {
+            padding: 2rem 1rem;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        textarea {
+            font-family: 'Courier New', monospace;
+            min-height: 150px;
+        }
+        
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .button-group {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <article>
+            <header>
+                <h1>aiden translator</h1>
+            </header>
+            
+            <label for="input">
+                enter text:
+                <textarea id="input" placeholder="Type your message here..."></textarea>
+            </label>
+            
+            <div class="button-group">
+                <button onclick="encode()">encode to aiden</button>
+                <button onclick="decode()" class="secondary">decode from aiden</button>
+                <button onclick="clearAll()" class="contrast">clear</button>
+            </div>
+            
+            <label for="output">
+                Result:
+                <textarea id="output" readonly placeholder="a Alden AID n   AidEN Aiden Alden"></textarea>
+            </label>
+            
+            <footer>
+                <small>
+                    how: encode to aiden turns english to aiden cipher, decode from aiden makes english from aiden
+                </small>
+            </footer>
+        </article>
+    </main>
+
+    <script>
+        const cipher = {
+            'A': 'A',
+            'B': 'AI',
+            'C': 'AID',
+            'D': 'AIDE',
+            'E': 'AIDEN',
+            'F': 'a',
+            'G': 'ai',
+            'H': 'aid',
+            'I': 'aide',
+            'J': 'aiden',
+            'K': 'n',
+            'L': 'en',
+            'M': 'den',
+            'N': 'iden',
+            'O': 'Aiden',
+            'P': 'N',
+            'Q': 'EN',
+            'R': 'DEN',
+            'S': 'IDEN',
+            'T': 'aIDEN',
+            'U': 'Alden',
+            'V': 'AIDen',
+            'W': 'AIDEn',
+            'X': 'AiDEN',
+            'Y': 'AidEN',
+            'Z': 'AIDeN'
+        };
+
+        // Create reverse mapping for decoding
+        const reverseCipher = {};
+        for (let key in cipher) {
+            reverseCipher[cipher[key]] = key;
+        }
+
+        function encode() {
+            const input = document.getElementById('input').value;
+            let result = [];
+            
+            for (let char of input) {
+                const upper = char.toUpperCase();
+                if (cipher[upper]) {
+                    result.push(cipher[upper]);
+                } else {
+                    // Keep spaces and punctuation as-is
+                    result.push(char);
+                }
+            }
+            
+            document.getElementById('output').value = result.join(' ');
+        }
+
+        function decode() {
+            const input = document.getElementById('input').value;
+            const parts = input.split(' ');
+            let result = [];
+            
+            for (let part of parts) {
+                if (reverseCipher[part]) {
+                    result.push(reverseCipher[part]);
+                } else if (part.trim() === '') {
+                    // Skip empty parts from multiple spaces
+                    continue;
+                } else {
+                    // Keep unrecognized parts as-is
+                    result.push(part);
+                }
+            }
+            
+            document.getElementById('output').value = result.join('');
+        }
+
+        function clearAll() {
+            document.getElementById('input').value = '';
+            document.getElementById('output').value = '';
+        }
+    </script>
+</body>
+</html>
