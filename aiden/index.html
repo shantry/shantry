@@ -106,12 +106,17 @@
             let result = [];
             
             for (let char of input) {
-                const upper = char.toUpperCase();
-                if (cipher[upper]) {
-                    result.push(cipher[upper]);
+                if (char === ' ') {
+                    // push empty string to create double-space separation (word break)
+                    result.push('');
                 } else {
-                    // Keep spaces and punctuation as-is
-                    result.push(char);
+                    const upper = char.toUpperCase();
+                    if (cipher[upper]) {
+                        result.push(cipher[upper]);
+                    } else {
+                        // keep punctuation as-is
+                        result.push(char);
+                    }
                 }
             }
             
@@ -123,14 +128,26 @@
             const parts = input.split(' ');
             let result = [];
             
-            for (let part of parts) {
+            let skipNext = false;
+
+            for (let i = 0; i < parts.length; i++) {
+                const part = parts[i];
+
+                if (part === '') {
+                    // empty string means a space (word break)
+                    if (!skipNext) {
+                        result.push(' ');
+                    }
+                    skipNext = true;
+                    continue;
+                }
+
+                skipNext = false;
+
                 if (reverseCipher[part]) {
                     result.push(reverseCipher[part]);
-                } else if (part.trim() === '') {
-                    // Skip empty parts from multiple spaces
-                    continue;
                 } else {
-                    // Keep unrecognized parts as-is
+                    // keep unknown chunks
                     result.push(part);
                 }
             }
