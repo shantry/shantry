@@ -434,3 +434,68 @@ nav.socials span:nth-child(10) { animation-delay: 2.8s; }
 .nav-link:hover {
     animation: glow 0.5s ease-in-out infinite alternate, wiggle 0.3s ease-in-out;
 }
+
+/* Archive interface shared by the current projects and chat pages. */
+:root {
+  --ink: #11100d;
+  --paper: #f2ead8;
+  --muted: #a9a18e;
+  --line: rgba(242, 234, 216, 0.22);
+  --signal: #d8ff4e;
+}
+
+.archive-page {
+  min-height: 100vh;
+  color: var(--paper);
+  background-color: var(--ink);
+  background-image:
+    linear-gradient(rgba(242, 234, 216, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242, 234, 216, 0.018) 1px, transparent 1px),
+    radial-gradient(circle at 50% -20%, #343022 0, var(--ink) 45rem);
+  background-size: 4px 4px, 4px 4px, auto;
+  font-family: derk, ui-monospace, SFMono-Regular, Menlo, monospace !important;
+}
+
+.archive-shell {
+  width: min(100% - 2.5rem, 48rem);
+  margin: 0 auto;
+  padding: clamp(1.5rem, 7vw, 5rem) 0 3rem;
+}
+
+.archive-nav {
+  display: flex;
+  gap: 1.25rem;
+  padding-bottom: 0.9rem;
+  margin-bottom: clamp(2.5rem, 8vw, 5rem);
+  border-bottom: 1px solid var(--line);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.archive-page a { color: var(--muted) !important; }
+.archive-page a:hover,
+.archive-page a:focus-visible { color: var(--signal) !important; outline: none; }
+.archive-nav a[aria-current='page'] { color: var(--paper) !important; }
+
+.archive-kicker { color: var(--signal); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; }
+.archive-title { margin: 0.7rem 0 0; font-size: clamp(2.2rem, 9vw, 5.5rem); line-height: 0.9; letter-spacing: -0.06em; }
+.archive-intro { max-width: 35rem; margin: 1.25rem 0 2.5rem; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9rem; line-height: 1.65; }
+
+.project-list { border-top: 1px solid var(--line); }
+.project-list span { display: block; border-bottom: 1px solid var(--line); padding: 0.85rem 0; }
+.project-list span::before { content: none; }
+.project-list a { display: block; font-size: clamp(1rem, 3vw, 1.25rem) !important; letter-spacing: 0.02em; }
+.project-list a::before { content: '> '; color: var(--signal); }
+.project-list a:hover { padding-left: 0.45rem; transition: color 150ms ease, padding-left 150ms ease; }
+
+.archive-footer { margin-top: 3rem; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+}
+
+@media (max-width: 32rem) {
+  .archive-shell { width: min(100% - 1.5rem, 48rem); }
+  .archive-nav { gap: 0.85rem; }
+}
