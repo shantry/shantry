@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        #placeholder {
+            position: relative;
+            text-align: center;
+            cursor: pointer;
+        }
+        #placeholder img {
+            width: 100%;
+            max-width: 600px;
+            filter: grayscale(100%) brightness(50%);
+        }
+        #placeholder h1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            text-shadow: 2px 2px 4px black;
+        }
+        #celebration {
+            display: none;
+            text-align: center;
+        }
+        #celebration img {
+            width: 100%;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div id="placeholder" onclick="revealCelebration()">
+        <img src="smile.jpeg" alt="Placeholder Image">
+        <h1>happy birthdayughhhhh...</h1>
+    </div>
+    <div id="celebration">
+        <img src="elephant.jpg" alt="Celebration Image">
+        <audio id="audio" src="celebration-audio.mp3"></audio>
+    </div>
+
+    <script>
+        function revealCelebration() {
+            document.getElementById('placeholder').style.display = 'none';
+            const celebration = document.getElementById('celebration');
+            celebration.style.display = 'block';
+            const audio = document.getElementById('audio');
+            audio.play();
+        }
+    </script>
+</body>
+</html>
